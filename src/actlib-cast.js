@@ -1,6 +1,6 @@
 // Actlib roster + body dimorphism. Faceless NOIR figures; gender is silhouette.
 const BODY_MALE = {id:'male',zh:'男',height:1,hipWidth:1,shoulderWidth:1,torsoX:1,torsoY:1,torsoZ:1,waist:1,chest:0,limb:1,hand:1,foot:1,neck:1,head:1};
-const BODY_FEMALE = {id:'female',zh:'女',height:.93,hipWidth:1.08,shoulderWidth:.76,torsoX:1,torsoY:.96,torsoZ:.96,waist:.72,chest:1,limb:.94,hand:.86,foot:.84,neck:.86,head:.94};
+const BODY_FEMALE = {id:'female',zh:'女',height:.97,hipWidth:1.04,shoulderWidth:.88,torsoX:.96,torsoY:1,torsoZ:.97,waist:.90,chest:1,limb:.97,hand:.94,foot:.92,neck:1.12,head:.98};
 const BODIES = {male:BODY_MALE,female:BODY_FEMALE};
 const HAIRS = ['none','crop','short','bob','long','bun','ponytail','braid'];
 const HAIR_NAMES = {none:'光头',crop:'寸发',short:'短发',bob:'齐耳',long:'长发',bun:'发髻',ponytail:'马尾',braid:'辫子'};
@@ -12,18 +12,18 @@ const HAIR_COLOURS = [
  {name:'青灰',hex:'#6b6e72',rgb:[.42,.43,.45]},
  {name:'夜棕',hex:'#2a1c14',rgb:[.16,.11,.08]}
 ];
-const OUTFITS = ['vest','sleeves','dress','blouse','coat'];
-const OUTFIT_NAMES = {vest:'彩色背心 · 黑袖',sleeves:'彩色长袖',dress:'连衣长裙',blouse:'短袖罩衫',coat:'长外套'};
+const OUTFITS = ['vest','sleeves','blouse','skirt','dress','coat'];
+const OUTFIT_NAMES = {vest:'彩色背心 · 黑袖',sleeves:'彩色长袖',blouse:'短袖罩衫',skirt:'短裙',dress:'连衣长裙',coat:'长外套'};
 const CAST_ROSTER = [
  {id:'alan',name:'阿岚',body:'male',hair:'short',hat:'beret',outfit:'sleeves',colour:0,hairColour:0,note:'动作库·方块人短发男'},
- {id:'xiaoxi',name:'小汐',body:'female',hair:'long',hat:'none',outfit:'dress',colour:1,hairColour:1,note:'动作库·长发裙装女'},
+ {id:'xiaoxi',name:'小汐',body:'female',hair:'long',hat:'none',outfit:'skirt',colour:1,hairColour:1,note:'动作库·长发短裙女'},
  {id:'amo',name:'阿墨',body:'male',hair:'crop',hat:'cap',outfit:'vest',colour:2,hairColour:0,note:'动作库·寸发背心男'},
- {id:'zhixia',name:'知夏',body:'female',hair:'bob',hat:'none',outfit:'blouse',colour:3,hairColour:2,note:'动作库·齐耳短发女'},
- {id:'qinghe',name:'青禾',body:'female',hair:'braid',hat:'none',outfit:'dress',colour:4,hairColour:1,note:'动作库·辫子长裙女'},
+ {id:'zhixia',name:'知夏',body:'female',hair:'bob',hat:'none',outfit:'blouse',colour:3,hairColour:2,note:'动作库·齐耳罩衫女'},
+ {id:'qinghe',name:'青禾',body:'female',hair:'braid',hat:'none',outfit:'skirt',colour:4,hairColour:1,note:'动作库·辫子短裙女'},
  {id:'bailu',name:'白露',body:'female',hair:'bun',hat:'none',outfit:'coat',colour:5,hairColour:4,note:'动作库·发髻外套女'},
  {id:'nanxing',name:'南星',body:'male',hair:'short',hat:'none',outfit:'coat',colour:1,hairColour:5,note:'动作库·短发外套男'},
  {id:'wenchuan',name:'闻川',body:'female',hair:'ponytail',hat:'none',outfit:'sleeves',colour:0,hairColour:2,note:'动作库·马尾长袖女'},
- {id:'chujiu',name:'初九',body:'female',hair:'long',hat:'brim',outfit:'dress',colour:2,hairColour:3,note:'动作库·长发宽檐女'},
+ {id:'chujiu',name:'初九',body:'female',hair:'long',hat:'brim',outfit:'dress',colour:2,hairColour:3,note:'动作库·长发长裙女'},
  {id:'luosheng',name:'洛生',body:'male',hair:'short',hat:'beanie',outfit:'sleeves',colour:4,hairColour:0,note:'动作库·针织帽男'},
  {id:'linwan',name:'林晚',body:'female',hair:'bob',hat:'beret',outfit:'coat',colour:5,hairColour:0,note:'动作库·贝雷齐耳女'},
  {id:'gushen',name:'顾深',body:'male',hair:'none',hat:'brim',outfit:'coat',colour:3,hairColour:4,note:'动作库·宽檐光头男'}

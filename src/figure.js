@@ -9,11 +9,16 @@ function human(a,scene,time) {
   const link=(p,q,r1,r2=r1,mesh='limb',material)=>add(mesh,linkMatrix(p,q,r1,r2),material);
   const pelvis=compose(M.translation(c.shiftX||0,c.pelvis,0),M.ry(c.hipYaw||0),M.rz(c.hipRoll||0));
   const hipR=R.hip, shR=R.shoulder, hs=R.head;
-  add('sphere',M.mul(pelvis,tr([0,.061,-.012],[.137*R.body.hipWidth,.110,.094*R.body.hipWidth])));
+  const hipBulk=female?[.108,.078,.082]:[.137,.110,.094];
+  add('sphere',M.mul(pelvis,tr([0,.055,-.010],[hipBulk[0]*R.body.hipWidth,hipBulk[1],hipBulk[2]*R.body.hipWidth])));
   add(female?'pelvisF':'pelvis',M.mul(pelvis,compose(M.translation(0,-.018,0),M.scale(R.body.hipWidth,1,R.body.hipWidth))));
   const torso=torsoMatrix(c,R);add(female?'torsoF':'torso',torso,cloth);const tp=p=>M.transform(torso,p).slice(0,3);
-  ball(tp([0,.462*R.neck,0]),[.038*R.neck,.066*R.neck,.038*R.neck]);
-  const headRoot=compose(torso,M.translation(0,.584,.008),M.ry(c.headYaw),M.rx(c.headPitch),M.scale(1,1/1.15,1));
+  const neckLen=.108*(female?1.22:1),neckR=female?.030:.034;
+  const neckBase=tp([0,.468,0]),neckTop=tp([0,.468+neckLen,0]);
+  link(neckBase,neckTop,neckR*1.08,neckR*.92,'limb');
+  ball(neckBase,[neckR*1.12,.018,neckR*1.12]);
+  ball(neckTop,[neckR*.95,.016,neckR*.95]);
+  const headRoot=compose(torso,M.translation(0,.468+neckLen+.018,.006),M.ry(c.headYaw),M.rx(c.headPitch),M.scale(1,1/1.15,1));
   const head=(p,s)=>add('sphere',M.mul(headRoot,tr(p,s)));
   head([0,.002,-.006],[.080*hs,.113*hs,.081*hs]);head([0,-.060,.014],[.061*hs,.056*hs,.063*hs]);
   dressHair(add,headRoot,appearance,hairMat);
@@ -23,7 +28,7 @@ function human(a,scene,time) {
   for(const h of [.21,.29])add('sphere',M.mul(torso,tr([.003,h,.104*R.torsoZ],[.008,.008,.005])),{shade:.57});
   dressClothes(add,pelvis,torso,appearance,cloth,R);
   const audit={mode:air?'air':a.moving?'gait':a.pose,legs:[],arms:[],feet:[],forward:[Math.sin(a.angle),0,Math.cos(a.angle)],body:appearance.body};
-  const sleeve=appearance.outfit==='sleeves'||appearance.outfit==='coat'||appearance.outfit==='dress'||appearance.outfit==='blouse';
+  const sleeve=appearance.outfit==='sleeves'||appearance.outfit==='coat'||appearance.outfit==='dress'||appearance.outfit==='blouse'||appearance.outfit==='skirt';
   [-1,1].forEach((side,i)=>{
     const hip=M.transform(pelvis,[side*hipR,0,0]).slice(0,3),kneePole=a.pose==='meditate'&&!a.moving?[side,0,.15]:[0,0,1];
     const leg=twoBone(hip,c.feet[i],R.upperLeg,R.lowerLeg,kneePole),knee=leg.joint,ankle=leg.end;

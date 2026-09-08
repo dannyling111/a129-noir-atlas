@@ -34,43 +34,42 @@ function dressHat(add,headRoot,appearance,cloth){
 }
 function dressHair(add,headRoot,appearance,hairMat){
  const obj=(p,s,rot=0)=>add('sphere',compose(headRoot,M.translation(...p),M.rz(rot),M.scale(...s)),hairMat);
- const bangs=()=>{obj([0,.048,.072],[.078,.038,.036]);obj([.05,.03,.068],[.042,.040,.032]);obj([-.05,.03,.068],[.042,.040,.032]);};
+ const bangs=()=>{obj([0,.055,.070],[.070,.032,.028]);obj([.048,.038,.062],[.036,.034,.026]);obj([-.048,.038,.062],[.036,.034,.026]);};
  switch(appearance.hair){
   case 'crop':obj([0,.055,-.01],[.086,.055,.086]);break;
-  case 'short':obj([0,.062,-.012],[.092,.068,.090]);obj([.07,.02,-.01],[.038,.055,.042]);obj([-.07,.02,-.01],[.038,.055,.042]);break;
-  case 'bob':obj([0,.058,-.01],[.095,.070,.092]);obj([.088,-.02,-.01],[.046,.078,.050]);obj([-.088,-.02,-.01],[.046,.078,.050]);obj([0,-.04,-.07],[.080,.060,.055]);bangs();break;
+  case 'short':obj([0,.062,-.012],[.092,.068,.090]);obj([.07,.02,-.02],[.038,.055,.042]);obj([-.07,.02,-.02],[.038,.055,.042]);break;
+  case 'bob':obj([0,.058,-.02],[.092,.068,.088]);obj([.082,-.02,-.04],[.042,.070,.046]);obj([-.082,-.02,-.04],[.042,.070,.046]);obj([0,-.02,-.08],[.074,.055,.050]);bangs();break;
   case 'long':
-   obj([0,.06,-.012],[.098,.072,.094]);obj([.09,.01,-.01],[.042,.070,.048]);obj([-.09,.01,-.01],[.042,.070,.048]);
-   obj([0,-.02,-.08],[.090,.090,.070]);obj([0,-.20,-.09],[.082,.14,.065]);obj([0,-.38,-.07],[.072,.14,.058]);obj([0,-.54,-.04],[.055,.12,.048]);
+   obj([0,.06,-.02],[.094,.068,.090]);obj([.08,.01,-.04],[.038,.060,.042]);obj([-.08,.01,-.04],[.038,.060,.042]);
+   obj([0,-.04,-.10],[.080,.080,.060]);obj([0,-.22,-.11],[.072,.13,.055]);obj([0,-.40,-.09],[.062,.13,.050]);obj([0,-.56,-.06],[.048,.11,.042]);
    bangs();
    break;
-  case 'bun':obj([0,.055,-.01],[.090,.060,.088]);obj([0,.13,-.03],[.055,.055,.055]);obj([.08,.01,-.01],[.035,.05,.038]);obj([-.08,.01,-.01],[.035,.05,.038]);break;
-  case 'ponytail':obj([0,.055,-.01],[.090,.062,.088]);obj([0,.04,-.09],[.04,.04,.04]);obj([0,-.08,-.12],[.038,.12,.038]);obj([0,-.24,-.11],[.032,.12,.032]);bangs();break;
-  case 'braid':obj([0,.055,-.01],[.090,.062,.088]);obj([.08,.02,-.02],[.04,.06,.04]);obj([-.08,.02,-.02],[.04,.06,.04]);
-   obj([.02,-.10,-.10],[.032,.10,.032]);obj([-.01,-.24,-.09],[.030,.10,.030]);obj([.02,-.38,-.07],[.028,.10,.028]);obj([0,-.50,-.05],[.024,.08,.024]);
+  case 'bun':obj([0,.055,-.02],[.088,.058,.086]);obj([0,.13,-.04],[.052,.052,.052]);obj([.07,.01,-.03],[.032,.048,.034]);obj([-.07,.01,-.03],[.032,.048,.034]);break;
+  case 'ponytail':obj([0,.055,-.02],[.088,.060,.086]);obj([0,.04,-.10],[.038,.038,.038]);obj([0,-.08,-.13],[.034,.12,.034]);obj([0,-.24,-.12],[.028,.12,.028]);bangs();break;
+  case 'braid':obj([0,.055,-.02],[.088,.060,.086]);obj([.07,.02,-.04],[.036,.055,.036]);obj([-.07,.02,-.04],[.036,.055,.036]);
+   obj([.02,-.10,-.12],[.028,.10,.028]);obj([-.01,-.24,-.11],[.026,.10,.026]);obj([.02,-.38,-.09],[.024,.10,.024]);obj([0,-.50,-.07],[.022,.08,.022]);
    bangs();
    break;
  }
 }
 function dressClothes(add,pelvis,torso,appearance,cloth,R){
- const flare=R.body.hipWidth;
- if(appearance.outfit==='dress'){
-  add('sphere',M.mul(pelvis,tr([0,-.08,.02],[.19*flare,.09,.15])),cloth);
-  add('sphere',M.mul(pelvis,tr([0,-.26,.04],[.26*flare,.16,.19])),cloth);
-  add('sphere',M.mul(pelvis,tr([0,-.46,.05],[.31*flare,.18,.22])),cloth);
-  add('sphere',M.mul(pelvis,tr([0,-.66,.04],[.33*flare,.16,.22])),cloth);
+ const flare=R.body.hipWidth, female=appearance.body==='female';
+ if(appearance.outfit==='dress'||appearance.outfit==='skirt'){
+  add('sphere',M.mul(pelvis,tr([0,-.04,.016],[.155*flare,.055,.118])),cloth);
+  add('sphere',M.mul(pelvis,tr([0,-.15,.024],[.185*flare,.10,.138])),cloth);
+  if(appearance.outfit==='dress'){
+   add('sphere',M.mul(pelvis,tr([0,-.34,.03],[.21*flare,.14,.155])),cloth);
+   add('sphere',M.mul(pelvis,tr([0,-.52,.024],[.22*flare,.12,.16])),cloth);
+  }
  }
  if(appearance.outfit==='coat'){
-  add('sphere',M.mul(torso,tr([0,.18,.04],[.16*R.torsoX,.28,.12])),cloth);
-  add('sphere',M.mul(pelvis,tr([0,-.10,.03],[.18*flare,.16,.14])),cloth);
+  add('sphere',M.mul(torso,tr([0,.18,.035],[.15*R.torsoX,.26,.11])),cloth);
+  add('sphere',M.mul(pelvis,tr([0,-.08,.025],[.16*flare,.13,.12])),cloth);
  }
- if(appearance.outfit==='blouse'){
-  add('sphere',M.mul(torso,tr([0,.16,.03],[.13*R.torsoX,.16,.10])),cloth);
-  add('sphere',M.mul(torso,tr([0,.04,.02],[.10*R.waist,.10,.08])),cloth);
+ if(appearance.outfit==='blouse'||appearance.outfit==='skirt'){
+  add('sphere',M.mul(torso,tr([0,.18,.028],[.12*R.torsoX,.14,.092])),cloth);
  }
- if(R.chest>0){
-  add('sphere',M.mul(torso,tr([.068,.255,.102],[.072,.056,.066])),cloth);
-  add('sphere',M.mul(torso,tr([-.068,.255,.102],[.072,.056,.066])),cloth);
-  add('sphere',M.mul(torso,tr([0,.12,.02],[.10*R.waist,.11,.085])),cloth);
+ if(female){
+  add('sphere',M.mul(torso,tr([0,.30,.055],[.108,.040,.048])),cloth);
  }
 }
