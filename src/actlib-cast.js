@@ -1,6 +1,6 @@
 // Actlib roster + body dimorphism. Faceless NOIR figures; gender is silhouette.
 const BODY_MALE = {id:'male',zh:'男',height:1,hipWidth:1,shoulderWidth:1,torsoX:1,torsoY:1,torsoZ:1,waist:1,chest:0,limb:1,hand:1,foot:1,neck:1,head:1};
-const BODY_FEMALE = {id:'female',zh:'女',height:.97,hipWidth:1.04,shoulderWidth:.88,torsoX:.96,torsoY:1,torsoZ:.97,waist:.90,chest:1,limb:.97,hand:.94,foot:.92,neck:1.12,head:.98};
+const BODY_FEMALE = {id:'female',zh:'女',height:.97,hipWidth:1.14,shoulderWidth:.84,torsoX:.92,torsoY:1,torsoZ:1,waist:.80,chest:1,limb:.97,hand:.94,foot:.92,neck:1.12,head:.98};
 const BODIES = {male:BODY_MALE,female:BODY_FEMALE};
 const HAIRS = ['none','crop','short','bob','long','bun','ponytail','braid'];
 const HAIR_NAMES = {none:'光头',crop:'寸发',short:'短发',bob:'齐耳',long:'长发',bun:'发髻',ponytail:'马尾',braid:'辫子'};
@@ -25,7 +25,7 @@ const CAST_ROSTER = [
  {id:'wenchuan',name:'闻川',body:'female',hair:'ponytail',hat:'none',outfit:'sleeves',colour:0,hairColour:2,note:'动作库·马尾长袖女'},
  {id:'chujiu',name:'初九',body:'female',hair:'long',hat:'brim',outfit:'dress',colour:2,hairColour:3,note:'动作库·长发长裙女'},
  {id:'luosheng',name:'洛生',body:'male',hair:'short',hat:'beanie',outfit:'sleeves',colour:4,hairColour:0,note:'动作库·针织帽男'},
- {id:'linwan',name:'林晚',body:'female',hair:'bob',hat:'beret',outfit:'coat',colour:5,hairColour:0,note:'动作库·贝雷齐耳女'},
+ {id:'linwan',name:'林晚',body:'female',hair:'bob',hat:'beret',outfit:'vest',colour:5,hairColour:0,note:'动作库·贝雷背心女'},
  {id:'gushen',name:'顾深',body:'male',hair:'none',hat:'brim',outfit:'coat',colour:3,hairColour:4,note:'动作库·宽檐光头男'}
 ];
 const ACTLIB_CAT_ZH = {posture:'姿态',gesture:'手势',loco:'位移',react:'反应',combat:'战斗',special:'超能力',object:'物体互动'};

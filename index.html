@@ -270,7 +270,7 @@
  <label class="cast-field">让 TA 说一句<textarea id="cast-line" rows="2" maxlength="140" placeholder="今天的光，和昨天不一样。" aria-label="自定义对白"></textarea></label>
  <button class="wide-button" id="cast-say">在头顶说出来</button>
  <label class="label-toggle"><input type="checkbox" id="cast-names" checked>近景显示姓名</label>
- <p class="panel-small">女性是柔和的成人体型：有脖子、略窄肩、略收腰。短裙、罩衫、长袖都可以，不靠长裙才像女人。头部不绘制五官。</p>
+ <p class="panel-small">女体是 S 线：有脖子，胸向前两团，腰收、髋略宽。短裙、罩衫、背心、长袖、外套都有，不靠长裙才像女人。头部不绘制五官。</p>
 </aside>
 <div id="theatre-bar" class="ui" hidden><span class="theatre-dot"></span><span id="theatre-title"></span><small id="theatre-progress"></small><button id="theatre-pause" aria-label="暂停或继续短剧">Ⅱ</button><button id="theatre-next" aria-label="下一段" title="下一段">›</button><button id="theatre-stop" aria-label="结束短剧">×</button></div>
 <script>
@@ -430,7 +430,7 @@ function bakeMaterialTextureArray(gl,size=256){
 }
 
 class Renderer {
- constructor(canvas){this.canvas=canvas;this.gl=canvas.getContext('webgl2',{alpha:false,antialias:false,preserveDrawingBuffer:true,powerPreference:'high-performance'});if(!this.gl)throw new Error('此浏览器未开启 WebGL 2。请使用较新的 Chrome / Edge / Safari，或开启硬件加速。');this.gl.disable(this.gl.DITHER);this.meshes={};this.width=0;this.height=0;this.resolution=1.4;this.shadowSize=2048;this.msaaSamples=0;this.initPrograms();this.materialTextures=bakeMaterialTextureArray(this.gl);this.initTargets();for(const [name,g]of Object.entries({box:Geo.box(),disc:Geo.disc(),thinRing:Geo.torus(1,.0028,96,6),sphere:Geo.sphere(24,16),artSphere:Geo.sphere(72,48),torus:Geo.torus(),rock:Geo.sphere(48,32,.055),walkway:Geo.ribbon(PATH_POINTS,2.85,28),torso:Geo.loft([[0,.105,.085],[.055,.145,.105],[.17,.125,.08],[.28,.173,.098],[.36,.202,.10],[.40,.172,.082],[.435,.085,.066]],16),pelvis:Geo.loft([[0,.077,.077],[.055,.142,.103],[.12,.15,.10],[.18,.12,.087]],16),torsoF:Geo.loft([[0,.110,.086],[.07,.118,.092],[.16,.100,.078],[.26,.128,.090],[.34,.142,.100],[.41,.132,.086],[.48,.070,.056]],16),pelvisF:Geo.loft([[0,.080,.078],[.055,.150,.108],[.12,.156,.112],[.18,.126,.092]],16),limb:Geo.loft([[0,.70,.75],[.07,.92,.90],[.26,1,1],[.5,.91,.88],[.78,.69,.7],[1,.53,.55]],12),forelimb:Geo.loft([[0,.73,.8],[.20,1,1],[.53,.80,.82],[.87,.48,.53],[1,.45,.49]],12)}))this.meshes[name]=this.mesh(g);this.resize();}
+ constructor(canvas){this.canvas=canvas;this.gl=canvas.getContext('webgl2',{alpha:false,antialias:false,preserveDrawingBuffer:true,powerPreference:'high-performance'});if(!this.gl)throw new Error('此浏览器未开启 WebGL 2。请使用较新的 Chrome / Edge / Safari，或开启硬件加速。');this.gl.disable(this.gl.DITHER);this.meshes={};this.width=0;this.height=0;this.resolution=1.4;this.shadowSize=2048;this.msaaSamples=0;this.initPrograms();this.materialTextures=bakeMaterialTextureArray(this.gl);this.initTargets();for(const [name,g]of Object.entries({box:Geo.box(),disc:Geo.disc(),thinRing:Geo.torus(1,.0028,96,6),sphere:Geo.sphere(24,16),artSphere:Geo.sphere(72,48),torus:Geo.torus(),rock:Geo.sphere(48,32,.055),walkway:Geo.ribbon(PATH_POINTS,2.85,28),torso:Geo.loft([[0,.105,.085],[.055,.145,.105],[.17,.125,.08],[.28,.173,.098],[.36,.202,.10],[.40,.172,.082],[.435,.085,.066]],16),pelvis:Geo.loft([[0,.077,.077],[.055,.142,.103],[.12,.15,.10],[.18,.12,.087]],16),torsoF:Geo.loft([[0,.124,.094],[.06,.108,.084],[.15,.084,.068],[.24,.118,.088],[.33,.152,.118],[.41,.126,.086],[.48,.070,.056]],16),pelvisF:Geo.loft([[0,.086,.082],[.055,.162,.118],[.12,.172,.124],[.18,.132,.100]],16),limb:Geo.loft([[0,.70,.75],[.07,.92,.90],[.26,1,1],[.5,.91,.88],[.78,.69,.7],[1,.53,.55]],12),forelimb:Geo.loft([[0,.73,.8],[.20,1,1],[.53,.80,.82],[.87,.48,.53],[1,.45,.49]],12)}))this.meshes[name]=this.mesh(g);this.resize();}
  shader(type,source){let g=this.gl,s=g.createShader(type);g.shaderSource(s,source);g.compileShader(s);if(!g.getShaderParameter(s,g.COMPILE_STATUS))throw new Error(g.getShaderInfoLog(s));return s;}
  program(v,f){let g=this.gl,p=g.createProgram();g.attachShader(p,this.shader(g.VERTEX_SHADER,v));g.attachShader(p,this.shader(g.FRAGMENT_SHADER,f));g.linkProgram(p);if(!g.getProgramParameter(p,g.LINK_STATUS))throw new Error(g.getProgramInfoLog(p));return p;}
  initPrograms(){const vs=`#version 300 es
@@ -849,7 +849,7 @@ function poseControls(a,scene,time) {
 
 // Actlib roster + body dimorphism. Faceless NOIR figures; gender is silhouette.
 const BODY_MALE = {id:'male',zh:'男',height:1,hipWidth:1,shoulderWidth:1,torsoX:1,torsoY:1,torsoZ:1,waist:1,chest:0,limb:1,hand:1,foot:1,neck:1,head:1};
-const BODY_FEMALE = {id:'female',zh:'女',height:.97,hipWidth:1.04,shoulderWidth:.88,torsoX:.96,torsoY:1,torsoZ:.97,waist:.90,chest:1,limb:.97,hand:.94,foot:.92,neck:1.12,head:.98};
+const BODY_FEMALE = {id:'female',zh:'女',height:.97,hipWidth:1.14,shoulderWidth:.84,torsoX:.92,torsoY:1,torsoZ:1,waist:.80,chest:1,limb:.97,hand:.94,foot:.92,neck:1.12,head:.98};
 const BODIES = {male:BODY_MALE,female:BODY_FEMALE};
 const HAIRS = ['none','crop','short','bob','long','bun','ponytail','braid'];
 const HAIR_NAMES = {none:'光头',crop:'寸发',short:'短发',bob:'齐耳',long:'长发',bun:'发髻',ponytail:'马尾',braid:'辫子'};
@@ -874,7 +874,7 @@ const CAST_ROSTER = [
  {id:'wenchuan',name:'闻川',body:'female',hair:'ponytail',hat:'none',outfit:'sleeves',colour:0,hairColour:2,note:'动作库·马尾长袖女'},
  {id:'chujiu',name:'初九',body:'female',hair:'long',hat:'brim',outfit:'dress',colour:2,hairColour:3,note:'动作库·长发长裙女'},
  {id:'luosheng',name:'洛生',body:'male',hair:'short',hat:'beanie',outfit:'sleeves',colour:4,hairColour:0,note:'动作库·针织帽男'},
- {id:'linwan',name:'林晚',body:'female',hair:'bob',hat:'beret',outfit:'coat',colour:5,hairColour:0,note:'动作库·贝雷齐耳女'},
+ {id:'linwan',name:'林晚',body:'female',hair:'bob',hat:'beret',outfit:'vest',colour:5,hairColour:0,note:'动作库·贝雷背心女'},
  {id:'gushen',name:'顾深',body:'male',hair:'none',hat:'brim',outfit:'coat',colour:3,hairColour:4,note:'动作库·宽檐光头男'}
 ];
 const ACTLIB_CAT_ZH = {posture:'姿态',gesture:'手势',loco:'位移',react:'反应',combat:'战斗',special:'超能力',object:'物体互动'};
@@ -1017,24 +1017,31 @@ function dressHair(add,headRoot,appearance,hairMat){
  }
 }
 function dressClothes(add,pelvis,torso,appearance,cloth,R){
- const flare=R.body.hipWidth, female=appearance.body==='female';
- if(appearance.outfit==='dress'||appearance.outfit==='skirt'){
-  add('sphere',M.mul(pelvis,tr([0,-.04,.016],[.155*flare,.055,.118])),cloth);
-  add('sphere',M.mul(pelvis,tr([0,-.15,.024],[.185*flare,.10,.138])),cloth);
-  if(appearance.outfit==='dress'){
-   add('sphere',M.mul(pelvis,tr([0,-.34,.03],[.21*flare,.14,.155])),cloth);
-   add('sphere',M.mul(pelvis,tr([0,-.52,.024],[.22*flare,.12,.16])),cloth);
+ const flare=R.body.hipWidth, female=appearance.body==='female', o=appearance.outfit;
+ if(female){
+  add('sphere',M.mul(torso,tr([ .048,.305,.102],[.054,.048,.060])),cloth);
+  add('sphere',M.mul(torso,tr([-.048,.305,.102],[.054,.048,.060])),cloth);
+  add('sphere',M.mul(torso,tr([0,.118,.018],[.080*R.waist,.12,.070])),cloth);
+ }
+ if(o==='blouse'||o==='skirt'||o==='dress'){
+  add('sphere',M.mul(torso,tr([0,.20,.042],[.128*R.torsoX,.16,.098])),cloth);
+ }
+ if(o==='blouse'||o==='skirt'){
+  add('sphere',M.mul(torso,tr([ .17,.345,.02],[.062,.048,.056])),cloth);
+  add('sphere',M.mul(torso,tr([-.17,.345,.02],[.062,.048,.056])),cloth);
+ }
+ if(o==='skirt'||o==='dress'){
+  add('sphere',M.mul(pelvis,tr([0,.04,.02],[.128*flare,.028,.100])),cloth);
+  add('sphere',M.mul(pelvis,tr([0,-.07,.032],[.178*flare,.062,.132])),cloth);
+  add('sphere',M.mul(pelvis,tr([0,-.19,.040],[.205*flare,.085,.148])),cloth);
+  if(o==='dress'){
+   add('sphere',M.mul(pelvis,tr([0,-.38,.032],[.230*flare,.13,.160])),cloth);
+   add('sphere',M.mul(pelvis,tr([0,-.56,.022],[.242*flare,.12,.162])),cloth);
   }
  }
- if(appearance.outfit==='coat'){
-  add('sphere',M.mul(torso,tr([0,.18,.035],[.15*R.torsoX,.26,.11])),cloth);
-  add('sphere',M.mul(pelvis,tr([0,-.08,.025],[.16*flare,.13,.12])),cloth);
- }
- if(appearance.outfit==='blouse'||appearance.outfit==='skirt'){
-  add('sphere',M.mul(torso,tr([0,.18,.028],[.12*R.torsoX,.14,.092])),cloth);
- }
- if(female){
-  add('sphere',M.mul(torso,tr([0,.30,.055],[.108,.040,.048])),cloth);
+ if(o==='coat'){
+  add('sphere',M.mul(torso,tr([0,.18,.05],[.16*R.torsoX,.28,.12])),cloth);
+  add('sphere',M.mul(pelvis,tr([0,-.10,.03],[.17*flare,.14,.13])),cloth);
  }
 }
 
@@ -1049,7 +1056,7 @@ function human(a,scene,time) {
   const link=(p,q,r1,r2=r1,mesh='limb',material)=>add(mesh,linkMatrix(p,q,r1,r2),material);
   const pelvis=compose(M.translation(c.shiftX||0,c.pelvis,0),M.ry(c.hipYaw||0),M.rz(c.hipRoll||0));
   const hipR=R.hip, shR=R.shoulder, hs=R.head;
-  const hipBulk=female?[.108,.078,.082]:[.137,.110,.094];
+  const hipBulk=female?[.122,.072,.090]:[.137,.110,.094];
   add('sphere',M.mul(pelvis,tr([0,.055,-.010],[hipBulk[0]*R.body.hipWidth,hipBulk[1],hipBulk[2]*R.body.hipWidth])));
   add(female?'pelvisF':'pelvis',M.mul(pelvis,compose(M.translation(0,-.018,0),M.scale(R.body.hipWidth,1,R.body.hipWidth))));
   const torso=torsoMatrix(c,R);add(female?'torsoF':'torso',torso,cloth);const tp=p=>M.transform(torso,p).slice(0,3);
@@ -1068,7 +1075,7 @@ function human(a,scene,time) {
   for(const h of [.21,.29])add('sphere',M.mul(torso,tr([.003,h,.104*R.torsoZ],[.008,.008,.005])),{shade:.57});
   dressClothes(add,pelvis,torso,appearance,cloth,R);
   const audit={mode:air?'air':a.moving?'gait':a.pose,legs:[],arms:[],feet:[],forward:[Math.sin(a.angle),0,Math.cos(a.angle)],body:appearance.body};
-  const sleeve=appearance.outfit==='sleeves'||appearance.outfit==='coat'||appearance.outfit==='dress'||appearance.outfit==='blouse'||appearance.outfit==='skirt';
+  const sleeve=appearance.outfit==='sleeves'||appearance.outfit==='coat';
   [-1,1].forEach((side,i)=>{
     const hip=M.transform(pelvis,[side*hipR,0,0]).slice(0,3),kneePole=a.pose==='meditate'&&!a.moving?[side,0,.15]:[0,0,1];
     const leg=twoBone(hip,c.feet[i],R.upperLeg,R.lowerLeg,kneePole),knee=leg.joint,ankle=leg.end;
@@ -1907,7 +1914,7 @@ class App {
  }
  accentAt(x,y){if(!this.settings.accents)return -1;let hit=-1,best=16;this.accents.forEach((p,i)=>{const projected=this.screen([p.x,p.y+.10*Math.sin(this.time*.7+p.phase),p.z]),d=Math.hypot(x-projected.x,y-projected.y);if(d<best){best=d;hit=i;}});return hit;}
  land(){this.director.stopPlayback();const a=this.actor;this.exhibition.takeover(a);if(!a.flying)return;const p=this.scene.constrain(a.x,a.z);a.landing=true;a.auto=false;a.target=Math.hypot(p[0]-a.x,p[1]-a.z)>.03?{x:p[0],z:p[1],s:p[2]}:null;this.liftInput=0;this.setPaused(false);this.toast('返回可站立的地面后缓慢着陆。');}
- snapshot(){return {version:'5.4.1',look:normalizeLook(this.look),scene:this.scene.id,sceneName:SCENE_META[this.scene.id].title,selected:this.selected,actors:this.actors.map(a=>({appearance:appearanceOf(a),speech:a.speech,headWorld:a.headWorld,id:a.id,x:a.x,y:a.y,z:a.z,s:a.s,angle:a.angle,pose:a.pose,seatId:a.seatId,life:a.life,route:a.route,moving:a.moving,jumpY:a.jumpY,phase:a.phase,speed:a.speed,gaitWeight:a.gaitWeight,brain:a.brain,scoreEvents:a.scoreEvents,flying:a.flying,flightY:a.flightY,airY:a.airY,landing:a.landing})),paused:this.paused,settings:{...this.settings},time:this.time,renderCount:this.renderCount,drawCalls:this.renderer.drawCalls,focus:this.focused,cameraRig:this.cameraRig.state(),dialogue:{enabled:this.dialogue.enabled,fontSize:this.dialogue.fontSize,history:this.dialogue.history},theatre:{active:this.theatre.active,index:this.theatre.index,events:this.theatre.events},cameraMode:this.cameraMode,motionRate:this.motionRate,exhibition:{enabled:this.exhibition.enabled},accents:this.accents.map(p=>({...p})),director:{recording:this.director.recording,playing:this.director.playing,duration:this.director.clip?.duration||0},anatomy:{maleHeight:1.82,femaleHeight:1.69,headHeight:.234,bodies:2,headCount:7.78},actionCount:Object.keys(labels).length,actlib:ACTLIB_ACTS.length,world:this.scene.world?{spots:this.scene.spots,pairs:this.living.pairs,events:this.living.events,navComponents:this.scene.nav.componentCount,sourceObjects:this.scene.sourceObjectCount}:null,webgl:2};}
+ snapshot(){return {version:'5.4.2',look:normalizeLook(this.look),scene:this.scene.id,sceneName:SCENE_META[this.scene.id].title,selected:this.selected,actors:this.actors.map(a=>({appearance:appearanceOf(a),speech:a.speech,headWorld:a.headWorld,id:a.id,x:a.x,y:a.y,z:a.z,s:a.s,angle:a.angle,pose:a.pose,seatId:a.seatId,life:a.life,route:a.route,moving:a.moving,jumpY:a.jumpY,phase:a.phase,speed:a.speed,gaitWeight:a.gaitWeight,brain:a.brain,scoreEvents:a.scoreEvents,flying:a.flying,flightY:a.flightY,airY:a.airY,landing:a.landing})),paused:this.paused,settings:{...this.settings},time:this.time,renderCount:this.renderCount,drawCalls:this.renderer.drawCalls,focus:this.focused,cameraRig:this.cameraRig.state(),dialogue:{enabled:this.dialogue.enabled,fontSize:this.dialogue.fontSize,history:this.dialogue.history},theatre:{active:this.theatre.active,index:this.theatre.index,events:this.theatre.events},cameraMode:this.cameraMode,motionRate:this.motionRate,exhibition:{enabled:this.exhibition.enabled},accents:this.accents.map(p=>({...p})),director:{recording:this.director.recording,playing:this.director.playing,duration:this.director.clip?.duration||0},anatomy:{maleHeight:1.82,femaleHeight:1.69,headHeight:.234,bodies:2,headCount:7.78},actionCount:Object.keys(labels).length,actlib:ACTLIB_ACTS.length,world:this.scene.world?{spots:this.scene.spots,pairs:this.living.pairs,events:this.living.events,navComponents:this.scene.nav.componentCount,sourceObjects:this.scene.sourceObjectCount}:null,webgl:2};}
 
 }
 
@@ -2067,6 +2074,6 @@ App.prototype.setupLookUI=function(){
  this.syncLookUI();
 };
 
-try{window.noirApp=new App();window.__NOIR__={version:"5.4.1",normalizeLook,validateLook,LOOK_PRESETS,MATERIAL_DEFS,cleanRenderSettings,CLEAN_RENDER_DEFAULTS,snapshot:()=>window.noirApp.snapshot(),project:p=>window.noirApp.screen(p),ready:true,gaitSample,phaseForDistance,twoBone,poseControls,human,validateClip,labels,updateContactRig,armControls,GAITS,Exhibition,NavGrid,createScene,createWorld,SCENE_META,CameraRig,Dialogue,Theatre,DRAMA_SCRIPTS,validateDrama,CAST_COLOURS,CAST_ROSTER,ACTLIB_ACTS,BODIES,HAIRS,HAIR_COLOURS,OUTFITS,appearanceOf,rig,bodyOf,applyRoster,M,V};}catch(e){console.error(e);$('error').hidden=false;$('error').textContent='场景未能启动\n\n'+e.message;window.__NOIR__={ready:false,error:e.message};}
+try{window.noirApp=new App();window.__NOIR__={version:"5.4.2",normalizeLook,validateLook,LOOK_PRESETS,MATERIAL_DEFS,cleanRenderSettings,CLEAN_RENDER_DEFAULTS,snapshot:()=>window.noirApp.snapshot(),project:p=>window.noirApp.screen(p),ready:true,gaitSample,phaseForDistance,twoBone,poseControls,human,validateClip,labels,updateContactRig,armControls,GAITS,Exhibition,NavGrid,createScene,createWorld,SCENE_META,CameraRig,Dialogue,Theatre,DRAMA_SCRIPTS,validateDrama,CAST_COLOURS,CAST_ROSTER,ACTLIB_ACTS,BODIES,HAIRS,HAIR_COLOURS,OUTFITS,appearanceOf,rig,bodyOf,applyRoster,M,V};}catch(e){console.error(e);$('error').hidden=false;$('error').textContent='场景未能启动\n\n'+e.message;window.__NOIR__={ready:false,error:e.message};}
 })();
 </script></body></html>

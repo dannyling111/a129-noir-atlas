@@ -53,23 +53,30 @@ function dressHair(add,headRoot,appearance,hairMat){
  }
 }
 function dressClothes(add,pelvis,torso,appearance,cloth,R){
- const flare=R.body.hipWidth, female=appearance.body==='female';
- if(appearance.outfit==='dress'||appearance.outfit==='skirt'){
-  add('sphere',M.mul(pelvis,tr([0,-.04,.016],[.155*flare,.055,.118])),cloth);
-  add('sphere',M.mul(pelvis,tr([0,-.15,.024],[.185*flare,.10,.138])),cloth);
-  if(appearance.outfit==='dress'){
-   add('sphere',M.mul(pelvis,tr([0,-.34,.03],[.21*flare,.14,.155])),cloth);
-   add('sphere',M.mul(pelvis,tr([0,-.52,.024],[.22*flare,.12,.16])),cloth);
+ const flare=R.body.hipWidth, female=appearance.body==='female', o=appearance.outfit;
+ if(female){
+  add('sphere',M.mul(torso,tr([ .048,.305,.102],[.054,.048,.060])),cloth);
+  add('sphere',M.mul(torso,tr([-.048,.305,.102],[.054,.048,.060])),cloth);
+  add('sphere',M.mul(torso,tr([0,.118,.018],[.080*R.waist,.12,.070])),cloth);
+ }
+ if(o==='blouse'||o==='skirt'||o==='dress'){
+  add('sphere',M.mul(torso,tr([0,.20,.042],[.128*R.torsoX,.16,.098])),cloth);
+ }
+ if(o==='blouse'||o==='skirt'){
+  add('sphere',M.mul(torso,tr([ .17,.345,.02],[.062,.048,.056])),cloth);
+  add('sphere',M.mul(torso,tr([-.17,.345,.02],[.062,.048,.056])),cloth);
+ }
+ if(o==='skirt'||o==='dress'){
+  add('sphere',M.mul(pelvis,tr([0,.04,.02],[.128*flare,.028,.100])),cloth);
+  add('sphere',M.mul(pelvis,tr([0,-.07,.032],[.178*flare,.062,.132])),cloth);
+  add('sphere',M.mul(pelvis,tr([0,-.19,.040],[.205*flare,.085,.148])),cloth);
+  if(o==='dress'){
+   add('sphere',M.mul(pelvis,tr([0,-.38,.032],[.230*flare,.13,.160])),cloth);
+   add('sphere',M.mul(pelvis,tr([0,-.56,.022],[.242*flare,.12,.162])),cloth);
   }
  }
- if(appearance.outfit==='coat'){
-  add('sphere',M.mul(torso,tr([0,.18,.035],[.15*R.torsoX,.26,.11])),cloth);
-  add('sphere',M.mul(pelvis,tr([0,-.08,.025],[.16*flare,.13,.12])),cloth);
- }
- if(appearance.outfit==='blouse'||appearance.outfit==='skirt'){
-  add('sphere',M.mul(torso,tr([0,.18,.028],[.12*R.torsoX,.14,.092])),cloth);
- }
- if(female){
-  add('sphere',M.mul(torso,tr([0,.30,.055],[.108,.040,.048])),cloth);
+ if(o==='coat'){
+  add('sphere',M.mul(torso,tr([0,.18,.05],[.16*R.torsoX,.28,.12])),cloth);
+  add('sphere',M.mul(pelvis,tr([0,-.10,.03],[.17*flare,.14,.13])),cloth);
  }
 }
