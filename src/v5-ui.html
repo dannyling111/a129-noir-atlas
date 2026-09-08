@@ -1,0 +1,29 @@
+<nav class="viewport-tools ui" aria-label="三维镜头控制">
+ <div class="view-row"><button id="view-out" title="缩小" aria-label="缩小">−</button><output id="view-scale">100%</output><button id="view-in" title="放大" aria-label="放大">＋</button><button id="view-home" title="恢复全景" aria-label="恢复全景">⌂</button></div>
+ <div class="view-row"><button id="view-projection" title="切换透视或正交投影">透视 3D</button><button id="view-lock" title="锁定转动：在人物上拖动也转镜头" aria-pressed="false">转动</button></div>
+ <span class="view-hint">拖空白转动 · 双指缩放</span>
+</nav>
+<section class="theatre-panel ui" id="theatre-panel" hidden aria-label="短剧与对白">
+ <div class="panel-title">微型剧场 / LITTLE THEATRE<button id="theatre-close" aria-label="关闭短剧面板">×</button></div>
+ <p class="panel-intro">真人比例，无脸演员。走近、转身、入座，再把对白留在头顶。播放时仍可自由转动镜头。</p>
+ <div id="story-list"></div>
+ <div class="dialogue-toggles"><label><input type="checkbox" id="dialogue-enabled" checked>头顶对白</label><label><input type="checkbox" id="voice-enabled">中文朗读</label><label><input type="checkbox" id="ambient-enabled" checked>日常独白</label></div>
+ <label class="setting"><span class="label">对白字号 <output id="dialogue-font-value">14 px</output></span><input type="range" id="dialogue-font" min="12" max="22" value="14" step="1" aria-label="对白字号"></label>
+ <p class="panel-small">朗读使用设备可用的中文声音；不要求麦克风。不提供真人配音，也不保证每台设备有中文语音包。</p>
+ <details id="script-details"><summary>编辑 / 导入短剧 JSON</summary><textarea id="script-editor" rows="9" spellcheck="false" aria-label="短剧 JSON 编辑器"></textarea><div class="record-row"><button class="wide-button" id="script-run">验证并播放</button><button class="wide-button" id="script-save">导出</button><button class="wide-button" id="script-import">导入</button></div><input type="file" id="script-file" accept=".json,application/json" hidden><p class="script-error" id="script-error" role="status"></p></details>
+ <details><summary>对白记录</summary><div id="dialogue-log"></div></details>
+</section>
+<aside class="cast-panel ui" id="cast-panel" hidden aria-label="角色和服饰">
+ <div class="panel-title">角色 / THE CAST<button id="cast-close" aria-label="关闭角色面板">×</button></div>
+ <div id="cast-list"></div>
+ <label class="cast-field">名字<input id="cast-name" maxlength="12" aria-label="角色名字"></label>
+ <div class="cast-field">衣服颜色<div class="colour-swatches" id="cast-colours"></div></div>
+ <label class="cast-field">帽子<select id="cast-hat" aria-label="帽子"><option value="none">无帽</option><option value="beret">贝雷帽</option><option value="cap">鸭舌帽</option><option value="beanie">针织帽</option><option value="brim">宽檐帽</option></select></label>
+ <label class="cast-field">上衣<select id="cast-outfit" aria-label="上衣"><option value="vest">彩色背心 · 黑袖</option><option value="sleeves">彩色长袖</option></select></label>
+ <div class="record-row"><button class="wide-button" id="cast-focus">镜头看他</button><button class="wide-button" id="cast-control">接管人物</button></div>
+ <label class="cast-field">让他说一句<textarea id="cast-line" rows="2" maxlength="140" placeholder="今天的光，和昨天不一样。" aria-label="自定义对白"></textarea></label>
+ <button class="wide-button" id="cast-say">在头顶说出来</button>
+ <label class="label-toggle"><input type="checkbox" id="cast-names" checked>近景显示姓名</label>
+ <p class="panel-small">衣服和帽子是真实三维部件，随身体关节移动、受光、投影。头部不绘制五官。</p>
+</aside>
+<div id="theatre-bar" class="ui" hidden><span class="theatre-dot"></span><span id="theatre-title"></span><small id="theatre-progress"></small><button id="theatre-pause" aria-label="暂停或继续短剧">Ⅱ</button><button id="theatre-next" aria-label="下一段" title="下一段">›</button><button id="theatre-stop" aria-label="结束短剧">×</button></div>

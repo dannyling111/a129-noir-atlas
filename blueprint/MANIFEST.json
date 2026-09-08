@@ -1,0 +1,81 @@
+{
+  "project": "NOIR ATLAS",
+  "version": "5.3.0",
+  "workflow": "INCREMENTAL_MATERIAL_UPGRADE",
+  "origin": "NOIR_ATLAS_v5_2_project.zip and NOIR_ATLAS_v5_2.html supplied conversation artifacts",
+  "built_at_utc": "2026-09-08T15:49:40.083388+00:00",
+  "runtime": "self-contained WebGL2 HTML",
+  "entry": "index.html",
+  "input_html_sha256": "3558ace5d68297116a5677a2f6e6b1218df5546beac3b198eb0d83a82f699669",
+  "html_sha256": "123ec5ecc32aa8e88da860e2d3501e6fa714c508ea4b758c8fc0e064c1f8acbe",
+  "verification": {
+    "browser": {
+      "passed": 47,
+      "failed": 0
+    },
+    "clean_render": {
+      "passed": 30,
+      "failed": 0
+    },
+    "motion": {
+      "passed": 17,
+      "failed": 0
+    },
+    "depth_stability": {
+      "passed": 15,
+      "failed": 0
+    },
+    "materials": {
+      "passed": 40,
+      "failed": 0
+    }
+  },
+  "physical_mobile": false,
+  "native_storage_persistence": false,
+  "audible_tts": false,
+  "publication": {
+    "github_commit": null,
+    "pages_url": null,
+    "status": "not published; GitHub plugin discovery reports installed=false"
+  },
+  "scope": [
+    "dual colour / monochrome mode",
+    "8-layer original material texture array with mips",
+    "3 presets and 7 editable semantic colours",
+    "saturation / material strength / soft gloss",
+    "safe storage fallback and palette JSON",
+    "director appearance capture and manual override",
+    "preserved 5.2 ground geometry and stable shadow matrix"
+  ],
+  "source_sha256": {
+    "src/accents.js": "1a4a96f634b049956296ef09fbfea1a4b275e5b9db6437e23af1f907ad53b615",
+    "src/app.js": "3896c7cda40a1a5a9bb459f8a17fb3fbdb8f9cb562d5cb2e2a14acbd63d6532a",
+    "src/boot.js": "3e876fdac74452ace841b386a97d94858b56226520b5a41e4a83b2c39ed37524",
+    "src/camera-3d.js": "0a55be10c7ec030c979a0e16049359496df7d91f8eed48c4ee2419726b17d04a",
+    "src/cast.js": "9be20a7024cf0e2c97fdcf916f24fe3cc65ee299842383ea2849192301227ceb",
+    "src/dialogue.js": "1882f84cb17210bef3037e91f399f69f7991f15c2b7f43c1e599069e8f1a40db",
+    "src/director.js": "04915fab40379b5d7afac3605bae5348617c3b206201ce1c4eed39458c32202d",
+    "src/exhibition.js": "f20123aeae3b3f16989d5837414443a77705dac228f45ad391630abff46d939e",
+    "src/figure.js": "0ffba32ca54a82111d8d6282a3d3d009983879b543abe056f01f13f4e4e66c40",
+    "src/geometry.js": "ca6c8d300f0033f37e3347ef9d8de4c2c1378c26a7d3cc50798ea4ec0a3f9306",
+    "src/head.html": "e0e0d2761561043fd9a41febf0de4a3182c3dcc37b399388c492b32f4ef9021a",
+    "src/living.js": "fc0cca5ce4b3088007f13f0ff8a512ed633d81cd6048f1af446ec143ad8edf09",
+    "src/look-ui.js": "84e788e1d0086f6b971dd8af591f85d7916a508b7be6709825fd9364cd8978e9",
+    "src/look.css": "f6112e80ad135104d06ac62ddb2c79aec8cbaad3aac398d4c98bc52de7df600c",
+    "src/materials.js": "70f3882d5740d8838c020b4f6de5b90b35e6b31c5915fde67b41be89f50e505e",
+    "src/math.js": "d92698854ee0101579ba1d8b1c7188f9722c0dd30d6bcfed3356974bb6c47ab5",
+    "src/motion.js": "a7480cdee499b79bdfbe948148ac5ad3c08b3d2b3faf04572e3dce210dd60fad",
+    "src/navigation.js": "41bf76d76e8142b156c0cad3793ee26274ad905e3cc0df57acbb634a91046d8e",
+    "src/renderer.js": "683c8fed1422834c936d4f5d2d9836bca522fc313ae46fcdcc7572f0d1d1c746",
+    "src/scenes.js": "aba07a7a1478b26d86dbe0791fff0beede497c3c9c268686f23d3cd7dca676f0",
+    "src/stories.js": "15de0660be37ab83da3881554b8f9820e11c8decf91b9d37d1b4753c2916ed2b",
+    "src/styles.css": "10907c97dd3678c272c0bf92228b247de56582527fd664bc5a2e816e1903b0a8",
+    "src/theatre.js": "fa200304f8f44fe7ca0c8ec58fb5ddb64a0b971b3cad6a4a677cd2daa66c8a79",
+    "src/ui.html": "33a55f4c5440e9ce537972066d2b956431dcbe909a5e9338ffb0846f3ff77c1f",
+    "src/v5-ui.html": "a1cb0f84f9a8103fd73966c6bc7451dca0a700af508f3a7d4679023c78101491",
+    "src/v5-ui.js": "cf953d9685acde0720c4f2b53d8910316a16b8df500b4a828726de70826fffe5",
+    "src/v5.css": "bb91fa396aac6d909969e30492d2efd7d668c5ab0696c537bf91b6aeb8d6e0b2",
+    "src/world-ui.js": "d1ad7596458907d22c2938333d5c9384b177d966fb573d804b182ff877058fef",
+    "src/worlds.js": "10c6d0a6ce4bafa27cfce7abca98d0d75a0f8039c33fd00d7cadf2d946c0f7b8"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "noir-atlas-look/1",
+  "look": {
+    "mode": "color",
+    "palette": "warm",
+    "saturation": 1,
+    "texture": 0.58,
+    "gloss": 0.25,
+    "keepAccents": true,
+    "colours": {
+      "wall": "#eee1cb",
+      "stone": "#c8bfae",
+      "wood": "#b7824f",
+      "roof": "#ad7358",
+      "foliage": "#718357",
+      "water": "#84b9b1",
+      "trim": "#9b6747"
+    }
+  }
+}

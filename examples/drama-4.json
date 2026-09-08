@@ -1,0 +1,122 @@
+{
+  "schema": "noir.drama/1",
+  "title": "影子先到了",
+  "scene": 5,
+  "description": "抽象黑白 / 一点颜色 / 在光下相遇",
+  "cast": [
+    {
+      "role": "lan",
+      "index": 0,
+      "start": [
+        -1.1,
+        5
+      ],
+      "angle": 1.5
+    },
+    {
+      "role": "xi",
+      "index": 1,
+      "start": [
+        1.1,
+        5
+      ],
+      "angle": -1.5
+    }
+  ],
+  "beats": [
+    {
+      "type": "camera",
+      "roles": [
+        "lan",
+        "xi"
+      ],
+      "span": 10,
+      "yaw": 0,
+      "pitch": 0.2
+    },
+    {
+      "type": "say",
+      "role": "lan",
+      "to": "xi",
+      "pose": "point",
+      "text": "看，你的影子比你先到了。",
+      "seconds": 4.5
+    },
+    {
+      "type": "say",
+      "role": "xi",
+      "to": "lan",
+      "pose": "look",
+      "text": "它总是比较着急。",
+      "seconds": 4
+    },
+    {
+      "type": "say",
+      "role": "lan",
+      "to": "xi",
+      "pose": "talk",
+      "text": "你呢？",
+      "seconds": 3
+    },
+    {
+      "type": "say",
+      "role": "xi",
+      "to": "lan",
+      "pose": "open",
+      "text": "我想等这束光，慢一点。",
+      "seconds": 5
+    },
+    {
+      "type": "flight",
+      "roles": [
+        "lan",
+        "xi"
+      ],
+      "height": 2.5
+    },
+    {
+      "type": "wait",
+      "seconds": 2.7
+    },
+    {
+      "type": "camera",
+      "roles": [
+        "lan",
+        "xi"
+      ],
+      "span": 14,
+      "yaw": 0.4,
+      "pitch": 0.26
+    },
+    {
+      "type": "say",
+      "role": "lan",
+      "to": "xi",
+      "pose": "open",
+      "text": "那我们先不落地。",
+      "seconds": 4.2
+    },
+    {
+      "type": "say",
+      "role": "xi",
+      "to": "lan",
+      "pose": "wave",
+      "text": "好。让故事悬在这里。",
+      "seconds": 5
+    },
+    {
+      "type": "camera",
+      "roles": [
+        "lan",
+        "xi"
+      ],
+      "span": 28,
+      "yaw": 0.12,
+      "pitch": 0.24
+    },
+    {
+      "type": "wait",
+      "seconds": 3
+    }
+  ]
+}

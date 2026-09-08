@@ -1,0 +1,125 @@
+{
+  "schema": "noir.drama/1",
+  "title": "五分钟，不谈工作",
+  "scene": 7,
+  "description": "茶水间 / 两个人 / 午后的一个小停顿",
+  "cast": [
+    {
+      "role": "lan",
+      "index": 0,
+      "start": [
+        -1,
+        3.4
+      ],
+      "angle": 0
+    },
+    {
+      "role": "xi",
+      "index": 1,
+      "start": [
+        1,
+        3.4
+      ],
+      "angle": 0
+    }
+  ],
+  "beats": [
+    {
+      "type": "camera",
+      "roles": [
+        "lan",
+        "xi"
+      ],
+      "span": 11,
+      "yaw": 0.18,
+      "pitch": 0.5
+    },
+    {
+      "type": "move",
+      "targets": [
+        {
+          "role": "lan",
+          "place": "tea-one"
+        },
+        {
+          "role": "xi",
+          "place": "tea-two"
+        }
+      ]
+    },
+    {
+      "type": "camera",
+      "roles": [
+        "lan",
+        "xi"
+      ],
+      "span": 8.7,
+      "yaw": 0.2,
+      "pitch": 0.48
+    },
+    {
+      "type": "say",
+      "role": "lan",
+      "to": "xi",
+      "pose": "tea",
+      "text": "给自己五分钟，不谈工作。",
+      "seconds": 4.6
+    },
+    {
+      "type": "say",
+      "role": "xi",
+      "to": "lan",
+      "pose": "tea",
+      "text": "那谈什么？",
+      "seconds": 3.2
+    },
+    {
+      "type": "say",
+      "role": "lan",
+      "to": "xi",
+      "pose": "talk",
+      "text": "谈谈窗外那束光，为什么每天都不一样。",
+      "seconds": 6
+    },
+    {
+      "type": "say",
+      "role": "xi",
+      "to": "lan",
+      "pose": "talk",
+      "text": "光没变。是我们今天终于抬头了。",
+      "seconds": 5.6
+    },
+    {
+      "type": "wait",
+      "seconds": 1.4
+    },
+    {
+      "type": "say",
+      "role": "lan",
+      "pose": "tea",
+      "text": "那就再坐一分钟。",
+      "seconds": 4
+    },
+    {
+      "type": "say",
+      "role": "xi",
+      "pose": "tea",
+      "text": "这次，不用计时。",
+      "seconds": 4.2
+    },
+    {
+      "type": "camera",
+      "roles": [
+        "lan",
+        "xi"
+      ],
+      "span": 13,
+      "yaw": -0.25,
+      "pitch": 0.62
+    },
+    {
+      "type": "wait",
+      "seconds": 3
+    }
+  ]
+}

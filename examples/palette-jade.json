@@ -1,0 +1,20 @@
+{
+  "schema": "noir-atlas-look/1",
+  "look": {
+    "mode": "color",
+    "palette": "jade",
+    "saturation": 1,
+    "texture": 0.58,
+    "gloss": 0.25,
+    "keepAccents": true,
+    "colours": {
+      "wall": "#e6ede6",
+      "stone": "#b2c4c0",
+      "wood": "#ad9875",
+      "roof": "#3f636b",
+      "foliage": "#427762",
+      "water": "#64aca9",
+      "trim": "#677f79"
+    }
+  }
+}

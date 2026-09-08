@@ -1,0 +1,98 @@
+</head><body><canvas id="stage" aria-label="实时黑白三维艺术场景。点击地面移动人物，拖动人物或使用屏幕摇杆。" role="img"></canvas>
+<div id="shade-top" class="ui"></div><div id="shade-bottom" class="ui"></div>
+<header class="topbar ui">
+ <div class="brand"><div class="brandmark" aria-hidden="true"></div><div><div class="brand-name">NOIR ATLAS</div><div class="brand-sub">双模式材质 / CHROMA THEATRE 5.3</div></div></div>
+ <div class="top-actions"><div class="top-index"><b id="top-count">01</b> <span>/ 10</span></div>
+ <button id="help-open" class="iconbutton" aria-label="操作说明" title="操作说明"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.5 8.5c.5-2 5-2 5 1 0 2-2.5 2-2.5 4M12 16h.01"/></svg></button>
+ <button id="screenshot" class="iconbutton" aria-label="保存画面" title="保存无界面画面"><svg viewBox="0 0 24 24"><path d="M3 7h5l2-3h4l2 3h5v13H3Z"/><circle cx="12" cy="13" r="4"/></svg></button>
+ <button id="immersive" class="iconbutton" aria-label="进入沉浸模式" title="隐藏界面"><svg viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M21 16v5h-5M8 21H3v-5"/></svg></button>
+ </div>
+</header>
+<section class="headline ui"><div class="eyebrow" id="scene-en">THE THRESHOLD</div><h1 id="headline">在无声处，\n走向一束光。</h1><p id="scene-note">一道门，一片黑。光在等待你的影子。</p></section>
+<div class="workspace ui"><button id="exhibition-toggle" class="tool-pill" aria-pressed="true" title="自动展演；操作人物后可在这里恢复">展演中</button><button id="settings-toggle" class="tool-pill" aria-expanded="false">光影调校</button><button id="focus" class="tool-pill" aria-pressed="false">人物特写</button><button id="director-toggle" class="tool-pill" aria-expanded="false">镜头台</button><button class="tool-pill theatre-toggle" id="theatre-toggle">短剧 ▷</button><button class="tool-pill" id="cast-toggle">角色</button></div>
+<aside class="settings ui" id="settings" hidden><div class="panel-title">CLEAN · 纯净光影<button id="settings-close" aria-label="关闭光影面板">×</button></div>
+<label class="setting"><span class="label">光源偏移 <output id="light-value">0</output></span><input id="light" type="range" min="-14" max="14" value="0" step=".1" aria-label="光源偏移"></label>
+<label class="setting"><span class="label">明暗对比 <output id="contrast-value">1.00</output></span><input id="contrast" type="range" min=".7" max="1.6" value="1" step=".01" aria-label="明暗对比"></label>
+<label class="setting"><span class="label">空间雾（默认关闭） <output id="haze-value">0.00</output></span><input id="haze" type="range" min="0" max="1.8" value="0" step=".01" aria-label="空间雾（默认关闭）"></label>
+<input id="grain" type="hidden" value="0"><output id="grain-value" hidden>0</output>
+<label class="setting"><span class="label">画面缩放 <output id="zoom-value">1.00</output></span><input id="zoom" type="range" min=".35" max="12" value="1" step=".01" aria-label="画面缩放"></label>
+<div class="panel-small">人物与建筑共用光源和实时阴影。<br>黑白与彩色可从页眉切换。<br>无屏幕噪点、无纸纹蒙层、无暗角。</div><button id="clean-reset" class="tool-pill clean-reset" type="button">恢复纯净黑白</button><label class="colour-setting"><span>彩色物件 <small>少量鲜艳点色，可拖动</small></span><input id="accents-toggle" type="checkbox" checked aria-label="显示彩色物件"></label>
+</aside>
+<nav class="scene-rail ui" id="scene-rail" aria-label="场景快速切换"></nav>
+<div id="marker" aria-hidden="true"></div>
+<div id="hint" role="status" aria-live="polite"></div>
+<div class="control-cluster ui" aria-label="左下移动和飞行控制">
+ <div class="joystick" id="joystick" role="group" aria-label="拖动摇杆移动人物"><div class="knob" id="knob"></div><span class="joylabel">移动</span></div>
+ <div id="flight-controls" class="flight-controls" hidden>
+  <button id="fly-up" aria-label="按住上升" title="按住上升 / E"><span>↑</span></button>
+  <output id="flight-altitude" aria-label="悬停高度">2.3m</output>
+  <button id="fly-down" aria-label="按住下降" title="按住下降 / Q"><span>↓</span></button>
+  <button id="land" aria-label="主动着陆" title="着陆"><span>落</span></button>
+ </div>
+ <div class="jump-control"><button id="jump" aria-label="跳跃" title="跳跃 / 空格">↥</button></div>
+</div>
+<footer class="bottom ui">
+ <div class="control-row"><div class="actor-meta"><div class="caption">PRESENCE</div><div class="value">人物 <b id="actor-id">01</b><small id="actor-state">静立</small></div></div>
+ <div class="actions" aria-label="人物动作"><button class="action active" data-pose="idle" aria-pressed="true">静立</button><button class="action" data-pose="walk" aria-pressed="false">漫步</button><button class="action" data-pose="run" aria-pressed="false">奔跑</button><button class="action" data-pose="wave" aria-pressed="false">挥手</button><button class="action" data-pose="reach" aria-pressed="false">伸手</button><button class="action" data-pose="float" aria-pressed="false">飞行</button><button id="more-actions" class="action more-action" aria-expanded="false">更多动作 ＋</button></div>
+ <div class="lower-tools"><button id="add-person" class="iconbutton" aria-label="增加一个人物" title="增加人物，最多五人"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M3 20v-3a6 6 0 0 1 12 0v3M19 9v8M15 13h8"/></svg></button><button id="pause" class="iconbutton" aria-label="暂停动画" aria-pressed="false" title="暂停 / 继续"><svg viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></svg></button><button id="reset" class="iconbutton" aria-label="重置当前场景" title="重置当前场景"><svg viewBox="0 0 24 24"><path d="M4 11a8 8 0 1 1 1.5 6M4 4v7h7"/></svg></button></div></div>
+ <nav class="scene-dock" id="scene-dock" aria-label="选择艺术场景"></nav>
+ <div class="footnote"><span><span class="live"></span>点地移动 · 拖空白转镜头 · 双指缩放</span><span class="technical" id="exhibition-state">自动展演</span><span id="performance">LIVE</span></div>
+</footer>
+
+<section class="motion-panel ui" id="motion-panel" hidden aria-label="人物动作库">
+ <div class="panel-title">MOTION LIBRARY / 18<button id="motion-close" aria-label="关闭动作库">×</button></div>
+ <p class="panel-intro">同一副成人骨架，不同的表达。飞行中换动作，不会落地。</p>
+ <div class="motion-grid"><button class="action" data-pose="point" aria-pressed="false">指向</button><button class="action" data-pose="open" aria-pressed="false">张开双臂</button><button class="action" data-pose="look" aria-pressed="false">环顾</button><button class="action" data-pose="bow" aria-pressed="false">鞠躬</button><button class="action" data-pose="crouch" aria-pressed="false">下蹲</button><button class="action" data-pose="kneel" aria-pressed="false">单膝</button><button class="action" data-pose="sit" aria-pressed="false">坐下</button><button class="action" data-pose="meditate" aria-pressed="false">盘坐</button><button class="action" data-pose="balance" aria-pressed="false">单脚平衡</button><button class="action" data-pose="stretch" aria-pressed="false">舒展</button><button class="action" data-pose="turn" aria-pressed="false">转身</button><button class="action" data-pose="dance" aria-pressed="false">轻舞</button></div>
+ <label class="setting"><span class="label">演出速度 <output id="motion-rate-value">1.00×</output></span><input id="motion-rate" type="range" min=".25" max="1.5" step=".05" value="1" aria-label="演出速度"></label>
+ <div class="record-row"><button id="walk-view" class="wide-button">走路 · 半速特写</button><button id="run-view" class="wide-button">跑步 · 半速特写</button></div><button id="gait-view" class="wide-button legacy-inspector" hidden>侧面验步</button>
+ <p class="panel-small">脚底滚动接触，支撑脚位置锁定；肩带动手臂，肘与腕自然跟随。走跑使用不同节奏。</p>
+</section>
+<section class="director-panel ui" id="director-panel" hidden aria-label="镜头台">
+ <div class="panel-title">THE DIRECTOR<button id="director-close" aria-label="关闭镜头台">×</button></div>
+ <p class="panel-intro">记录人物、动作、光影和物件位置，作为可重放的单镜头。</p>
+ <div class="camera-grid"><button class="action active" data-camera="fixed" aria-pressed="true">固定</button><button class="action" data-camera="follow" aria-pressed="false">跟随</button><button class="action" data-camera="orbit" aria-pressed="false">慢环绕</button></div>
+ <div class="record-row"><button id="record-shot" class="wide-button">● 记录镜头</button><button id="play-shot" class="wide-button">▷ 回放</button></div>
+ <div class="shot-meta"><span id="shot-status">NO SHOT</span><output id="shot-time">0.0 / 0.0 s</output></div>
+ <input type="range" id="shot-scrub" min="0" max="1" step=".01" value="0" disabled aria-label="镜头时间条">
+ <div class="record-row"><button id="export-shot" class="tool-pill">导出镜头 JSON</button><button id="import-shot" class="tool-pill">导入</button><input id="shot-file" type="file" accept=".json,application/json" hidden></div>
+ <p class="panel-small">最长 90 秒，镜头保存在本页内存。关闭前请导出。JSON 是引擎动画数据，不是视频文件。</p>
+</section>
+
+
+<button class="restore iconbutton" id="restore" aria-label="退出沉浸模式" title="退出沉浸模式"><svg viewBox="0 0 24 24"><path d="M3 8h5V3M16 3v5h5M21 16h-5v5M8 21v-5H3"/></svg></button>
+<div class="help" id="help" hidden><section class="help-card"><div class="eyebrow">A SMALL GUIDE</div><h2>把自己放进光里。</h2><p>十个实时场景，包括多房间办公楼、水墨山水和古建院落。人物、衣服、帽子、建筑和影子都由 WebGL 2 三维网格实时绘制；对白锚定头顶。透视 / 正交都是同一个三维世界。</p><div class="help-line"><strong>移动</strong><span>点击地面前往；按住人物拖动。手机也可用左下摇杆。</span></div><div class="help-line"><strong>动作</strong><span>常用动作在底部；“更多动作”打开 12 种身体表达。左下小按钮跳跃。</span></div><div class="help-line"><strong>飞行</strong><span>点击“飞行”后持续悬浮；左下摇杆旁的小 ↑ / ↓ 调高度。换动作也保持飞行，只有“着陆”返回地面。</span></div><div class="help-line"><strong>展演</strong><span>默认按场景自动行走、观察和停留。触控接管当前人物，其他人物继续。点“恢复展演”交还控制。</span></div><div class="help-line"><strong>构图</strong><span>新场景点击人物可以互动，或选择“接管此人物”。新场景最多十个人，原艺术场景最多五人。</span></div><div class="help-line"><strong>光影</strong><span>调节光源、颗粒、雾、缩放与点色开关。镜头台可以记录、回放、导出动画数据。</span></div><div class="help-line"><strong>桌面</strong><span>拖动空白旋转视角；滚轮或双指缩放，双指平移。WASD / 方向键移动；地面空格跳跃。飞行时 E / 空格上升，Q / Shift 下降；Esc 关闭面板。</span></div><button class="dismiss" id="help-close">进入这片寂静</button></section></div>
+<div class="world-strip ui" id="world-strip" hidden><button class="tool-pill" id="world-guide">场景导览</button><button class="tool-pill" id="nearby">附近互动</button><button class="tool-pill" id="follow-world">跟随视角</button><button class="tool-pill" id="stand-up" hidden>起身</button></div>
+<aside class="places-panel ui" id="places-panel" hidden><div class="panel-title"><span id="places-title">可到达地点</span><button id="places-close" aria-label="关闭导览">×</button></div><p class="panel-intro">选一个地点，人物会沿可行走路线前往。也可直接点击画面中的椅子。</p><div id="place-list"></div><label class="label-toggle"><input type="checkbox" id="world-labels">显示地点标签</label></aside>
+<aside class="social-panel ui" id="social-panel" hidden><div class="panel-title"><span id="social-title">人物</span><button id="social-close" aria-label="关闭互动">×</button></div><p id="social-description" class="panel-intro"></p><div class="social-actions"><button class="wide-button" data-social="wave">打招呼</button><button class="wide-button" data-social="talk">交谈</button><button class="wide-button" data-social="follow">同行</button></div><button class="wide-button" id="take-control">接管此人物</button></aside>
+<div id="world-hud" aria-label="人物头顶对白"></div>
+<div class="scene-transition" id="transition"></div>
+<div class="error-screen" id="error" hidden></div>
+<nav class="viewport-tools ui" aria-label="三维镜头控制">
+ <div class="view-row"><button id="view-out" title="缩小" aria-label="缩小">−</button><output id="view-scale">100%</output><button id="view-in" title="放大" aria-label="放大">＋</button><button id="view-home" title="恢复全景" aria-label="恢复全景">⌂</button></div>
+ <div class="view-row"><button id="view-projection" title="切换透视或正交投影">透视 3D</button><button id="view-lock" title="锁定转动：在人物上拖动也转镜头" aria-pressed="false">转动</button></div>
+ <span class="view-hint">拖空白转动 · 双指缩放</span>
+</nav>
+<section class="theatre-panel ui" id="theatre-panel" hidden aria-label="短剧与对白">
+ <div class="panel-title">微型剧场 / LITTLE THEATRE<button id="theatre-close" aria-label="关闭短剧面板">×</button></div>
+ <p class="panel-intro">真人比例，无脸演员。走近、转身、入座，再把对白留在头顶。播放时仍可自由转动镜头。</p>
+ <div id="story-list"></div>
+ <div class="dialogue-toggles"><label><input type="checkbox" id="dialogue-enabled" checked>头顶对白</label><label><input type="checkbox" id="voice-enabled">中文朗读</label><label><input type="checkbox" id="ambient-enabled" checked>日常独白</label></div>
+ <label class="setting"><span class="label">对白字号 <output id="dialogue-font-value">14 px</output></span><input type="range" id="dialogue-font" min="12" max="22" value="14" step="1" aria-label="对白字号"></label>
+ <p class="panel-small">朗读使用设备可用的中文声音；不要求麦克风。不提供真人配音，也不保证每台设备有中文语音包。</p>
+ <details id="script-details"><summary>编辑 / 导入短剧 JSON</summary><textarea id="script-editor" rows="9" spellcheck="false" aria-label="短剧 JSON 编辑器"></textarea><div class="record-row"><button class="wide-button" id="script-run">验证并播放</button><button class="wide-button" id="script-save">导出</button><button class="wide-button" id="script-import">导入</button></div><input type="file" id="script-file" accept=".json,application/json" hidden><p class="script-error" id="script-error" role="status"></p></details>
+ <details><summary>对白记录</summary><div id="dialogue-log"></div></details>
+</section>
+<aside class="cast-panel ui" id="cast-panel" hidden aria-label="角色和服饰">
+ <div class="panel-title">角色 / THE CAST<button id="cast-close" aria-label="关闭角色面板">×</button></div>
+ <div id="cast-list"></div>
+ <label class="cast-field">名字<input id="cast-name" maxlength="12" aria-label="角色名字"></label>
+ <div class="cast-field">衣服颜色<div class="colour-swatches" id="cast-colours"></div></div>
+ <label class="cast-field">帽子<select id="cast-hat" aria-label="帽子"><option value="none">无帽</option><option value="beret">贝雷帽</option><option value="cap">鸭舌帽</option><option value="beanie">针织帽</option><option value="brim">宽檐帽</option></select></label>
+ <label class="cast-field">上衣<select id="cast-outfit" aria-label="上衣"><option value="vest">彩色背心 · 黑袖</option><option value="sleeves">彩色长袖</option></select></label>
+ <div class="record-row"><button class="wide-button" id="cast-focus">镜头看他</button><button class="wide-button" id="cast-control">接管人物</button></div>
+ <label class="cast-field">让他说一句<textarea id="cast-line" rows="2" maxlength="140" placeholder="今天的光，和昨天不一样。" aria-label="自定义对白"></textarea></label>
+ <button class="wide-button" id="cast-say">在头顶说出来</button>
+ <label class="label-toggle"><input type="checkbox" id="cast-names" checked>近景显示姓名</label>
+ <p class="panel-small">衣服和帽子是真实三维部件，随身体关节移动、受光、投影。头部不绘制五官。</p>
+</aside>
+<div id="theatre-bar" class="ui" hidden><span class="theatre-dot"></span><span id="theatre-title"></span><small id="theatre-progress"></small><button id="theatre-pause" aria-label="暂停或继续短剧">Ⅱ</button><button id="theatre-next" aria-label="下一段" title="下一段">›</button><button id="theatre-stop" aria-label="结束短剧">×</button></div>
