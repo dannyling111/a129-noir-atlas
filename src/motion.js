@@ -76,31 +76,33 @@ function updateContactRig(a,sc,dt,moved) {
     const g=gaitSample(a.phase,side,a.pose==='run'),old=a.feetPlant[i];
     if(g.stance) {
       if(!old||!old.stance){
-        const p=localToWorld(a,[side*.095,0,g.z*(a.gaitWeight||0)]);
+        const p=localToWorld(a,[side*.095*rig(a).body.hipWidth,0,g.z*(a.gaitWeight||0)]);
         a.feetPlant[i]={stance:true,x:p[0],z:p[2],floor:sc.height(p[0],p[2]),angle:a.angle};
       }
     } else a.feetPlant[i]={stance:false,x:old?.x??a.x,z:old?.z??a.z,floor:old?.floor??a.y,angle:a.angle};
   });
 }
 
-// One adult silhouette / fixed bone lengths. Rebuilt shoulder-elbow-wrist chain.
-function torsoMatrix(c){return compose(M.translation(c.shiftX||0,c.pelvis+.125,0),M.ry(c.bodyYaw||0),M.rz(c.roll),M.rx(c.lean),M.scale(1,1.15,1));}
-function armControls(c,side,swing,bend,spread=.06,twist=0) {
-  const shoulder=M.transform(torsoMatrix(c),[side*.181,.363,0]).slice(0,3);
+// Two adult silhouettes; bone lengths come from rig(a). Rebuilt shoulder-elbow-wrist chain.
+function torsoMatrix(c,R){R=R||{torsoX:1,torsoY:1,torsoZ:1,height:1,shoulder:.181};return compose(M.translation(c.shiftX||0,c.pelvis+.125,0),M.ry(c.bodyYaw||0),M.rz(c.roll),M.rx(c.lean),M.scale(R.torsoX,1.15*R.torsoY,R.torsoZ));}
+function armControls(c,side,swing,bend,spread=.06,twist=0,R) {
+  R=R||{shoulder:.181,torsoY:1,upperArm:.305,lowerArm:.255,torsoX:1,torsoZ:1};
+  const shoulder=M.transform(torsoMatrix(c,R),[side*R.shoulder,.363,0]).slice(0,3);
   const body=compose(M.ry(c.bodyYaw||0),M.rz(c.roll),M.rx(c.lean));
   const upper=compose(body,M.rz(side*spread),M.ry(twist),M.rx(-swing));
   const lower=M.mul(upper,M.rx(-bend));
-  const elbow=V.add(shoulder,M.transform(upper,[0,-.305,0],0).slice(0,3));
-  const wrist=V.add(elbow,M.transform(lower,[0,-.255,0],0).slice(0,3));
+  const elbow=V.add(shoulder,M.transform(upper,[0,-R.upperArm,0],0).slice(0,3));
+  const wrist=V.add(elbow,M.transform(lower,[0,-R.lowerArm,0],0).slice(0,3));
   return {wrist,pole:V.sub(elbow,shoulder)};
 }
 function poseControls(a,scene,time) {
   const air=isAirborne(a),walk=!air&&(a.moving||(a.gaitWeight||0)>.006),run=a.pose==='run';
   const mode=air&&['walk','run','float'].includes(a.pose)?'float':walk?(run?'run':'walk'):a.pose;
   const t=Math.max(0,time-(a.poseSince||0)),p=a.phase||0,weight=a.gaitWeight??(a.moving?1:0);
-  const breath=Math.sin(time*1.05+a.id*.83),hipShift=.009*Math.sin(p-.4)*weight;
+  const breath=Math.sin(time*1.05+a.id*.83),R=rig(a),hip=R.hip;
+  const hipShift=.009*Math.sin(p-.4)*weight;
   let c={pelvis:.9,lean:.007*breath,roll:0,shiftX:0,bodyYaw:0,hipYaw:0,hipRoll:0,headYaw:0,headPitch:0,rootTilt:0,rootRoll:0,
-    feet:[[-.095,.073,-.025],[.095,.073,.025]],pitches:[0,0],footYaw:[-.055,.055],
+    feet:[[-hip,.073,-.025],[hip,.073,.025]],pitches:[0,0],footYaw:[-.055,.055],
     hands:[[-.218,.941,.038],[.218,.941,.038]],poles:[[-.12,-1,.15],[.12,-1,.15]],
     wristFlex:[.035,.035],wristWave:[0,0],handOpen:[.42,.42]};
   if(walk){
@@ -114,17 +116,15 @@ function poseControls(a,scene,time) {
     c.headYaw=-c.bodyYaw*.65;c.headPitch=-c.lean*.28;
     [-1,1].forEach((side,i)=>{
       const g=gaitSample(p,side,run),u=g.u*TAU;
-      c.pitches[i]=g.pitch*weight;c.feet[i]=[side*.095,lerp(.073,g.ankleY+g.lift,weight),g.z*weight];
-      // Natural FK arcs: shoulder swing drives elbow, the forearm follows.
-      // Arms counter the same-side leg; elbows do not seek a horizontal rail.
+      c.pitches[i]=g.pitch*weight;c.feet[i]=[side*hip,lerp(.073,g.ankleY+g.lift,weight),g.z*weight];
       const swing=(run?-.57:-.25)*Math.cos(u-.28)*weight;
       const bend=lerp(.14,run?1.36+.15*Math.sin(u-.7):.18+.10*(.5+.5*Math.sin(u-.5)),weight);
-      const fk=armControls(c,side,swing,bend,run?.095:.065,side*.045);
+      const fk=armControls(c,side,swing,bend,run?.095:.065,side*.045,R);
       c.hands[i]=fk.wrist;c.poles[i]=fk.pole;c.wristFlex[i]=.04+.025*Math.sin(u-.8);
       c.handOpen[i]=run?.03:.42;
     });
   } else {
-    [-1,1].forEach((side,i)=>{const fk=armControls(c,side,.012,.14,.055,0);c.hands[i]=fk.wrist;c.poles[i]=fk.pole;});
+    [-1,1].forEach((side,i)=>{const fk=armControls(c,side,.012,.14,.055,0,R);c.hands[i]=fk.wrist;c.poles[i]=fk.pole;});
   }
   if(air){
     c.pelvis=.90;c.rootTilt=a.moving?.13:.025;c.rootRoll=.016*Math.sin(time*.62+a.id);
@@ -151,6 +151,25 @@ function poseControls(a,scene,time) {
     case 'balance':c.feet=[[-.10,.073,0],[.17,.52,.31]];c.hands=[[-.67,1.44,.05],[.67,1.44,.05]];c.poles=[[-1,-.2,.1],[1,-.2,.1]];c.shiftX=-.055;c.rootRoll=.008*breath;c.handOpen=[.7,.7];break;
     case 'stretch':c.hands=[[-.18,1.94,.03],[.18,1.94,.03]];c.poles=[[-.6,.25,.12],[.6,.25,.12]];c.headPitch=-.08;c.handOpen=[.75,.75];break;
     case 'dance':c.pelvis=.86+.014*Math.sin(t*2);c.roll=.055*Math.sin(t*.9);c.lean=.022;c.bodyYaw=.09*Math.sin(t*.9);c.hands=[[-.46,1.34+.17*Math.sin(t*.9),.23],[.46,1.34-.17*Math.sin(t*.9),.23]];c.feet=[[-.14,.073,0],[.14,.073,0]];c.poles=[[-.6,-.6,.1],[.6,-.6,.1]];c.handOpen=[.7,.7];break;
+    case 'arms_crossed':c.hands=[[.12,.98,.16],[-.12,.93,.18]];c.poles=[[.35,-.55,.2],[-.35,-.55,.2]];c.handOpen=[.05,.05];c.roll=.02;break;
+    case 'hands_pocket':c.hands=[[-.16,.72,.10],[.16,.72,.10]];c.poles=[[-.2,-.85,.05],[.2,-.85,.05]];c.shiftX=.02;c.lean=.04;c.handOpen=[.02,.02];break;
+    case 'hug_self':c.hands=[[.18,.95,.22],[-.18,.92,.20]];c.poles=[[.4,-.4,.25],[-.4,-.4,.25]];c.lean=.12;c.headPitch=.08;c.handOpen=[.3,.3];break;
+    case 'think':c.hands[1]=[.16,1.42,.18];c.poles[1]=[.25,-.2,.3];c.headPitch=.16;c.headYaw=.08;c.handOpen[1]=.15;break;
+    case 'phone':c.hands[1]=[.20,1.52,.08];c.poles[1]=[.45,-.15,.1];c.headYaw=.18;c.headPitch=-.04;c.handOpen[1]=.12;break;
+    case 'clap':{const u=(Math.sin(t*8)+1)*.5;c.hands=[[-.06-u*.04,1.12,.28],[.06+u*.04,1.12,.28]];c.poles=[[-.2,-.5,.3],[.2,-.5,.3]];c.handOpen=[.5,.5];break;}
+    case 'shrug':c.hands=[[-.42,1.18,.08],[.42,1.18,.08]];c.poles=[[-.5,-.3,.1],[.5,-.3,.1]];c.headPitch=-.04;c.handOpen=[.7,.7];break;
+    case 'raise':c.hands[1]=[.22,1.92,.08];c.poles[1]=[.4,.2,.1];c.handOpen[1]=.55;c.headPitch=-.08;break;
+    case 'cheer':c.hands=[[-.28,1.96,.10],[.28,1.96,.10]];c.poles=[[-.4,.3,.1],[.4,.3,.1]];c.headPitch=-.12;c.handOpen=[.7,.7];break;
+    case 'hold':c.hands[1]=[.18,1.18,.42];c.poles[1]=[.25,-.4,.35];c.handOpen[1]=.2;c.headPitch=-.06;break;
+    case 'kick':c.feet=[[-hip,.073,-.05],[hip*.4,.42,.55]];c.hands=[[-.34,1.10,.05],[.34,1.10,.05]];c.shiftX=-.04;c.rootRoll=.04;break;
+    case 'listen':c.lean=.16;c.headPitch=.10;c.headYaw=.12;c.hands=[[-.20,.92,.22],[.20,.92,.22]];break;
+    case 'nod':c.headPitch=.22*Math.sin(t*3.2);c.hands=[[-.20,.94,.04],[.20,.94,.04]];break;
+    case 'shake_head':c.headYaw=.32*Math.sin(t*4.0);c.hands=[[-.20,.94,.04],[.20,.94,.04]];break;
+    case 'facepalm':c.hands[1]=[.10,1.50,.14];c.poles[1]=[.22,-.12,.22];c.headPitch=.28;c.headYaw=.08;c.handOpen[1]=.45;break;
+    case 'punch':c.hands[1]=[.06,1.20,.58];c.poles[1]=[.12,-.48,.18];c.hands[0]=[-.30,.92,-.14];c.poles[0]=[-.35,-.8,.05];c.lean=.10;c.bodyYaw=-.14;c.handOpen=[.05,.02];break;
+    case 'carry':c.hands=[[-.16,1.04,.30],[.16,1.04,.30]];c.poles=[[-.22,-.48,.22],[.22,-.48,.22]];c.lean=.12;c.handOpen=[.12,.12];break;
+    case 'selfie':c.hands[1]=[.24,1.64,.30];c.poles[1]=[.42,.04,.22];c.headYaw=.22;c.headPitch=-.08;c.handOpen[1]=.18;break;
+    case 'lie':c.pelvis=.10;c.lean=.62;c.feet=[[-.20,.073,.70],[.20,.073,.78]];c.hands=[[-.30,.18,.48],[.30,.20,.52]];c.headPitch=.16;c.handOpen=[.35,.35];break;
   }
   if(!walk&&!air&&['chair','work','read','tea'].includes(mode)||(a.seatId&&mode==='talk')){
     c.pelvis=.455;c.lean=.055;c.feet=[[-.11,.073,.39],[.11,.073,.39]];c.hands=[[-.14,.76,.35],[.14,.76,.35]];c.poles=[[-.30,-.55,.10],[.30,-.55,.10]];c.handOpen=[.35,.35];
@@ -167,7 +186,7 @@ function poseControls(a,scene,time) {
   if(!walk&&a.attention){c.headYaw=clamp(angleDelta(a.angle,Math.atan2(a.attention[0]-a.x,a.attention[1]-a.z)),-.5,.5);}
 
   if(a.jumpY>.025&&!air){c.pelvis=.86;c.feet=[[-.1,.18,-.12],[.1,.25,.13]];c.hands=[[-.28,1.60,.15],[.28,1.60,.15]];}
-  const lowPose=['sit','crouch','kneel','meditate','chair','work','read','tea'].includes(mode)||!!a.seatId;
+  const lowPose=['sit','crouch','kneel','meditate','chair','work','read','tea','lie'].includes(mode)||!!a.seatId;
   if(!air&&a.jumpY<.025&&!lowPose){
     c.feet=c.feet.map((f,i)=>{
       const g=gaitSample(p,i===0?-1:1,run),plant=a.feetPlant?.[i];
@@ -191,7 +210,7 @@ function poseControls(a,scene,time) {
   // Keep pelvis within the stance leg reach; never stretch the femur/tibia.
   if(walk&&!air){
     let ceiling=1.2;
-    c.feet.forEach((f,i)=>{if(gaitSample(p,i===0?-1:1,run).stance){const dx=f[0]-(i===0?-.088:.088)-c.shiftX;ceiling=Math.min(ceiling,f[1]+Math.sqrt(Math.max(.2,.845**2-dx*dx-f[2]*f[2])));}});
+    c.feet.forEach((f,i)=>{if(gaitSample(p,i===0?-1:1,run).stance){const dx=f[0]-(i===0?-R.hip:R.hip)-c.shiftX,reach=(R.upperLeg+R.lowerLeg)*.98;ceiling=Math.min(ceiling,f[1]+Math.sqrt(Math.max(.2,reach*reach-dx*dx-f[2]*f[2])));}});
     c.pelvis=Math.min(c.pelvis,ceiling);
   }
   if(a.blendFrom){const u=clamp((time-(a.blendAt||0))/.60,0,1);if(u<1)c=blendControls(a.blendFrom,c,smoother01(u));}

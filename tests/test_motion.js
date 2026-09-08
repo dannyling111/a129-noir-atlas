@@ -1,8 +1,8 @@
 // Deterministic unit tests; no browser or visual renderer required.
 const fs=require('fs'),vm=require('vm'),path=require('path');
 const root=path.resolve(__dirname,'..');
-let source=['math.js','geometry.js','motion.js','cast.js','figure.js'].map(n=>fs.readFileSync(path.join(root,'src',n),'utf8')).join('\n');
-source+=`\nglobalThis.engine={M,V,gaitSample,phaseForDistance,twoBone,poseControls,human,GAITS,TAU};`;
+let source=['math.js','geometry.js','motion.js','actlib-cast.js','cast.js','figure.js'].map(n=>fs.readFileSync(path.join(root,'src',n),'utf8')).join('\n');
+source+=`\nglobalThis.engine={M,V,gaitSample,phaseForDistance,twoBone,poseControls,human,GAITS,TAU,applyRoster,CAST_ROSTER,rig,appearanceOf,BODY_FEMALE,BODY_MALE,ACTLIB_ACTS,labels:null};`;
 const scope={console};vm.runInNewContext(source,scope);const e=scope.engine,tests=[];
 function check(name,passed,detail=''){tests.push({name,passed:!!passed,detail});console.log(passed?'PASS':'FAIL',name,detail);}
 const actor=()=>({id:1,x:0,y:0,z:0,s:0,angle:0,pose:'walk',poseSince:0,phase:0,moving:true,jumpY:0,flying:false,flightY:2.3,airY:0,velocity:0,blendFrom:null});
@@ -26,6 +26,16 @@ for(const pose of poses)for(const flying of [false,true])for(const t of [.05,.5,
 check('All 18 poses × ground/air × 4 timestamps render finite matrices',allFinite,`${poses.length*2*4} rig states`);
 check('All gesture bone lengths remain fixed',maxBoneError<1e-8,`maximum error ${maxBoneError.toExponential(2)} m`);
 const a=actor();a.flying=true;a.pose='float';a.moving=true;e.human(a,scene,1);check('Airborne moving figure is never a grounded gait',a.rigAudit.mode==='air');
+const maleA=actor();maleA.appearance=e.applyRoster({},e.CAST_ROSTER[0]);const femA=actor();femA.appearance=e.applyRoster({},e.CAST_ROSTER[1]);
+e.human(maleA,scene,1);e.human(femA,scene,1);
+const mR=e.rig(maleA),fR=e.rig(femA);
+check('female is a distinct adult silhouette',fR.shoulder<mR.shoulder&&fR.hip>mR.hip&&fR.height<mR.height&&fR.chest>0&&mR.chest===0,`shoulder ${fR.shoulder.toFixed(3)}/${mR.shoulder.toFixed(3)} hip ${fR.hip.toFixed(3)}/${mR.hip.toFixed(3)}`);
+check('female figure still has a featureless two-sphere head',femA.headWorld&&Number.isFinite(femA.headWorld[1]));
+check('actlib maps 73 canon acts',e.ACTLIB_ACTS.length===73);
+const extra=['arms_crossed','hands_pocket','hug_self','think','phone','clap','shrug','raise','cheer','hold','kick','listen','nod','shake_head','facepalm','punch','carry','selfie','lie'];
+let extraFinite=true;
+for(const pose of extra){const x=actor();x.pose=pose;x.moving=false;extraFinite&&=e.human(x,scene,1).every(m=>[...m.m].every(Number.isFinite));}
+check('new actlib poses render finite matrices',extraFinite,`${extra.length} poses`);
 const rest=actor();rest.moving=false;rest.pose='idle';const c=e.poseControls(rest,scene,0);rest.blendFrom=c;rest.blendAt=0;rest.pose='bow';const first=e.poseControls(rest,scene,0);check('Pose transition starts continuously',JSON.stringify(c)===JSON.stringify(first));
 // Dense seam checks: continuity of foot position and horizontal velocity.
 for(const run of [false,true]){

@@ -1,7 +1,7 @@
 """Build one dependency-free HTML. Run: python build.py"""
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent
-ORDER=['math.js','geometry.js','materials.js','renderer.js','motion.js','cast.js','figure.js','scenes.js','navigation.js','worlds.js','accents.js','director.js','exhibition.js','living.js','camera-3d.js','dialogue.js','stories.js','theatre.js','app.js','world-ui.js','v5-ui.js','look-ui.js','boot.js']
+ORDER=['math.js','geometry.js','materials.js','renderer.js','motion.js','actlib-cast.js','cast.js','figure.js','scenes.js','navigation.js','worlds.js','accents.js','director.js','exhibition.js','living.js','camera-3d.js','dialogue.js','stories.js','theatre.js','app.js','world-ui.js','v5-ui.js','look-ui.js','boot.js']
 def build():
     src=ROOT/'src'
     code='\n'.join((src/f).read_text(encoding='utf-8') for f in ORDER)

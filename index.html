@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,viewport-fit=cover">
-<meta name="theme-color" content="#111111"><meta name="description" content="NOIR ATLAS 5.3 双模式材质微剧场：十个真实3D场景、自由镜头、清爽彩色贴图与纯净黑白随时切换、头顶对白、无脸彩衣人物与可编辑的实时短剧。">
+<meta name="theme-color" content="#111111"><meta name="description" content="NOIR ATLAS 5.4 双模式材质微剧场：十个真实3D场景、男女两副成人体型、动作库 73 项对照、自由镜头、清爽彩色贴图与纯净黑白随时切换、头顶对白、无脸彩衣人物与可编辑的实时短剧。">
 <meta name="referrer" content="no-referrer">
 <title>NOIR ATLAS · 黑白之间</title>
 <style>:root{color-scheme:dark;--paper:#efede7;--muted:#a2a19f;--line:#ffffff26;--panel:rgba(20,20,20,.78)}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#080808;color:var(--paper);font-family:Inter,'Helvetica Neue','PingFang SC','Microsoft YaHei',sans-serif}body{overscroll-behavior:none;user-select:none;-webkit-user-select:none}button,input{font:inherit}button{color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}button:focus-visible,input:focus-visible{outline:2px solid #fff;outline-offset:4px}button{border:0;background:none}#stage{width:100%;height:100%;display:block;touch-action:none}#shade-top,#shade-bottom{pointer-events:none;position:fixed;left:0;width:100%;z-index:1}#shade-top{top:0;height:220px;background:linear-gradient(#0008,transparent)}#shade-bottom{bottom:0;height:240px;background:linear-gradient(transparent,#080808e8)}.ui{transition:opacity .4s,transform .4s}.topbar{position:fixed;z-index:5;top:max(26px,env(safe-area-inset-top));left:34px;right:34px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:13px}.brandmark{width:25px;height:30px;border:1px solid #ddd;position:relative}.brandmark:after{content:'';position:absolute;width:12px;height:12px;background:#ddd;border-radius:50%;left:6px;top:8px}.brand-name{font-size:12px;letter-spacing:4px;font-weight:500}.brand-sub{font-size:9px;letter-spacing:3px;color:#b9b8b5;margin-top:6px}.top-actions{display:flex;align-items:center;gap:12px}.top-index{font-family:Georgia,serif;font-size:14px;letter-spacing:2px;color:#ccc;margin-right:15px}.top-index span{opacity:.45}.iconbutton{height:40px;width:40px;border:1px solid var(--line);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#0c0c0c3d;backdrop-filter:blur(10px)}.iconbutton:hover,.iconbutton[aria-pressed=true]{background:#ededeb;color:#111;border-color:#ededeb}.iconbutton svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}.headline{position:fixed;z-index:2;top:127px;left:36px;pointer-events:none;max-width:390px}.eyebrow{font-size:10px;letter-spacing:3px;color:#bebdb9;display:flex;align-items:center;gap:12px}.eyebrow:before{content:'';height:1px;width:27px;background:#aaa}.headline h1{font-family:'Songti SC','Noto Serif CJK SC','SimSun',Georgia,serif;font-size:45px;font-weight:300;letter-spacing:5px;line-height:1.5;margin:18px 0 15px;white-space:pre-line;text-shadow:0 1px 20px #0003}.headline p{font-size:11px;letter-spacing:1px;line-height:1.8;color:#bcbcb9;max-width:260px}.scene-rail{position:fixed;right:35px;top:50%;z-index:3;transform:translateY(-50%);display:flex;flex-direction:column;gap:18px}.rail-dot{width:30px;height:24px;display:flex;align-items:center;justify-content:center;font-size:9px;letter-spacing:1px;color:#aaa}.rail-dot.active:before{content:'';position:absolute;width:28px;height:28px;border:1px solid #eee;border-radius:50%}.workspace{position:fixed;z-index:7;right:35px;top:84px;display:flex;gap:7px}.tool-pill{border:1px solid var(--line);background:#1118;border-radius:4px;height:34px;padding:0 12px;font-size:11px;letter-spacing:1px;backdrop-filter:blur(10px)}.tool-pill:hover{border-color:#ddd}.settings{position:fixed;z-index:12;right:35px;top:128px;width:258px;padding:21px;border:1px solid var(--line);border-radius:8px;background:var(--panel);backdrop-filter:blur(25px);box-shadow:0 12px 50px #0003}.settings[hidden]{display:none}.panel-title{display:flex;align-items:center;justify-content:space-between;font-size:12px;letter-spacing:2px;margin-bottom:22px}.panel-title button{color:#bbb;font-size:19px}.setting{display:block;margin:18px 0}.setting .label{display:flex;justify-content:space-between;font-size:11px;color:#cececc;margin-bottom:9px}.setting output{color:#888;font-variant-numeric:tabular-nums}.setting input[type=range]{width:100%;height:2px;accent-color:#eee;cursor:pointer;display:block;margin:14px 0}.panel-small{font-size:10px;line-height:1.7;color:#939390;border-top:1px solid var(--line);padding-top:14px;margin-top:20px}.bottom{position:fixed;z-index:5;left:34px;right:34px;bottom:max(22px,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:20px}.control-row{display:flex;align-items:center;justify-content:space-between;gap:15px}.actor-meta{min-width:125px}.actor-meta .caption{font-size:9px;color:#999;letter-spacing:2px;margin-bottom:7px}.actor-meta .value{font-size:12px;letter-spacing:2px}.actor-meta b{font-weight:400;font-variant-numeric:tabular-nums}.actor-meta small{font-size:9px;color:#aaa;margin-left:7px}.actions{display:flex;gap:5px;padding:5px;border:1px solid #ffffff1e;border-radius:8px;background:#1414148c;backdrop-filter:blur(14px)}.action{height:34px;padding:0 15px;border-radius:4px;color:#aaa;font-size:11px;letter-spacing:1px;white-space:nowrap}.action.active{background:#eae9e4;color:#111}.action:hover:not(.active){background:#ffffff12;color:#fff}.lower-tools{display:flex;gap:9px;justify-content:end;min-width:125px}.scene-dock{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;padding-top:17px;border-top:1px solid var(--line)}.scene-button{height:66px;border:1px solid #ffffff16;background:#18181867;border-radius:5px;display:flex;align-items:center;gap:13px;padding:9px 13px;text-align:left;position:relative;overflow:hidden}.scene-button:hover{border-color:#ffffff66;background:#222c}.scene-button.active{border-color:#d6d5d1;background:#d6d5d10a}.scene-button.active:after{content:'';height:2px;width:22px;position:absolute;top:0;left:14px;background:#eee}.scene-num{font:italic 16px Georgia,serif;color:#90908d;min-width:19px}.scene-button.active .scene-num{color:#eee}.scene-name{font-size:12px;letter-spacing:2px}.scene-en{font-size:8px;letter-spacing:1.6px;color:#8f8f8b;margin-top:5px}.scene-icon{width:46px;height:43px;margin-left:auto;opacity:.6;position:relative;flex-shrink:0}.scene-icon svg{width:100%;height:100%}.footnote{display:flex;justify-content:space-between;color:#888;font-size:9px;letter-spacing:1.1px;margin-top:-9px}.footnote .live{display:inline-block;width:4px;height:4px;border-radius:100%;background:#bdbdb8;vertical-align:middle;margin-right:6px}.joystick{position:fixed;z-index:6;bottom:227px;left:35px;width:92px;height:92px;border:1px solid #ffffff35;border-radius:50%;background:#1112;backdrop-filter:blur(4px);touch-action:none;opacity:.80;cursor:grab}.joystick:before,.joystick:after{content:'';position:absolute;background:#fff2}.joystick:before{height:1px;width:14px;top:45px;left:38px}.joystick:after{width:1px;height:14px;left:45px;top:38px}.joystick .knob{position:absolute;top:30px;left:30px;width:30px;height:30px;background:#ddd;border:1px solid #eee9;border-radius:50%;box-shadow:0 4px 14px #0004;pointer-events:none;opacity:.85}.joylabel{position:absolute;top:103px;left:0;width:100%;text-align:center;letter-spacing:2px;font-size:9px;color:#b0b0ac;pointer-events:none}.jump-control{position:fixed;z-index:6;right:37px;bottom:246px;display:flex;flex-direction:column;align-items:center;gap:10px}.jump-control .iconbutton{width:54px;height:54px}.jump-control span{font-size:9px;letter-spacing:2px;color:#b0b0ac}#marker{position:fixed;z-index:2;pointer-events:none;transform:translate(-50%,-50%);height:15px;width:26px;border:1px solid #fff7;border-radius:50%;box-shadow:0 0 0 1px #0002;opacity:.7}#marker:after{content:'';width:3px;height:3px;background:#fff;position:absolute;left:11px;top:5px;border-radius:50%}#hint{position:fixed;z-index:8;left:50%;top:52%;transform:translate(-50%,-50%);pointer-events:none;padding:12px 18px;border-radius:4px;border:1px solid #ffffff25;backdrop-filter:blur(12px);background:#151515a0;font-size:11px;letter-spacing:1px;color:#ddd;opacity:0;transition:opacity .3s;white-space:nowrap}#hint.visible{opacity:1}.error-screen{position:fixed;inset:0;z-index:100;background:#111;display:flex;align-items:center;justify-content:center;padding:30px;text-align:center;line-height:2;white-space:pre-line}.error-screen[hidden]{display:none}.help{position:fixed;inset:0;z-index:15;background:#0008;backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px}.help[hidden]{display:none}.help-card{max-width:425px;padding:30px;border:1px solid #444;background:#161616;border-radius:8px;position:relative}.help-card h2{font-family:Georgia,'Songti SC',serif;font-weight:400;letter-spacing:3px;font-size:24px;margin:2px 0 10px}.help-card p{font-size:12px;line-height:2;color:#aaa}.help-line{display:flex;gap:22px;align-items:baseline;padding:13px 0;border-bottom:1px solid #fff1;font-size:12px}.help-line strong{font-weight:400;min-width:58px;color:#e5e5e0}.help-line span{color:#999;line-height:1.8}.help-card .dismiss{width:100%;margin-top:22px;height:42px;background:#e5e5df;color:#111;border-radius:3px;font-size:12px;letter-spacing:2px}.restore{position:fixed;z-index:20;top:20px;right:20px;opacity:0;pointer-events:none}.immersive .ui,.immersive #marker,.immersive #shade-top,.immersive #shade-bottom{opacity:0;pointer-events:none}.immersive .restore{opacity:.45;pointer-events:auto}.immersive .restore:hover{opacity:1}.immersive .joystick,.immersive .jump-control{opacity:0;pointer-events:none}.immersive #stage{cursor:crosshair}.paused #pause{background:#eee;color:#111}.scene-transition{position:fixed;inset:0;z-index:30;background:#090909;pointer-events:none;opacity:0;transition:opacity .18s}.scene-transition.on{opacity:1}
@@ -95,6 +95,23 @@
 .dialogue-toggles{display:flex;gap:9px;flex-wrap:wrap;font-size:10px;color:#bbb;margin:20px 0 10px}.dialogue-toggles label{display:flex;align-items:center;gap:3px}.dialogue-toggles input,.label-toggle input{accent-color:#ccc;min-width:15px;min-height:15px}details{border-top:1px solid #ffffff20;margin-top:15px;padding-top:13px;font-size:11px;color:#aaa}summary{cursor:pointer;line-height:1.9;letter-spacing:.5px}
 #script-editor{width:100%;resize:vertical;margin-top:12px;min-height:140px;background:#0b0b0b;color:#c8c9c1;border:1px solid #ffffff25;border-radius:4px;font:11px/1.7 monospace;padding:11px;user-select:text}#script-error{font-size:11px;line-height:1.7;color:#eba8a0;min-height:12px}#dialogue-log{max-height:190px;overflow:auto;user-select:text;font-size:11px;line-height:1.8}#dialogue-log b{font-weight:400;color:#e1e0d9}
 #cast-list{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 20px}.cast-item{border:1px solid #ffffff25;border-radius:4px;font-size:11px;padding:7px 9px;color:#bbb;display:flex;gap:6px;align-items:center}.cast-item span{width:6px;height:6px;border-radius:50%}.cast-item.selected{border-color:#eee;color:#eee}
+.roster-list{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin:0 0 16px}
+.roster-card{display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:8px 9px;border:1px solid #ffffff22;border-radius:5px;text-align:left;color:#bbb;background:#ffffff06}
+.roster-card strong{font-size:12px;font-weight:400;letter-spacing:.5px;color:#e8e7e1}
+.roster-card small{font-size:9px;color:#888;letter-spacing:.3px;line-height:1.5}
+.roster-card .roster-mark{width:7px;height:7px;border-radius:50%}
+.roster-card.selected{border-color:#eee;background:#ffffff12;color:#eee}
+.roster-card.is-female{border-left:2px solid #e079a2}
+.roster-card.is-male{border-left:2px solid #39bcca}
+.actlib-cats{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 12px}
+.actlib-chip{min-height:28px;padding:0 9px;border:1px solid #ffffff22;border-radius:999px;font-size:10px;letter-spacing:.5px;color:#aaa}
+.actlib-chip.active,.actlib-chip[aria-pressed=true]{background:#e8e7e1;color:#222;border-color:#e8e7e1}
+.actlib-grid{grid-template-columns:repeat(3,1fr)}
+.motion-grid .action.fid-exact{border-color:#3ecf8e66;color:#d8f5e6}
+.motion-grid .action.fid-near{border-color:#7ec8f066;color:#d4eaf8}
+.motion-grid .action.fid-sub{border-color:#e8b04b66;color:#f3e3c2}
+.motion-grid .action.fid-exact.active,.motion-grid .action.fid-near.active,.motion-grid .action.fid-sub.active{color:#111}
+.panel-intro a{color:#ddd;border-bottom:1px solid #ffffff40}
 .cast-field{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:11px;color:#aaa;margin:15px 0}.cast-field input,.cast-field select,.cast-field textarea{background:#ffffff08;color:#ddd;border:1px solid #ffffff25;border-radius:4px;font-size:12px;line-height:1.8;padding:6px 8px;max-width:215px;width:68%;user-select:text}.cast-field select option{background:#222}.cast-field textarea{resize:vertical;min-height:54px}.colour-swatches{display:flex;gap:5px}.swatch{width:25px;height:25px;border:2px solid transparent;border-radius:50%;padding:4px}.swatch span{display:block;width:100%;height:100%;border-radius:50%}.swatch.selected{border-color:#eee}
 #theatre-bar{position:fixed;top:124px;left:35px;z-index:9;max-width:calc(100vw - 65px);display:flex;align-items:center;gap:11px;padding:8px 10px 8px 13px;border:1px solid #ffffff25;border-radius:5px;background:#151515bd;backdrop-filter:blur(12px);font-size:12px;color:#eee}.theatre-dot{width:4px;height:4px;border-radius:50%;background:#ddd}#theatre-progress{font-size:9px;color:#999;font-variant-numeric:tabular-nums}#theatre-bar button{font-size:18px;width:24px;height:26px}.theatre-active .headline{opacity:0;pointer-events:none}.theatre-active #world-strip{opacity:0;pointer-events:none}.theatre-active #marker{display:none!important}.theatre-active #exhibition-state{font-size:0}
 .brand-sub{letter-spacing:1.5px}.workspace{gap:6px}.tool-pill{padding:0 11px}.theatre-toggle{border-color:#ddd7}
@@ -155,7 +172,7 @@
 </style></head><body><canvas id="stage" aria-label="实时黑白三维艺术场景。点击地面移动人物，拖动人物或使用屏幕摇杆。" role="img"></canvas>
 <div id="shade-top" class="ui"></div><div id="shade-bottom" class="ui"></div>
 <header class="topbar ui">
- <div class="brand"><div class="brandmark" aria-hidden="true"></div><div><div class="brand-name">NOIR ATLAS</div><div class="brand-sub">双模式材质 / CHROMA THEATRE 5.3</div></div></div>
+ <div class="brand"><div class="brandmark" aria-hidden="true"></div><div><div class="brand-name">NOIR ATLAS</div><div class="brand-sub">双模式材质 / CHROMA THEATRE 5.4</div></div></div>
  <div class="top-actions"><div class="top-index"><b id="top-count">01</b> <span>/ 10</span></div>
  <button id="help-open" class="iconbutton" aria-label="操作说明" title="操作说明"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.5 8.5c.5-2 5-2 5 1 0 2-2.5 2-2.5 4M12 16h.01"/></svg></button>
  <button id="screenshot" class="iconbutton" aria-label="保存画面" title="保存无界面画面"><svg viewBox="0 0 24 24"><path d="M3 7h5l2-3h4l2 3h5v13H3Z"/><circle cx="12" cy="13" r="4"/></svg></button>
@@ -194,12 +211,13 @@
 </footer>
 
 <section class="motion-panel ui" id="motion-panel" hidden aria-label="人物动作库">
- <div class="panel-title">MOTION LIBRARY / 18<button id="motion-close" aria-label="关闭动作库">×</button></div>
- <p class="panel-intro">同一副成人骨架，不同的表达。飞行中换动作，不会落地。</p>
- <div class="motion-grid"><button class="action" data-pose="point" aria-pressed="false">指向</button><button class="action" data-pose="open" aria-pressed="false">张开双臂</button><button class="action" data-pose="look" aria-pressed="false">环顾</button><button class="action" data-pose="bow" aria-pressed="false">鞠躬</button><button class="action" data-pose="crouch" aria-pressed="false">下蹲</button><button class="action" data-pose="kneel" aria-pressed="false">单膝</button><button class="action" data-pose="sit" aria-pressed="false">坐下</button><button class="action" data-pose="meditate" aria-pressed="false">盘坐</button><button class="action" data-pose="balance" aria-pressed="false">单脚平衡</button><button class="action" data-pose="stretch" aria-pressed="false">舒展</button><button class="action" data-pose="turn" aria-pressed="false">转身</button><button class="action" data-pose="dance" aria-pressed="false">轻舞</button></div>
+ <div class="panel-title">MOTION / 动作库对照<button id="motion-close" aria-label="关闭动作库">×</button></div>
+ <p class="panel-intro">对标 <a href="https://dannyling111.github.io/A129/actlib/" target="_blank" rel="noopener">A129 动作库</a> 的 73 个动作。男女同一套动作，体型不同。飞行中换动作不会落地。</p>
+ <div id="actlib-cats" class="actlib-cats"></div>
+ <div id="actlib-grid" class="motion-grid actlib-grid"></div>
  <label class="setting"><span class="label">演出速度 <output id="motion-rate-value">1.00×</output></span><input id="motion-rate" type="range" min=".25" max="1.5" step=".05" value="1" aria-label="演出速度"></label>
  <div class="record-row"><button id="walk-view" class="wide-button">走路 · 半速特写</button><button id="run-view" class="wide-button">跑步 · 半速特写</button></div><button id="gait-view" class="wide-button legacy-inspector" hidden>侧面验步</button>
- <p class="panel-small">脚底滚动接触，支撑脚位置锁定；肩带动手臂，肘与腕自然跟随。走跑使用不同节奏。</p>
+ <p class="panel-small">绿：本引擎原样演出；蓝：很接近；黄：用邻近动作替代。脚底滚动接触保留。男女同一套动作。</p>
 </section>
 <section class="director-panel ui" id="director-panel" hidden aria-label="镜头台">
  <div class="panel-title">THE DIRECTOR<button id="director-close" aria-label="关闭镜头台">×</button></div>
@@ -214,7 +232,7 @@
 
 
 <button class="restore iconbutton" id="restore" aria-label="退出沉浸模式" title="退出沉浸模式"><svg viewBox="0 0 24 24"><path d="M3 8h5V3M16 3v5h5M21 16h-5v5M8 21v-5H3"/></svg></button>
-<div class="help" id="help" hidden><section class="help-card"><div class="eyebrow">A SMALL GUIDE</div><h2>把自己放进光里。</h2><p>十个实时场景，包括多房间办公楼、水墨山水和古建院落。人物、衣服、帽子、建筑和影子都由 WebGL 2 三维网格实时绘制；对白锚定头顶。透视 / 正交都是同一个三维世界。</p><div class="help-line"><strong>移动</strong><span>点击地面前往；按住人物拖动。手机也可用左下摇杆。</span></div><div class="help-line"><strong>动作</strong><span>常用动作在底部；“更多动作”打开 12 种身体表达。左下小按钮跳跃。</span></div><div class="help-line"><strong>飞行</strong><span>点击“飞行”后持续悬浮；左下摇杆旁的小 ↑ / ↓ 调高度。换动作也保持飞行，只有“着陆”返回地面。</span></div><div class="help-line"><strong>展演</strong><span>默认按场景自动行走、观察和停留。触控接管当前人物，其他人物继续。点“恢复展演”交还控制。</span></div><div class="help-line"><strong>构图</strong><span>新场景点击人物可以互动，或选择“接管此人物”。新场景最多十个人，原艺术场景最多五人。</span></div><div class="help-line"><strong>光影</strong><span>调节光源、颗粒、雾、缩放与点色开关。镜头台可以记录、回放、导出动画数据。</span></div><div class="help-line"><strong>桌面</strong><span>拖动空白旋转视角；滚轮或双指缩放，双指平移。WASD / 方向键移动；地面空格跳跃。飞行时 E / 空格上升，Q / Shift 下降；Esc 关闭面板。</span></div><button class="dismiss" id="help-close">进入这片寂静</button></section></div>
+<div class="help" id="help" hidden><section class="help-card"><div class="eyebrow">A SMALL GUIDE</div><h2>把自己放进光里。</h2><p>十个实时场景，包括多房间办公楼、水墨山水和古建院落。人物分男女两副成人体型；衣服、发型、帽子、建筑和影子都由 WebGL 2 三维网格实时绘制；对白锚定头顶。透视 / 正交都是同一个三维世界。</p><div class="help-line"><strong>移动</strong><span>点击地面前往；按住人物拖动。手机也可用左下摇杆。</span></div><div class="help-line"><strong>动作</strong><span>常用动作在底部；“更多动作”打开动作库 73 项对照，男女同一套动作。左下小按钮跳跃。</span></div><div class="help-line"><strong>飞行</strong><span>点击“飞行”后持续悬浮；左下摇杆旁的小 ↑ / ↓ 调高度。换动作也保持飞行，只有“着陆”返回地面。</span></div><div class="help-line"><strong>展演</strong><span>默认按场景自动行走、观察和停留。触控接管当前人物，其他人物继续。点“恢复展演”交还控制。</span></div><div class="help-line"><strong>构图</strong><span>新场景点击人物可以互动，或选择“接管此人物”。新场景最多十个人，原艺术场景最多五人。</span></div><div class="help-line"><strong>光影</strong><span>调节光源、颗粒、雾、缩放与点色开关。镜头台可以记录、回放、导出动画数据。</span></div><div class="help-line"><strong>桌面</strong><span>拖动空白旋转视角；滚轮或双指缩放，双指平移。WASD / 方向键移动；地面空格跳跃。飞行时 E / 空格上升，Q / Shift 下降；Esc 关闭面板。</span></div><button class="dismiss" id="help-close">进入这片寂静</button></section></div>
 <div class="world-strip ui" id="world-strip" hidden><button class="tool-pill" id="world-guide">场景导览</button><button class="tool-pill" id="nearby">附近互动</button><button class="tool-pill" id="follow-world">跟随视角</button><button class="tool-pill" id="stand-up" hidden>起身</button></div>
 <aside class="places-panel ui" id="places-panel" hidden><div class="panel-title"><span id="places-title">可到达地点</span><button id="places-close" aria-label="关闭导览">×</button></div><p class="panel-intro">选一个地点，人物会沿可行走路线前往。也可直接点击画面中的椅子。</p><div id="place-list"></div><label class="label-toggle"><input type="checkbox" id="world-labels">显示地点标签</label></aside>
 <aside class="social-panel ui" id="social-panel" hidden><div class="panel-title"><span id="social-title">人物</span><button id="social-close" aria-label="关闭互动">×</button></div><p id="social-description" class="panel-intro"></p><div class="social-actions"><button class="wide-button" data-social="wave">打招呼</button><button class="wide-button" data-social="talk">交谈</button><button class="wide-button" data-social="follow">同行</button></div><button class="wide-button" id="take-control">接管此人物</button></aside>
@@ -239,15 +257,20 @@
 <aside class="cast-panel ui" id="cast-panel" hidden aria-label="角色和服饰">
  <div class="panel-title">角色 / THE CAST<button id="cast-close" aria-label="关闭角色面板">×</button></div>
  <div id="cast-list"></div>
+ <p class="panel-intro" id="cast-note">动作库人物卡：男女体型、发型、衣服都是三维部件，头部仍不画五官。</p>
+ <div id="roster-list" class="roster-list" aria-label="动作库人物卡"></div>
  <label class="cast-field">名字<input id="cast-name" maxlength="12" aria-label="角色名字"></label>
+ <label class="cast-field">体型<select id="cast-body" aria-label="体型"><option value="male">男性轮廓</option><option value="female">女性轮廓</option></select></label>
  <div class="cast-field">衣服颜色<div class="colour-swatches" id="cast-colours"></div></div>
+ <div class="cast-field">发色<div class="colour-swatches" id="cast-hair-colours"></div></div>
+ <label class="cast-field">发型<select id="cast-hair" aria-label="发型"><option value="none">光头</option><option value="crop">寸发</option><option value="short">短发</option><option value="bob">齐耳</option><option value="long">长发</option><option value="bun">发髻</option><option value="ponytail">马尾</option><option value="braid">辫子</option></select></label>
  <label class="cast-field">帽子<select id="cast-hat" aria-label="帽子"><option value="none">无帽</option><option value="beret">贝雷帽</option><option value="cap">鸭舌帽</option><option value="beanie">针织帽</option><option value="brim">宽檐帽</option></select></label>
- <label class="cast-field">上衣<select id="cast-outfit" aria-label="上衣"><option value="vest">彩色背心 · 黑袖</option><option value="sleeves">彩色长袖</option></select></label>
- <div class="record-row"><button class="wide-button" id="cast-focus">镜头看他</button><button class="wide-button" id="cast-control">接管人物</button></div>
- <label class="cast-field">让他说一句<textarea id="cast-line" rows="2" maxlength="140" placeholder="今天的光，和昨天不一样。" aria-label="自定义对白"></textarea></label>
+ <label class="cast-field">上衣<select id="cast-outfit" aria-label="上衣"><option value="vest">彩色背心 · 黑袖</option><option value="sleeves">彩色长袖</option><option value="dress">连衣长裙</option><option value="blouse">短袖罩衫</option><option value="coat">长外套</option></select></label>
+ <div class="record-row"><button class="wide-button" id="cast-focus">镜头看 TA</button><button class="wide-button" id="cast-control">接管人物</button></div>
+ <label class="cast-field">让 TA 说一句<textarea id="cast-line" rows="2" maxlength="140" placeholder="今天的光，和昨天不一样。" aria-label="自定义对白"></textarea></label>
  <button class="wide-button" id="cast-say">在头顶说出来</button>
  <label class="label-toggle"><input type="checkbox" id="cast-names" checked>近景显示姓名</label>
- <p class="panel-small">衣服和帽子是真实三维部件，随身体关节移动、受光、投影。头部不绘制五官。</p>
+ <p class="panel-small">女性是另一副成人体型：窄肩、细腰、宽髋、胸型、长发与裙装。头部不绘制五官。动作对照见「更多动作」。</p>
 </aside>
 <div id="theatre-bar" class="ui" hidden><span class="theatre-dot"></span><span id="theatre-title"></span><small id="theatre-progress"></small><button id="theatre-pause" aria-label="暂停或继续短剧">Ⅱ</button><button id="theatre-next" aria-label="下一段" title="下一段">›</button><button id="theatre-stop" aria-label="结束短剧">×</button></div>
 <script>
@@ -407,7 +430,7 @@ function bakeMaterialTextureArray(gl,size=256){
 }
 
 class Renderer {
- constructor(canvas){this.canvas=canvas;this.gl=canvas.getContext('webgl2',{alpha:false,antialias:false,preserveDrawingBuffer:true,powerPreference:'high-performance'});if(!this.gl)throw new Error('此浏览器未开启 WebGL 2。请使用较新的 Chrome / Edge / Safari，或开启硬件加速。');this.gl.disable(this.gl.DITHER);this.meshes={};this.width=0;this.height=0;this.resolution=1.4;this.shadowSize=2048;this.msaaSamples=0;this.initPrograms();this.materialTextures=bakeMaterialTextureArray(this.gl);this.initTargets();for(const [name,g]of Object.entries({box:Geo.box(),disc:Geo.disc(),thinRing:Geo.torus(1,.0028,96,6),sphere:Geo.sphere(24,16),artSphere:Geo.sphere(72,48),torus:Geo.torus(),rock:Geo.sphere(48,32,.055),walkway:Geo.ribbon(PATH_POINTS,2.85,28),torso:Geo.loft([[0,.105,.085],[.055,.145,.105],[.17,.125,.08],[.28,.173,.098],[.36,.202,.10],[.40,.172,.082],[.435,.085,.066]],16),pelvis:Geo.loft([[0,.077,.077],[.055,.142,.103],[.12,.15,.10],[.18,.12,.087]],16),limb:Geo.loft([[0,.70,.75],[.07,.92,.90],[.26,1,1],[.5,.91,.88],[.78,.69,.7],[1,.53,.55]],12),forelimb:Geo.loft([[0,.73,.8],[.20,1,1],[.53,.80,.82],[.87,.48,.53],[1,.45,.49]],12)}))this.meshes[name]=this.mesh(g);this.resize();}
+ constructor(canvas){this.canvas=canvas;this.gl=canvas.getContext('webgl2',{alpha:false,antialias:false,preserveDrawingBuffer:true,powerPreference:'high-performance'});if(!this.gl)throw new Error('此浏览器未开启 WebGL 2。请使用较新的 Chrome / Edge / Safari，或开启硬件加速。');this.gl.disable(this.gl.DITHER);this.meshes={};this.width=0;this.height=0;this.resolution=1.4;this.shadowSize=2048;this.msaaSamples=0;this.initPrograms();this.materialTextures=bakeMaterialTextureArray(this.gl);this.initTargets();for(const [name,g]of Object.entries({box:Geo.box(),disc:Geo.disc(),thinRing:Geo.torus(1,.0028,96,6),sphere:Geo.sphere(24,16),artSphere:Geo.sphere(72,48),torus:Geo.torus(),rock:Geo.sphere(48,32,.055),walkway:Geo.ribbon(PATH_POINTS,2.85,28),torso:Geo.loft([[0,.105,.085],[.055,.145,.105],[.17,.125,.08],[.28,.173,.098],[.36,.202,.10],[.40,.172,.082],[.435,.085,.066]],16),pelvis:Geo.loft([[0,.077,.077],[.055,.142,.103],[.12,.15,.10],[.18,.12,.087]],16),torsoF:Geo.loft([[0,.090,.074],[.048,.112,.088],[.125,.078,.064],[.210,.128,.086],[.300,.176,.110],[.355,.128,.078],[.425,.066,.052]],16),pelvisF:Geo.loft([[0,.096,.090],[.055,.174,.128],[.125,.190,.134],[.185,.144,.106]],16),limb:Geo.loft([[0,.70,.75],[.07,.92,.90],[.26,1,1],[.5,.91,.88],[.78,.69,.7],[1,.53,.55]],12),forelimb:Geo.loft([[0,.73,.8],[.20,1,1],[.53,.80,.82],[.87,.48,.53],[1,.45,.49]],12)}))this.meshes[name]=this.mesh(g);this.resize();}
  shader(type,source){let g=this.gl,s=g.createShader(type);g.shaderSource(s,source);g.compileShader(s);if(!g.getShaderParameter(s,g.COMPILE_STATUS))throw new Error(g.getShaderInfoLog(s));return s;}
  program(v,f){let g=this.gl,p=g.createProgram();g.attachShader(p,this.shader(g.VERTEX_SHADER,v));g.attachShader(p,this.shader(g.FRAGMENT_SHADER,f));g.linkProgram(p);if(!g.getProgramParameter(p,g.LINK_STATUS))throw new Error(g.getProgramInfoLog(p));return p;}
  initPrograms(){const vs=`#version 300 es
@@ -683,31 +706,33 @@ function updateContactRig(a,sc,dt,moved) {
     const g=gaitSample(a.phase,side,a.pose==='run'),old=a.feetPlant[i];
     if(g.stance) {
       if(!old||!old.stance){
-        const p=localToWorld(a,[side*.095,0,g.z*(a.gaitWeight||0)]);
+        const p=localToWorld(a,[side*.095*rig(a).body.hipWidth,0,g.z*(a.gaitWeight||0)]);
         a.feetPlant[i]={stance:true,x:p[0],z:p[2],floor:sc.height(p[0],p[2]),angle:a.angle};
       }
     } else a.feetPlant[i]={stance:false,x:old?.x??a.x,z:old?.z??a.z,floor:old?.floor??a.y,angle:a.angle};
   });
 }
 
-// One adult silhouette / fixed bone lengths. Rebuilt shoulder-elbow-wrist chain.
-function torsoMatrix(c){return compose(M.translation(c.shiftX||0,c.pelvis+.125,0),M.ry(c.bodyYaw||0),M.rz(c.roll),M.rx(c.lean),M.scale(1,1.15,1));}
-function armControls(c,side,swing,bend,spread=.06,twist=0) {
-  const shoulder=M.transform(torsoMatrix(c),[side*.181,.363,0]).slice(0,3);
+// Two adult silhouettes; bone lengths come from rig(a). Rebuilt shoulder-elbow-wrist chain.
+function torsoMatrix(c,R){R=R||{torsoX:1,torsoY:1,torsoZ:1,height:1,shoulder:.181};return compose(M.translation(c.shiftX||0,c.pelvis+.125,0),M.ry(c.bodyYaw||0),M.rz(c.roll),M.rx(c.lean),M.scale(R.torsoX,1.15*R.torsoY,R.torsoZ));}
+function armControls(c,side,swing,bend,spread=.06,twist=0,R) {
+  R=R||{shoulder:.181,torsoY:1,upperArm:.305,lowerArm:.255,torsoX:1,torsoZ:1};
+  const shoulder=M.transform(torsoMatrix(c,R),[side*R.shoulder,.363,0]).slice(0,3);
   const body=compose(M.ry(c.bodyYaw||0),M.rz(c.roll),M.rx(c.lean));
   const upper=compose(body,M.rz(side*spread),M.ry(twist),M.rx(-swing));
   const lower=M.mul(upper,M.rx(-bend));
-  const elbow=V.add(shoulder,M.transform(upper,[0,-.305,0],0).slice(0,3));
-  const wrist=V.add(elbow,M.transform(lower,[0,-.255,0],0).slice(0,3));
+  const elbow=V.add(shoulder,M.transform(upper,[0,-R.upperArm,0],0).slice(0,3));
+  const wrist=V.add(elbow,M.transform(lower,[0,-R.lowerArm,0],0).slice(0,3));
   return {wrist,pole:V.sub(elbow,shoulder)};
 }
 function poseControls(a,scene,time) {
   const air=isAirborne(a),walk=!air&&(a.moving||(a.gaitWeight||0)>.006),run=a.pose==='run';
   const mode=air&&['walk','run','float'].includes(a.pose)?'float':walk?(run?'run':'walk'):a.pose;
   const t=Math.max(0,time-(a.poseSince||0)),p=a.phase||0,weight=a.gaitWeight??(a.moving?1:0);
-  const breath=Math.sin(time*1.05+a.id*.83),hipShift=.009*Math.sin(p-.4)*weight;
+  const breath=Math.sin(time*1.05+a.id*.83),R=rig(a),hip=R.hip;
+  const hipShift=.009*Math.sin(p-.4)*weight;
   let c={pelvis:.9,lean:.007*breath,roll:0,shiftX:0,bodyYaw:0,hipYaw:0,hipRoll:0,headYaw:0,headPitch:0,rootTilt:0,rootRoll:0,
-    feet:[[-.095,.073,-.025],[.095,.073,.025]],pitches:[0,0],footYaw:[-.055,.055],
+    feet:[[-hip,.073,-.025],[hip,.073,.025]],pitches:[0,0],footYaw:[-.055,.055],
     hands:[[-.218,.941,.038],[.218,.941,.038]],poles:[[-.12,-1,.15],[.12,-1,.15]],
     wristFlex:[.035,.035],wristWave:[0,0],handOpen:[.42,.42]};
   if(walk){
@@ -721,17 +746,15 @@ function poseControls(a,scene,time) {
     c.headYaw=-c.bodyYaw*.65;c.headPitch=-c.lean*.28;
     [-1,1].forEach((side,i)=>{
       const g=gaitSample(p,side,run),u=g.u*TAU;
-      c.pitches[i]=g.pitch*weight;c.feet[i]=[side*.095,lerp(.073,g.ankleY+g.lift,weight),g.z*weight];
-      // Natural FK arcs: shoulder swing drives elbow, the forearm follows.
-      // Arms counter the same-side leg; elbows do not seek a horizontal rail.
+      c.pitches[i]=g.pitch*weight;c.feet[i]=[side*hip,lerp(.073,g.ankleY+g.lift,weight),g.z*weight];
       const swing=(run?-.57:-.25)*Math.cos(u-.28)*weight;
       const bend=lerp(.14,run?1.36+.15*Math.sin(u-.7):.18+.10*(.5+.5*Math.sin(u-.5)),weight);
-      const fk=armControls(c,side,swing,bend,run?.095:.065,side*.045);
+      const fk=armControls(c,side,swing,bend,run?.095:.065,side*.045,R);
       c.hands[i]=fk.wrist;c.poles[i]=fk.pole;c.wristFlex[i]=.04+.025*Math.sin(u-.8);
       c.handOpen[i]=run?.03:.42;
     });
   } else {
-    [-1,1].forEach((side,i)=>{const fk=armControls(c,side,.012,.14,.055,0);c.hands[i]=fk.wrist;c.poles[i]=fk.pole;});
+    [-1,1].forEach((side,i)=>{const fk=armControls(c,side,.012,.14,.055,0,R);c.hands[i]=fk.wrist;c.poles[i]=fk.pole;});
   }
   if(air){
     c.pelvis=.90;c.rootTilt=a.moving?.13:.025;c.rootRoll=.016*Math.sin(time*.62+a.id);
@@ -758,6 +781,25 @@ function poseControls(a,scene,time) {
     case 'balance':c.feet=[[-.10,.073,0],[.17,.52,.31]];c.hands=[[-.67,1.44,.05],[.67,1.44,.05]];c.poles=[[-1,-.2,.1],[1,-.2,.1]];c.shiftX=-.055;c.rootRoll=.008*breath;c.handOpen=[.7,.7];break;
     case 'stretch':c.hands=[[-.18,1.94,.03],[.18,1.94,.03]];c.poles=[[-.6,.25,.12],[.6,.25,.12]];c.headPitch=-.08;c.handOpen=[.75,.75];break;
     case 'dance':c.pelvis=.86+.014*Math.sin(t*2);c.roll=.055*Math.sin(t*.9);c.lean=.022;c.bodyYaw=.09*Math.sin(t*.9);c.hands=[[-.46,1.34+.17*Math.sin(t*.9),.23],[.46,1.34-.17*Math.sin(t*.9),.23]];c.feet=[[-.14,.073,0],[.14,.073,0]];c.poles=[[-.6,-.6,.1],[.6,-.6,.1]];c.handOpen=[.7,.7];break;
+    case 'arms_crossed':c.hands=[[.12,.98,.16],[-.12,.93,.18]];c.poles=[[.35,-.55,.2],[-.35,-.55,.2]];c.handOpen=[.05,.05];c.roll=.02;break;
+    case 'hands_pocket':c.hands=[[-.16,.72,.10],[.16,.72,.10]];c.poles=[[-.2,-.85,.05],[.2,-.85,.05]];c.shiftX=.02;c.lean=.04;c.handOpen=[.02,.02];break;
+    case 'hug_self':c.hands=[[.18,.95,.22],[-.18,.92,.20]];c.poles=[[.4,-.4,.25],[-.4,-.4,.25]];c.lean=.12;c.headPitch=.08;c.handOpen=[.3,.3];break;
+    case 'think':c.hands[1]=[.16,1.42,.18];c.poles[1]=[.25,-.2,.3];c.headPitch=.16;c.headYaw=.08;c.handOpen[1]=.15;break;
+    case 'phone':c.hands[1]=[.20,1.52,.08];c.poles[1]=[.45,-.15,.1];c.headYaw=.18;c.headPitch=-.04;c.handOpen[1]=.12;break;
+    case 'clap':{const u=(Math.sin(t*8)+1)*.5;c.hands=[[-.06-u*.04,1.12,.28],[.06+u*.04,1.12,.28]];c.poles=[[-.2,-.5,.3],[.2,-.5,.3]];c.handOpen=[.5,.5];break;}
+    case 'shrug':c.hands=[[-.42,1.18,.08],[.42,1.18,.08]];c.poles=[[-.5,-.3,.1],[.5,-.3,.1]];c.headPitch=-.04;c.handOpen=[.7,.7];break;
+    case 'raise':c.hands[1]=[.22,1.92,.08];c.poles[1]=[.4,.2,.1];c.handOpen[1]=.55;c.headPitch=-.08;break;
+    case 'cheer':c.hands=[[-.28,1.96,.10],[.28,1.96,.10]];c.poles=[[-.4,.3,.1],[.4,.3,.1]];c.headPitch=-.12;c.handOpen=[.7,.7];break;
+    case 'hold':c.hands[1]=[.18,1.18,.42];c.poles[1]=[.25,-.4,.35];c.handOpen[1]=.2;c.headPitch=-.06;break;
+    case 'kick':c.feet=[[-hip,.073,-.05],[hip*.4,.42,.55]];c.hands=[[-.34,1.10,.05],[.34,1.10,.05]];c.shiftX=-.04;c.rootRoll=.04;break;
+    case 'listen':c.lean=.16;c.headPitch=.10;c.headYaw=.12;c.hands=[[-.20,.92,.22],[.20,.92,.22]];break;
+    case 'nod':c.headPitch=.22*Math.sin(t*3.2);c.hands=[[-.20,.94,.04],[.20,.94,.04]];break;
+    case 'shake_head':c.headYaw=.32*Math.sin(t*4.0);c.hands=[[-.20,.94,.04],[.20,.94,.04]];break;
+    case 'facepalm':c.hands[1]=[.10,1.50,.14];c.poles[1]=[.22,-.12,.22];c.headPitch=.28;c.headYaw=.08;c.handOpen[1]=.45;break;
+    case 'punch':c.hands[1]=[.06,1.20,.58];c.poles[1]=[.12,-.48,.18];c.hands[0]=[-.30,.92,-.14];c.poles[0]=[-.35,-.8,.05];c.lean=.10;c.bodyYaw=-.14;c.handOpen=[.05,.02];break;
+    case 'carry':c.hands=[[-.16,1.04,.30],[.16,1.04,.30]];c.poles=[[-.22,-.48,.22],[.22,-.48,.22]];c.lean=.12;c.handOpen=[.12,.12];break;
+    case 'selfie':c.hands[1]=[.24,1.64,.30];c.poles[1]=[.42,.04,.22];c.headYaw=.22;c.headPitch=-.08;c.handOpen[1]=.18;break;
+    case 'lie':c.pelvis=.10;c.lean=.62;c.feet=[[-.20,.073,.70],[.20,.073,.78]];c.hands=[[-.30,.18,.48],[.30,.20,.52]];c.headPitch=.16;c.handOpen=[.35,.35];break;
   }
   if(!walk&&!air&&['chair','work','read','tea'].includes(mode)||(a.seatId&&mode==='talk')){
     c.pelvis=.455;c.lean=.055;c.feet=[[-.11,.073,.39],[.11,.073,.39]];c.hands=[[-.14,.76,.35],[.14,.76,.35]];c.poles=[[-.30,-.55,.10],[.30,-.55,.10]];c.handOpen=[.35,.35];
@@ -774,7 +816,7 @@ function poseControls(a,scene,time) {
   if(!walk&&a.attention){c.headYaw=clamp(angleDelta(a.angle,Math.atan2(a.attention[0]-a.x,a.attention[1]-a.z)),-.5,.5);}
 
   if(a.jumpY>.025&&!air){c.pelvis=.86;c.feet=[[-.1,.18,-.12],[.1,.25,.13]];c.hands=[[-.28,1.60,.15],[.28,1.60,.15]];}
-  const lowPose=['sit','crouch','kneel','meditate','chair','work','read','tea'].includes(mode)||!!a.seatId;
+  const lowPose=['sit','crouch','kneel','meditate','chair','work','read','tea','lie'].includes(mode)||!!a.seatId;
   if(!air&&a.jumpY<.025&&!lowPose){
     c.feet=c.feet.map((f,i)=>{
       const g=gaitSample(p,i===0?-1:1,run),plant=a.feetPlant?.[i];
@@ -798,24 +840,152 @@ function poseControls(a,scene,time) {
   // Keep pelvis within the stance leg reach; never stretch the femur/tibia.
   if(walk&&!air){
     let ceiling=1.2;
-    c.feet.forEach((f,i)=>{if(gaitSample(p,i===0?-1:1,run).stance){const dx=f[0]-(i===0?-.088:.088)-c.shiftX;ceiling=Math.min(ceiling,f[1]+Math.sqrt(Math.max(.2,.845**2-dx*dx-f[2]*f[2])));}});
+    c.feet.forEach((f,i)=>{if(gaitSample(p,i===0?-1:1,run).stance){const dx=f[0]-(i===0?-R.hip:R.hip)-c.shiftX,reach=(R.upperLeg+R.lowerLeg)*.98;ceiling=Math.min(ceiling,f[1]+Math.sqrt(Math.max(.2,reach*reach-dx*dx-f[2]*f[2])));}});
     c.pelvis=Math.min(c.pelvis,ceiling);
   }
   if(a.blendFrom){const u=clamp((time-(a.blendAt||0))/.60,0,1);if(u<1)c=blendControls(a.blendFrom,c,smoother01(u));}
   return c;
 }
 
-// Distinct people, one adult-proportioned rig. Everything here is a 3D mesh.
+// Actlib roster + body dimorphism. Faceless NOIR figures; gender is silhouette.
+const BODY_MALE = {id:'male',zh:'男',height:1,hipWidth:1,shoulderWidth:1,torsoX:1,torsoY:1,torsoZ:1,waist:1,chest:0,limb:1,hand:1,foot:1,neck:1,head:1};
+const BODY_FEMALE = {id:'female',zh:'女',height:.93,hipWidth:1.08,shoulderWidth:.76,torsoX:1,torsoY:.96,torsoZ:.96,waist:.72,chest:1,limb:.94,hand:.86,foot:.84,neck:.86,head:.94};
+const BODIES = {male:BODY_MALE,female:BODY_FEMALE};
+const HAIRS = ['none','crop','short','bob','long','bun','ponytail','braid'];
+const HAIR_NAMES = {none:'光头',crop:'寸发',short:'短发',bob:'齐耳',long:'长发',bun:'发髻',ponytail:'马尾',braid:'辫子'};
+const HAIR_COLOURS = [
+ {name:'墨黑',hex:'#1c1814',rgb:[.11,.09,.08]},
+ {name:'茶褐',hex:'#4a3428',rgb:[.29,.20,.16]},
+ {name:'栗红',hex:'#6e322c',rgb:[.43,.20,.17]},
+ {name:'浅金',hex:'#c4a574',rgb:[.77,.65,.45]},
+ {name:'青灰',hex:'#6b6e72',rgb:[.42,.43,.45]},
+ {name:'夜棕',hex:'#2a1c14',rgb:[.16,.11,.08]}
+];
+const OUTFITS = ['vest','sleeves','dress','blouse','coat'];
+const OUTFIT_NAMES = {vest:'彩色背心 · 黑袖',sleeves:'彩色长袖',dress:'连衣长裙',blouse:'短袖罩衫',coat:'长外套'};
+const CAST_ROSTER = [
+ {id:'alan',name:'阿岚',body:'male',hair:'short',hat:'beret',outfit:'sleeves',colour:0,hairColour:0,note:'动作库·方块人短发男'},
+ {id:'xiaoxi',name:'小汐',body:'female',hair:'long',hat:'none',outfit:'dress',colour:1,hairColour:1,note:'动作库·长发裙装女'},
+ {id:'amo',name:'阿墨',body:'male',hair:'crop',hat:'cap',outfit:'vest',colour:2,hairColour:0,note:'动作库·寸发背心男'},
+ {id:'zhixia',name:'知夏',body:'female',hair:'bob',hat:'none',outfit:'blouse',colour:3,hairColour:2,note:'动作库·齐耳短发女'},
+ {id:'qinghe',name:'青禾',body:'female',hair:'braid',hat:'none',outfit:'dress',colour:4,hairColour:1,note:'动作库·辫子长裙女'},
+ {id:'bailu',name:'白露',body:'female',hair:'bun',hat:'none',outfit:'coat',colour:5,hairColour:4,note:'动作库·发髻外套女'},
+ {id:'nanxing',name:'南星',body:'male',hair:'short',hat:'none',outfit:'coat',colour:1,hairColour:5,note:'动作库·短发外套男'},
+ {id:'wenchuan',name:'闻川',body:'female',hair:'ponytail',hat:'none',outfit:'sleeves',colour:0,hairColour:2,note:'动作库·马尾长袖女'},
+ {id:'chujiu',name:'初九',body:'female',hair:'long',hat:'brim',outfit:'dress',colour:2,hairColour:3,note:'动作库·长发宽檐女'},
+ {id:'luosheng',name:'洛生',body:'male',hair:'short',hat:'beanie',outfit:'sleeves',colour:4,hairColour:0,note:'动作库·针织帽男'},
+ {id:'linwan',name:'林晚',body:'female',hair:'bob',hat:'beret',outfit:'coat',colour:5,hairColour:0,note:'动作库·贝雷齐耳女'},
+ {id:'gushen',name:'顾深',body:'male',hair:'none',hat:'brim',outfit:'coat',colour:3,hairColour:4,note:'动作库·宽檐光头男'}
+];
+const ACTLIB_CAT_ZH = {posture:'姿态',gesture:'手势',loco:'位移',react:'反应',combat:'战斗',special:'超能力',object:'物体互动'};
+const ACTLIB_ACTS = [
+ {id:'stand',zh:'站立',cat:'posture',pose:'idle',fid:'exact'},
+ {id:'stand_easy',zh:'稍息',cat:'posture',pose:'idle',fid:'near'},
+ {id:'arms_crossed',zh:'抱臂',cat:'posture',pose:'arms_crossed',fid:'exact'},
+ {id:'hands_pocket',zh:'插兜',cat:'posture',pose:'hands_pocket',fid:'exact'},
+ {id:'hug_self',zh:'抱住自己',cat:'posture',pose:'hug_self',fid:'exact'},
+ {id:'sit',zh:'坐下',cat:'posture',pose:'sit',fid:'exact'},
+ {id:'crouch',zh:'蹲下',cat:'posture',pose:'crouch',fid:'exact'},
+ {id:'bow',zh:'鞠躬',cat:'posture',pose:'bow',fid:'exact'},
+ {id:'turn_away',zh:'背过身',cat:'posture',pose:'turn',fid:'near'},
+ {id:'sleep',zh:'睡',cat:'posture',pose:'lie',fid:'near'},
+ {id:'talk',zh:'说话',cat:'posture',pose:'talk',fid:'exact'},
+ {id:'listen',zh:'倾听',cat:'posture',pose:'listen',fid:'exact'},
+ {id:'kneel',zh:'跪下',cat:'posture',pose:'kneel',fid:'exact'},
+ {id:'lie',zh:'躺下',cat:'posture',pose:'lie',fid:'exact'},
+ {id:'stretch',zh:'伸懒腰',cat:'posture',pose:'stretch',fid:'exact'},
+ {id:'flop',zh:'瘫倒',cat:'posture',pose:'lie',fid:'near'},
+ {id:'shrug',zh:'耸肩',cat:'gesture',pose:'shrug',fid:'exact'},
+ {id:'wave',zh:'挥手',cat:'gesture',pose:'wave',fid:'exact'},
+ {id:'point',zh:'指向',cat:'gesture',pose:'point',fid:'exact'},
+ {id:'reach',zh:'伸手',cat:'gesture',pose:'reach',fid:'exact'},
+ {id:'raise',zh:'举手',cat:'gesture',pose:'raise',fid:'exact'},
+ {id:'hold_out',zh:'递东西',cat:'gesture',pose:'hold',fid:'near'},
+ {id:'cheer',zh:'欢呼',cat:'gesture',pose:'cheer',fid:'exact'},
+ {id:'call',zh:'招手叫人',cat:'gesture',pose:'wave',fid:'near'},
+ {id:'hug',zh:'拥抱',cat:'gesture',pose:'open',fid:'near'},
+ {id:'shake',zh:'握手',cat:'gesture',pose:'hold',fid:'sub'},
+ {id:'carry',zh:'搬东西',cat:'gesture',pose:'carry',fid:'exact'},
+ {id:'work',zh:'干活',cat:'gesture',pose:'work',fid:'exact'},
+ {id:'cover_face',zh:'掩面',cat:'gesture',pose:'facepalm',fid:'near'},
+ {id:'facepalm',zh:'扶额',cat:'gesture',pose:'facepalm',fid:'exact'},
+ {id:'clap',zh:'鼓掌',cat:'gesture',pose:'clap',fid:'exact'},
+ {id:'nod',zh:'点头',cat:'gesture',pose:'nod',fid:'exact'},
+ {id:'shake_head',zh:'摇头',cat:'gesture',pose:'shake_head',fid:'exact'},
+ {id:'shrug_big',zh:'摊手',cat:'gesture',pose:'open',fid:'near'},
+ {id:'scratch_head',zh:'挠头',cat:'gesture',pose:'think',fid:'near'},
+ {id:'selfie',zh:'自拍',cat:'gesture',pose:'selfie',fid:'exact'},
+ {id:'walk',zh:'走',cat:'loco',pose:'walk',fid:'exact'},
+ {id:'run',zh:'跑',cat:'loco',pose:'run',fid:'exact'},
+ {id:'sprint',zh:'冲刺',cat:'loco',pose:'run',fid:'near'},
+ {id:'jump',zh:'跳',cat:'loco',pose:'idle',fid:'sub'},
+ {id:'spin',zh:'转圈',cat:'loco',pose:'turn',fid:'near'},
+ {id:'dance',zh:'跳舞',cat:'loco',pose:'dance',fid:'exact'},
+ {id:'fly',zh:'飞行',cat:'loco',pose:'float',fid:'exact'},
+ {id:'hover',zh:'悬停',cat:'loco',pose:'float',fid:'near'},
+ {id:'land',zh:'落地',cat:'loco',pose:'idle',fid:'sub'},
+ {id:'climb',zh:'攀爬',cat:'loco',pose:'reach',fid:'sub'},
+ {id:'head_down',zh:'低头',cat:'react',pose:'listen',fid:'near'},
+ {id:'look_up',zh:'抬头',cat:'react',pose:'look',fid:'near'},
+ {id:'slump',zh:'垮肩',cat:'react',pose:'hug_self',fid:'near'},
+ {id:'hurt',zh:'受伤',cat:'react',pose:'crouch',fid:'sub'},
+ {id:'knockback',zh:'击退',cat:'react',pose:'open',fid:'sub'},
+ {id:'stomp',zh:'跳脚',cat:'react',pose:'cheer',fid:'sub'},
+ {id:'guard',zh:'戒备',cat:'combat',pose:'arms_crossed',fid:'near'},
+ {id:'stance',zh:'起势',cat:'combat',pose:'idle',fid:'sub'},
+ {id:'punch',zh:'出拳',cat:'combat',pose:'punch',fid:'exact'},
+ {id:'kick',zh:'踢腿',cat:'combat',pose:'kick',fid:'exact'},
+ {id:'spinkick',zh:'回旋踢',cat:'combat',pose:'kick',fid:'near'},
+ {id:'block',zh:'格挡',cat:'combat',pose:'arms_crossed',fid:'sub'},
+ {id:'dodge',zh:'闪避',cat:'combat',pose:'crouch',fid:'near'},
+ {id:'charge',zh:'蓄力',cat:'combat',pose:'stretch',fid:'sub'},
+ {id:'powerup',zh:'爆气',cat:'special',pose:'open',fid:'sub'},
+ {id:'beam',zh:'发射光波',cat:'special',pose:'point',fid:'sub'},
+ {id:'shield',zh:'护盾',cat:'special',pose:'open',fid:'sub'},
+ {id:'hammer',zh:'抡锤',cat:'special',pose:'cheer',fid:'sub'},
+ {id:'web',zh:'发射丝线',cat:'special',pose:'point',fid:'sub'},
+ {id:'drink',zh:'喝水',cat:'object',pose:'tea',fid:'exact'},
+ {id:'read',zh:'阅读',cat:'object',pose:'read',fid:'exact'},
+ {id:'write',zh:'书写',cat:'object',pose:'work',fid:'near'},
+ {id:'throw',zh:'投掷',cat:'object',pose:'reach',fid:'near'},
+ {id:'hold',zh:'举着',cat:'object',pose:'hold',fid:'exact'},
+ {id:'push',zh:'推',cat:'object',pose:'hold',fid:'near'},
+ {id:'give',zh:'递给',cat:'object',pose:'hold',fid:'near'},
+ {id:'phone',zh:'打电话',cat:'object',pose:'phone',fid:'exact'}
+];
+function bodyOf(a){return BODIES[appearanceOf(a).body]||BODY_MALE;}
+function hairColourOf(a){return HAIR_COLOURS[appearanceOf(a).hairColour]||HAIR_COLOURS[0];}
+function rig(a){
+ const b=bodyOf(a);
+ return {height:b.height,hip:.088*b.hipWidth,shoulder:.181*b.shoulderWidth,upperLeg:.43*b.limb,lowerLeg:.42*b.limb,upperArm:.305*b.limb,lowerArm:.255*b.limb,torsoX:b.torsoX,torsoY:b.torsoY,torsoZ:b.torsoZ,chest:b.chest,waist:b.waist,hand:b.hand,foot:b.foot,neck:b.neck,head:b.head,body:b};
+}
+function rosterCard(id){return CAST_ROSTER[(Math.max(1,id)-1)%CAST_ROSTER.length];}
+function applyRoster(ap,card){return {...ap,name:card.name,body:card.body,hair:card.hair,hat:card.hat,outfit:card.outfit,colour:card.colour,hairColour:card.hairColour,roster:card.id};}
+
+// Distinct people: two adult silhouettes, hair, clothes. Heads stay featureless.
 const CAST_COLOURS = [
  {name:'朱红',hex:'#ed5548',rgb:[.93,.22,.16]}, {name:'湖蓝',hex:'#39bcca',rgb:[.13,.69,.78]},
  {name:'琥珀',hex:'#e9ae32',rgb:[.95,.60,.08]}, {name:'紫罗兰',hex:'#b58ce8',rgb:[.61,.34,.90]},
  {name:'松绿',hex:'#65b38c',rgb:[.23,.65,.43]}, {name:'玫红',hex:'#e079a2',rgb:[.91,.31,.54]}
 ];
-const CAST_NAMES=['阿岚','小汐','阿墨','知夏','青禾','白露','南星','闻川','初九','洛生'];
+const CAST_NAMES=['阿岚','小汐','阿墨','知夏','青禾','白露','南星','闻川','初九','洛生','林晚','顾深'];
 const HATS=['none','beret','cap','beanie','brim'];
 const HAT_NAMES={none:'无帽',beret:'贝雷帽',cap:'鸭舌帽',beanie:'针织帽',brim:'宽檐帽'};
-function defaultAppearance(id){return {name:CAST_NAMES[(id-1)%CAST_NAMES.length],colour:(id-1)%CAST_COLOURS.length,hat:['beret','cap','none','beanie','brim'][((id-1)%5)],outfit:(id-1)%2?'sleeves':'vest'};}
-function appearanceOf(a){const p=a.appearance||defaultAppearance(a.id);return {name:String(p.name||CAST_NAMES[(a.id-1)%10]).slice(0,12),colour:Number.isInteger(p.colour)?clamp(p.colour,0,5):0,hat:HATS.includes(p.hat)?p.hat:'none',outfit:p.outfit==='vest'?'vest':'sleeves'};}
+function defaultAppearance(id){return applyRoster({name:'',colour:0,hat:'none',outfit:'sleeves',body:'male',hair:'short',hairColour:0},rosterCard(id));}
+function appearanceOf(a){
+ const card=rosterCard(a.id||1),p=a.appearance||defaultAppearance(a.id);
+ const colour=Number.isInteger(p.colour)?clamp(p.colour,0,CAST_COLOURS.length-1):(card.colour||0);
+ const hairColour=Number.isInteger(p.hairColour)?clamp(p.hairColour,0,HAIR_COLOURS.length-1):(card.hairColour||0);
+ return {
+  name:String(p.name||card.name||CAST_NAMES[(a.id-1)%CAST_NAMES.length]).slice(0,12),
+  colour,hairColour,
+  hat:HATS.includes(p.hat)?p.hat:(card.hat||'none'),
+  outfit:OUTFITS.includes(p.outfit)?p.outfit:(card.outfit||'sleeves'),
+  body:p.body==='female'?'female':'male',
+  hair:HAIRS.includes(p.hair)?p.hair:(p.body==='female'?'long':'short'),
+  roster:p.roster||card.id
+ };
+}
 function castColour(a){return CAST_COLOURS[appearanceOf(a).colour];}
 function dressHat(add,headRoot,appearance,cloth){
  const obj=(mesh,p,s,material=cloth,rot=0)=>add(mesh,compose(headRoot,M.translation(...p),M.rz(rot),M.scale(...s)),material);
@@ -826,60 +996,106 @@ function dressHat(add,headRoot,appearance,cloth){
   case 'brim':obj('sphere',[0,.074,-.006],[.151,.011,.13]);obj('sphere',[0,.113,-.008],[.08,.046,.071]);obj('sphere',[0,.085,-.008],[.085,.015,.075],{shade:.055});break;
  }
 }
+function dressHair(add,headRoot,appearance,hairMat){
+ const obj=(p,s,rot=0)=>add('sphere',compose(headRoot,M.translation(...p),M.rz(rot),M.scale(...s)),hairMat);
+ const bangs=()=>{obj([0,.048,.072],[.078,.038,.036]);obj([.05,.03,.068],[.042,.040,.032]);obj([-.05,.03,.068],[.042,.040,.032]);};
+ switch(appearance.hair){
+  case 'crop':obj([0,.055,-.01],[.086,.055,.086]);break;
+  case 'short':obj([0,.062,-.012],[.092,.068,.090]);obj([.07,.02,-.01],[.038,.055,.042]);obj([-.07,.02,-.01],[.038,.055,.042]);break;
+  case 'bob':obj([0,.058,-.01],[.095,.070,.092]);obj([.088,-.02,-.01],[.046,.078,.050]);obj([-.088,-.02,-.01],[.046,.078,.050]);obj([0,-.04,-.07],[.080,.060,.055]);bangs();break;
+  case 'long':
+   obj([0,.06,-.012],[.098,.072,.094]);obj([.09,.01,-.01],[.042,.070,.048]);obj([-.09,.01,-.01],[.042,.070,.048]);
+   obj([0,-.02,-.08],[.090,.090,.070]);obj([0,-.20,-.09],[.082,.14,.065]);obj([0,-.38,-.07],[.072,.14,.058]);obj([0,-.54,-.04],[.055,.12,.048]);
+   bangs();
+   break;
+  case 'bun':obj([0,.055,-.01],[.090,.060,.088]);obj([0,.13,-.03],[.055,.055,.055]);obj([.08,.01,-.01],[.035,.05,.038]);obj([-.08,.01,-.01],[.035,.05,.038]);break;
+  case 'ponytail':obj([0,.055,-.01],[.090,.062,.088]);obj([0,.04,-.09],[.04,.04,.04]);obj([0,-.08,-.12],[.038,.12,.038]);obj([0,-.24,-.11],[.032,.12,.032]);bangs();break;
+  case 'braid':obj([0,.055,-.01],[.090,.062,.088]);obj([.08,.02,-.02],[.04,.06,.04]);obj([-.08,.02,-.02],[.04,.06,.04]);
+   obj([.02,-.10,-.10],[.032,.10,.032]);obj([-.01,-.24,-.09],[.030,.10,.030]);obj([.02,-.38,-.07],[.028,.10,.028]);obj([0,-.50,-.05],[.024,.08,.024]);
+   bangs();
+   break;
+ }
+}
+function dressClothes(add,pelvis,torso,appearance,cloth,R){
+ const flare=R.body.hipWidth;
+ if(appearance.outfit==='dress'){
+  add('sphere',M.mul(pelvis,tr([0,-.08,.02],[.19*flare,.09,.15])),cloth);
+  add('sphere',M.mul(pelvis,tr([0,-.26,.04],[.26*flare,.16,.19])),cloth);
+  add('sphere',M.mul(pelvis,tr([0,-.46,.05],[.31*flare,.18,.22])),cloth);
+  add('sphere',M.mul(pelvis,tr([0,-.66,.04],[.33*flare,.16,.22])),cloth);
+ }
+ if(appearance.outfit==='coat'){
+  add('sphere',M.mul(torso,tr([0,.18,.04],[.16*R.torsoX,.28,.12])),cloth);
+  add('sphere',M.mul(pelvis,tr([0,-.10,.03],[.18*flare,.16,.14])),cloth);
+ }
+ if(appearance.outfit==='blouse'){
+  add('sphere',M.mul(torso,tr([0,.16,.03],[.13*R.torsoX,.16,.10])),cloth);
+  add('sphere',M.mul(torso,tr([0,.04,.02],[.10*R.waist,.10,.08])),cloth);
+ }
+ if(R.chest>0){
+  add('sphere',M.mul(torso,tr([.068,.255,.102],[.072,.056,.066])),cloth);
+  add('sphere',M.mul(torso,tr([-.068,.255,.102],[.072,.056,.066])),cloth);
+  add('sphere',M.mul(torso,tr([0,.12,.02],[.10*R.waist,.11,.085])),cloth);
+ }
+}
 
 function human(a,scene,time) {
-  const out=[],c=poseControls(a,scene,time),air=isAirborne(a);
-  const root=compose(M.translation(a.x,baseY(a),a.z),M.ry(a.angle),M.rz(c.rootRoll),M.rx(c.rootTilt));
-  const appearance=appearanceOf(a),colour=castColour(a);
+  const out=[],c=poseControls(a,scene,time),air=isAirborne(a),R=rig(a);
+  const root=compose(M.translation(a.x,baseY(a),a.z),M.ry(a.angle),M.rz(c.rootRoll),M.rx(c.rootTilt),M.scale(R.height,R.height,R.height));
+  const appearance=appearanceOf(a),colour=castColour(a),hairCol=hairColourOf(a),female=appearance.body==='female';
   const cloth={shade:.63,tint:colour.rgb,emissive:.048,finish:'fabric',texLocal:true}, dark={shade:.045,emissive:.004};
+  const hairMat={shade:.28,tint:hairCol.rgb,emissive:.02,finish:'fabric',texLocal:true};
   const add=(mesh,m,material=dark)=>out.push({mesh,m:M.mul(root,m),...material,actorId:a.id});
   const ball=(p,s,material)=>add('sphere',tr(p,s),material);
   const link=(p,q,r1,r2=r1,mesh='limb',material)=>add(mesh,linkMatrix(p,q,r1,r2),material);
   const pelvis=compose(M.translation(c.shiftX||0,c.pelvis,0),M.ry(c.hipYaw||0),M.rz(c.hipRoll||0));
-  add('sphere',M.mul(pelvis,tr([0,.061,-.012],[.137,.110,.094])));
-  add('pelvis',M.mul(pelvis,M.translation(0,-.018,0)));
-  const torso=torsoMatrix(c);add('torso',torso,cloth);const tp=p=>M.transform(torso,p).slice(0,3);
-  ball(tp([0,.462,0]),[.044,.069,.044]);
+  const hipR=R.hip, shR=R.shoulder, hs=R.head;
+  add('sphere',M.mul(pelvis,tr([0,.061,-.012],[.137*R.body.hipWidth,.110,.094*R.body.hipWidth])));
+  add(female?'pelvisF':'pelvis',M.mul(pelvis,compose(M.translation(0,-.018,0),M.scale(R.body.hipWidth,1,R.body.hipWidth))));
+  const torso=torsoMatrix(c,R);add(female?'torsoF':'torso',torso,cloth);const tp=p=>M.transform(torso,p).slice(0,3);
+  ball(tp([0,.462*R.neck,0]),[.038*R.neck,.066*R.neck,.038*R.neck]);
   const headRoot=compose(torso,M.translation(0,.584,.008),M.ry(c.headYaw),M.rx(c.headPitch),M.scale(1,1/1.15,1));
   const head=(p,s)=>add('sphere',M.mul(headRoot,tr(p,s)));
-  head([0,.002,-.006],[.080,.113,.081]);head([0,-.060,.014],[.061,.056,.063]);
-  // No nose, eyes or mouth: a deliberately featureless head.
+  head([0,.002,-.006],[.080*hs,.113*hs,.081*hs]);head([0,-.060,.014],[.061*hs,.056*hs,.063*hs]);
+  dressHair(add,headRoot,appearance,hairMat);
   dressHat(add,headRoot,appearance,cloth);
-  a.headWorld=M.transform(M.mul(root,headRoot),[0,appearance.hat==='none'?.145:.195,0]).slice(0,3);
+  a.headWorld=M.transform(M.mul(root,headRoot),[0,appearance.hat==='none'&&appearance.hair==='none'?.145:.195,0]).slice(0,3);
   a.bodyWorld=M.transform(root,tp([0,.23,0])).slice(0,3);
-  for(const h of [.21,.29])add('sphere',M.mul(torso,tr([.003,h,.104],[.008,.008,.005])),{shade:.57});
-  const audit={mode:air?'air':a.moving?'gait':a.pose,legs:[],arms:[],feet:[],forward:[Math.sin(a.angle),0,Math.cos(a.angle)]};
+  for(const h of [.21,.29])add('sphere',M.mul(torso,tr([.003,h,.104*R.torsoZ],[.008,.008,.005])),{shade:.57});
+  dressClothes(add,pelvis,torso,appearance,cloth,R);
+  const audit={mode:air?'air':a.moving?'gait':a.pose,legs:[],arms:[],feet:[],forward:[Math.sin(a.angle),0,Math.cos(a.angle)],body:appearance.body};
+  const sleeve=appearance.outfit==='sleeves'||appearance.outfit==='coat'||appearance.outfit==='dress'||appearance.outfit==='blouse';
   [-1,1].forEach((side,i)=>{
-    const hip=M.transform(pelvis,[side*.088,0,0]).slice(0,3),kneePole=a.pose==='meditate'&&!a.moving?[side,0,.15]:[0,0,1];
-    const leg=twoBone(hip,c.feet[i],.43,.42,kneePole),knee=leg.joint,ankle=leg.end;
-    link(hip,knee,.083,.079);ball(knee,[.046,.047,.043]);link(knee,ankle,.062,.061,'forelimb');ball(ankle,[.028,.032,.029]);
+    const hip=M.transform(pelvis,[side*hipR,0,0]).slice(0,3),kneePole=a.pose==='meditate'&&!a.moving?[side,0,.15]:[0,0,1];
+    const leg=twoBone(hip,c.feet[i],R.upperLeg,R.lowerLeg,kneePole),knee=leg.joint,ankle=leg.end;
+    const skirt=appearance.outfit==='dress';
+    link(hip,knee,.083,.079,'limb',skirt?cloth:dark);ball(knee,[.046,.047,.043],skirt?cloth:dark);link(knee,ankle,.062,.061,'forelimb',skirt?cloth:dark);ball(ankle,[.028,.032,.029]);
     const foot=compose(M.translation(...ankle),M.ry(c.footYaw?.[i]||0),M.rx(c.pitches[i]));
-    add('sphere',M.mul(foot,tr([0,-.038,-.034],[.045,.033,.060])));
-    add('sphere',M.mul(foot,tr([0,-.040,.061],[.049,.032,.079])));
-    add('sphere',M.mul(foot,tr([0,-.043,.143],[.047,.029,.036])));
-    const shoulder=tp([side*.181,.363,0]),arm=twoBone(shoulder,c.hands[i],.305,.255,c.poles[i]),elbow=arm.joint,wrist=arm.end;
-    ball(shoulder,[.060,.066,.061],appearance.outfit==='sleeves'?cloth:dark);link(shoulder,elbow,.054,.051,'limb',appearance.outfit==='sleeves'?cloth:dark);ball(elbow,[.032,.034,.031]);link(elbow,wrist,.042,.039,'forelimb',appearance.outfit==='sleeves'?cloth:dark);ball(wrist,[.022,.024,.022]);
+    const fs=R.foot;
+    add('sphere',M.mul(foot,tr([0,-.038,-.034],[.045*fs,.033*fs,.060*fs])));
+    add('sphere',M.mul(foot,tr([0,-.040,.061],[.049*fs,.032*fs,.079*fs])));
+    add('sphere',M.mul(foot,tr([0,-.043,.143],[.047*fs,.029*fs,.036*fs])));
+    const shoulder=tp([side*shR,.363,0]),arm=twoBone(shoulder,c.hands[i],R.upperArm,R.lowerArm,c.poles[i]),elbow=arm.joint,wrist=arm.end;
+    const armCloth=sleeve?cloth:dark;
+    ball(shoulder,[.054*R.body.shoulderWidth+.012,.062,.056],armCloth);link(shoulder,elbow,.054,.051,'limb',armCloth);ball(elbow,[.032,.034,.031]);link(elbow,wrist,.042,.039,'forelimb',armCloth);ball(wrist,[.022*R.hand,.024*R.hand,.022*R.hand]);
     const d=V.norm(V.sub(wrist,elbow));
-    // Palm & thumb are attached in a wrist-local frame, never in world axes.
     const frame=linkMatrix(wrist,V.add(wrist,d),1,1);
     const hand=compose(frame,M.rx(c.wristFlex?.[i]||0),M.rz(c.wristWave?.[i]||0));
-    const palm=[.029,.014],open=c.handOpen?.[i]??.15;
-    // Running uses a relaxed closed hand, not rigid, extended 'tray' fingers.
+    const palm=[.029*R.hand,.014*R.hand],open=c.handOpen?.[i]??.15;
     const closed=open<.20;
     add('sphere',M.mul(hand,tr([0,closed?.037:.044,0],[palm[0],closed?.034:.045,closed?.022:palm[1]])));
-    add('sphere',M.mul(hand,tr([0,closed?.069:.090,-(closed?.016:.017*(1-open))],[.028,closed?.022:.028,closed?.024:.012])));
-    // Slightly separated fingertips only when the palm is deliberately open.
+    add('sphere',M.mul(hand,tr([0,closed?.069:.090,-(closed?.016:.017*(1-open))],[.028*R.hand,closed?.022:.028,.024*R.hand])));
     if(open>.6){for(let j=0;j<4;j++)add('sphere',M.mul(hand,tr([(j-1.5)*.014,.101-(Math.abs(j-1.5)-.5)*.006,0],[.008,.023,.010])));}
-    const thumbBase=side*.027;
+    const thumbBase=side*.027*R.hand;
     add('sphere',M.mul(hand,compose(M.translation(thumbBase,closed?.050:.037,closed?.022:.007),M.rz(-side*.30),M.scale(.012,.027,.012))));
     if(a.pose==='point'&&side===1)add('sphere',M.mul(hand,tr([-.014,.129,0],[.009,.041,.009])));
     audit.legs.push(leg);audit.arms.push(arm);audit.feet.push({local:ankle,world:M.transform(root,ankle).slice(0,3),sample:gaitSample(a.phase,side,a.pose==='run')});
   });
   a.rigAudit=audit;if(!a.moving&&a.pose==='read'){const book=compose(root,tr([0,.895,.42],[.30,.035,.23]));out.push({mesh:'box',m:book,shade:.8});}
   if(!a.moving&&a.pose==='tea'){const hand=c.hands[1];out.push({mesh:'sphere',m:M.mul(root,tr([hand[0],hand[1]+.025,hand[2]+.045],[.052,.064,.052])),shade:.78});}
+  if(!a.moving&&(a.pose==='phone'||a.pose==='selfie')){const hand=c.hands[1];out.push({mesh:'box',m:M.mul(root,tr([hand[0],hand[1]+.02,hand[2]+.02],[.04,.08,.02])),shade:.15});}
   return out;
 }
-
 
 const SCENE_META=[
  {title:'光之门',en:'THE THRESHOLD',line:'在无声处，\n走向一束光。',note:'一道门，一片黑。光在等待你的影子。',tag:'光束 · 长影'},
@@ -1521,7 +1737,7 @@ function cleanRenderSettings(input={}){
  return settings;
 }
 const $=id=>document.getElementById(id);
-const labels={idle:'静立',walk:'漫步',run:'奔跑',float:'漂浮',reach:'伸手',wave:'挥手',point:'指向',open:'张开双臂',look:'环顾',bow:'鞠躬',crouch:'下蹲',kneel:'单膝',sit:'坐下',meditate:'盘坐',balance:'单脚平衡',stretch:'舒展',turn:'转身',dance:'轻舞',chair:'椅上坐姿',work:'办公',read:'阅读',tea:'喝茶',talk:'交谈'};
+const labels={idle:'静立',walk:'漫步',run:'奔跑',float:'漂浮',reach:'伸手',wave:'挥手',point:'指向',open:'张开双臂',look:'环顾',bow:'鞠躬',crouch:'下蹲',kneel:'单膝',sit:'坐下',meditate:'盘坐',balance:'单脚平衡',stretch:'舒展',turn:'转身',dance:'轻舞',chair:'椅上坐姿',work:'办公',read:'阅读',tea:'喝茶',talk:'交谈',arms_crossed:'抱臂',hands_pocket:'插兜',hug_self:'抱住自己',think:'思考',phone:'打电话',clap:'鼓掌',shrug:'耸肩',raise:'举手',cheer:'欢呼',hold:'举着',kick:'踢腿',listen:'倾听',nod:'点头',shake_head:'摇头',facepalm:'扶额',punch:'出拳',carry:'搬东西',selfie:'自拍',lie:'躺下'};
 const icons=[`<path d="M5 39 18 19 27 19 44 39" fill="#aaa" opacity=".5"/><path d="M18 20V4h10v16" stroke="#eee" fill="#ddd"/>`,`<path d="M3 39v-5h7v-6h7v-6h7v-6h7v-6h7V4h8v35Z" fill="#bbb"/>`,`<ellipse cx="25" cy="17" rx="18" ry="12" fill="#ccc"/><ellipse cx="29" cy="38" rx="18" ry="2" fill="#777"/>`,`<path d="m3 40 36-12-29-9L34 8 22 4" stroke="#ddd" stroke-width="5" fill="none"/>`,`<path d="M14 42V24M21 42V13M28 42V3M35 42V10M42 42V0" stroke="#bbb" stroke-width="4"/>`];
 class App {
  constructor(){this.canvas=$('stage');this.renderer=new Renderer(this.canvas);this.scene=createScene(0);this.actors=[];this.selected=0;this.time=0;this.last=performance.now();this.paused=false;this.keys=new Set();this.joy=[0,0];this.settings=cleanRenderSettings();this.look=readLook();this.liftInput=0;this.motionRate=1;this.cameraMode="fixed";this.cameraOrbit=0;this.accents=[];this.director=new Director(this);this.exhibition=new Exhibition(this);this.living=new LivingWorld(this);this.cameraRig=new CameraRig(this);this.dialogue=new Dialogue(this);this.theatre=new Theatre(this);this.focused=false;this.focusPoint=null;this.camera={};this.pointer=null;this.draggingActor=false;this.clockSamples=[];this.uiTick=0;this.frames=0;this.lastFps=this.last;this.fps=0;this.renderCount=0;this.setupUI();this.loadScene(7,false);this.events();this.setupV2();this.setupWorldUI();this.setupV5();this.setupLookUI();this.animate=this.animate.bind(this);requestAnimationFrame(this.animate);setTimeout(()=>this.toast('拖空白旋转三维镜头；点击地面移动。点“短剧”看人物表演。',4600),900);}
@@ -1534,7 +1750,7 @@ class App {
  }
  createActor(x,z,pose,angle){let p=this.scene.constrain(x,z),y=this.scene.height(p[0],p[1]),flying=pose==='float',flightY=y+2.3;return {appearance:defaultAppearance(this.actors.length+1),id:this.actors.length+1,x:p[0],z:p[1],y:flying?flightY:y,s:p[2]||0,pose,poseSince:this.time,angle,phase:0,target:null,moving:false,auto:false,autoDir:1,jumpY:0,velocity:0,flying,flightY,airY:flying?flightY:y,landing:false,blendFrom:null,blendAt:this.time,speed:0,accel:0,turnRate:0,gaitWeight:0,runWeight:0,feetPlant:[null,null]};}
 
- loadScene(id,transition=true){if(transition){$('transition').classList.add('on');clearTimeout(this.sceneTimer);this.sceneTimer=setTimeout(()=>{this.loadScene(id,false);$('transition').classList.remove('on');},160);return;}this.director?.stop();this.director?.stopPlayback();this.liftInput=0;this.keys.clear();this.cameraMode="fixed";this.cameraOrbit=0;this.scene=createScene(id);this.cameraRig.reset();prepareWorld(this.renderer,this.scene);this.accents=createAccents(this.scene);document.body.classList.toggle('light-scene',[1,2,4,5,6,7,8,9].includes(id));this.actors=[];for(const [x,z,pose,angle]of this.scene.spawns)this.actors.push(this.createActor(x,z,pose,angle));this.selected=0;this.focused=false;this.focusPoint=null;this.pointer=null;this.draggingActor=false;this.joy=[0,0];$('knob').style.transform='';this.settings.lightShift=0;$('light').value=0;$('light-value').value='0';this.settings.zoom=1;$('zoom').value=1;$('zoom-value').value='1.00';$('focus').setAttribute('aria-pressed','false');$('focus').textContent='人物特写';this.setPaused(false);let meta=SCENE_META[id];$('headline').textContent=meta.line;$('scene-en').textContent=meta.en;$('scene-note').textContent=meta.note;$('top-count').textContent=String(id+1).padStart(2,'0');document.querySelectorAll('[data-scene]').forEach(b=>{let active=Number(b.dataset.scene)===id;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});this.living.setup();this.exhibition.setupScene();this.refreshWorldUI?.();this.syncPose();this.updateCamera();this.syncV2Controls();document.title=`${meta.title} · NOIR ATLAS 5.3 / 双模式材质微剧场`;}
+ loadScene(id,transition=true){if(transition){$('transition').classList.add('on');clearTimeout(this.sceneTimer);this.sceneTimer=setTimeout(()=>{this.loadScene(id,false);$('transition').classList.remove('on');},160);return;}this.director?.stop();this.director?.stopPlayback();this.liftInput=0;this.keys.clear();this.cameraMode="fixed";this.cameraOrbit=0;this.scene=createScene(id);this.cameraRig.reset();prepareWorld(this.renderer,this.scene);this.accents=createAccents(this.scene);document.body.classList.toggle('light-scene',[1,2,4,5,6,7,8,9].includes(id));this.actors=[];for(const [x,z,pose,angle]of this.scene.spawns)this.actors.push(this.createActor(x,z,pose,angle));this.selected=0;this.focused=false;this.focusPoint=null;this.pointer=null;this.draggingActor=false;this.joy=[0,0];$('knob').style.transform='';this.settings.lightShift=0;$('light').value=0;$('light-value').value='0';this.settings.zoom=1;$('zoom').value=1;$('zoom-value').value='1.00';$('focus').setAttribute('aria-pressed','false');$('focus').textContent='人物特写';this.setPaused(false);let meta=SCENE_META[id];$('headline').textContent=meta.line;$('scene-en').textContent=meta.en;$('scene-note').textContent=meta.note;$('top-count').textContent=String(id+1).padStart(2,'0');document.querySelectorAll('[data-scene]').forEach(b=>{let active=Number(b.dataset.scene)===id;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});this.living.setup();this.exhibition.setupScene();this.refreshWorldUI?.();this.syncPose();this.updateCamera();this.syncV2Controls();document.title=`${meta.title} · NOIR ATLAS 5.4 / 双模式材质微剧场`;}
  get actor(){return this.actors[this.selected];}
  syncPose(){let a=this.actor;if(!a)return;$('actor-id').textContent=String(a.id).padStart(2,'0');$('actor-state').textContent=a.landing?'准备着陆':a.flying?`${a.moving?'飞行':'悬停'} · ${labels[a.pose]}`:a.moving?(a.pose==='run'?'奔跑中':'行走中'):labels[a.pose];document.querySelectorAll('[data-pose]').forEach(b=>{let active=b.dataset.pose===a.pose;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});$('flight-controls').hidden=!a.flying;$('flight-altitude').textContent=`${a.flightY.toFixed(1)}m`;document.body.classList.toggle('is-flying',a.flying);this.exhibition?.sync();}
 
@@ -1687,7 +1903,7 @@ class App {
  }
  accentAt(x,y){if(!this.settings.accents)return -1;let hit=-1,best=16;this.accents.forEach((p,i)=>{const projected=this.screen([p.x,p.y+.10*Math.sin(this.time*.7+p.phase),p.z]),d=Math.hypot(x-projected.x,y-projected.y);if(d<best){best=d;hit=i;}});return hit;}
  land(){this.director.stopPlayback();const a=this.actor;this.exhibition.takeover(a);if(!a.flying)return;const p=this.scene.constrain(a.x,a.z);a.landing=true;a.auto=false;a.target=Math.hypot(p[0]-a.x,p[1]-a.z)>.03?{x:p[0],z:p[1],s:p[2]}:null;this.liftInput=0;this.setPaused(false);this.toast('返回可站立的地面后缓慢着陆。');}
- snapshot(){return {version:'5.3.0',look:normalizeLook(this.look),scene:this.scene.id,sceneName:SCENE_META[this.scene.id].title,selected:this.selected,actors:this.actors.map(a=>({appearance:appearanceOf(a),speech:a.speech,headWorld:a.headWorld,id:a.id,x:a.x,y:a.y,z:a.z,s:a.s,angle:a.angle,pose:a.pose,seatId:a.seatId,life:a.life,route:a.route,moving:a.moving,jumpY:a.jumpY,phase:a.phase,speed:a.speed,gaitWeight:a.gaitWeight,brain:a.brain,scoreEvents:a.scoreEvents,flying:a.flying,flightY:a.flightY,airY:a.airY,landing:a.landing})),paused:this.paused,settings:{...this.settings},time:this.time,renderCount:this.renderCount,drawCalls:this.renderer.drawCalls,focus:this.focused,cameraRig:this.cameraRig.state(),dialogue:{enabled:this.dialogue.enabled,fontSize:this.dialogue.fontSize,history:this.dialogue.history},theatre:{active:this.theatre.active,index:this.theatre.index,events:this.theatre.events},cameraMode:this.cameraMode,motionRate:this.motionRate,exhibition:{enabled:this.exhibition.enabled},accents:this.accents.map(p=>({...p})),director:{recording:this.director.recording,playing:this.director.playing,duration:this.director.clip?.duration||0},anatomy:{height:1.82,headHeight:.234,headCount:7.78},actionCount:Object.keys(labels).length,world:this.scene.world?{spots:this.scene.spots,pairs:this.living.pairs,events:this.living.events,navComponents:this.scene.nav.componentCount,sourceObjects:this.scene.sourceObjectCount}:null,webgl:2};}
+ snapshot(){return {version:'5.4.0',look:normalizeLook(this.look),scene:this.scene.id,sceneName:SCENE_META[this.scene.id].title,selected:this.selected,actors:this.actors.map(a=>({appearance:appearanceOf(a),speech:a.speech,headWorld:a.headWorld,id:a.id,x:a.x,y:a.y,z:a.z,s:a.s,angle:a.angle,pose:a.pose,seatId:a.seatId,life:a.life,route:a.route,moving:a.moving,jumpY:a.jumpY,phase:a.phase,speed:a.speed,gaitWeight:a.gaitWeight,brain:a.brain,scoreEvents:a.scoreEvents,flying:a.flying,flightY:a.flightY,airY:a.airY,landing:a.landing})),paused:this.paused,settings:{...this.settings},time:this.time,renderCount:this.renderCount,drawCalls:this.renderer.drawCalls,focus:this.focused,cameraRig:this.cameraRig.state(),dialogue:{enabled:this.dialogue.enabled,fontSize:this.dialogue.fontSize,history:this.dialogue.history},theatre:{active:this.theatre.active,index:this.theatre.index,events:this.theatre.events},cameraMode:this.cameraMode,motionRate:this.motionRate,exhibition:{enabled:this.exhibition.enabled},accents:this.accents.map(p=>({...p})),director:{recording:this.director.recording,playing:this.director.playing,duration:this.director.clip?.duration||0},anatomy:{maleHeight:1.82,femaleHeight:1.69,headHeight:.234,bodies:2,headCount:7.78},actionCount:Object.keys(labels).length,actlib:ACTLIB_ACTS.length,world:this.scene.world?{spots:this.scene.spots,pairs:this.living.pairs,events:this.living.events,navComponents:this.scene.nav.componentCount,sourceObjects:this.scene.sourceObjectCount}:null,webgl:2};}
 
 }
 
@@ -1726,8 +1942,13 @@ App.prototype.drawWorldHUD=function(){this.dialogue.draw();};
 App.prototype.syncCameraUI=function(){if(!$('view-scale'))return;$('view-scale').textContent=Math.round(this.settings.zoom*100)+'%';$('view-projection').textContent=this.cameraRig.projection==='perspective'?'透视 3D':'正交 3D';$('view-lock').setAttribute('aria-pressed',String(this.cameraRig.lock));$('zoom').value=this.settings.zoom;$('zoom-value').value=this.settings.zoom.toFixed(2);};
 App.prototype.syncDialogueUI=function(){if(!$('dialogue-enabled'))return;$('dialogue-enabled').checked=this.dialogue.enabled;$('voice-enabled').checked=this.dialogue.voice;$('ambient-enabled').checked=this.dialogue.ambient;$('cast-names').checked=this.dialogue.names;};
 App.prototype.renderCast=function(){if(!$('cast-list'))return;const list=$('cast-list');list.replaceChildren();this.actors.forEach((a,i)=>{const el=document.createElement('button');el.className='cast-item'+(i===this.selected?' selected':'');el.dataset.actor=String(a.id);const dot=document.createElement('span');dot.style.background=castColour(a).hex;el.append(dot,document.createTextNode(appearanceOf(a).name));el.onclick=()=>{this.selected=i;this.syncPose();this.renderCast();};list.append(el);});
- const ap=appearanceOf(this.actor);$('cast-name').value=ap.name;$('cast-hat').value=ap.hat;$('cast-outfit').value=ap.outfit;$('cast-colours').replaceChildren();CAST_COLOURS.forEach((c,i)=>{const el=document.createElement('button');el.className='swatch'+(i===ap.colour?' selected':'');el.setAttribute('aria-label',c.name);el.setAttribute('aria-pressed',String(i===ap.colour));const dot=document.createElement('span');dot.style.background=c.hex;el.append(dot);el.onclick=()=>{this.actor.appearance={...appearanceOf(this.actor),colour:i};this.renderCast();};$('cast-colours').append(el);});
+ const ap=appearanceOf(this.actor);$('cast-name').value=ap.name;$('cast-hat').value=ap.hat;$('cast-outfit').value=ap.outfit;if($('cast-body'))$('cast-body').value=ap.body;if($('cast-hair'))$('cast-hair').value=ap.hair;$('cast-colours').replaceChildren();CAST_COLOURS.forEach((c,i)=>{const el=document.createElement('button');el.className='swatch'+(i===ap.colour?' selected':'');el.setAttribute('aria-label',c.name);el.setAttribute('aria-pressed',String(i===ap.colour));const dot=document.createElement('span');dot.style.background=c.hex;el.append(dot);el.onclick=()=>{this.actor.appearance={...appearanceOf(this.actor),colour:i};this.renderCast();};$('cast-colours').append(el);});
+ if($('cast-hair-colours')){$('cast-hair-colours').replaceChildren();HAIR_COLOURS.forEach((c,i)=>{const el=document.createElement('button');el.className='swatch'+(i===ap.hairColour?' selected':'');el.setAttribute('aria-label',c.name);el.setAttribute('aria-pressed',String(i===ap.hairColour));const dot=document.createElement('span');dot.style.background=c.hex;el.append(dot);el.onclick=()=>{this.actor.appearance={...appearanceOf(this.actor),hairColour:i};this.renderCast();};$('cast-hair-colours').append(el);});}
+ this.renderRoster();
 };
+App.prototype.renderRoster=function(){const host=$('roster-list');if(!host)return;host.replaceChildren();const current=appearanceOf(this.actor).roster;CAST_ROSTER.forEach(card=>{const el=document.createElement('button');el.type='button';el.className='roster-card'+(card.id===current?' selected':'')+' '+(card.body==='female'?'is-female':'is-male');el.setAttribute('aria-pressed',String(card.id===current));const mark=document.createElement('span');mark.className='roster-mark';mark.style.background=CAST_COLOURS[card.colour].hex;const name=document.createElement('strong');name.textContent=card.name;const meta=document.createElement('small');meta.textContent=(card.body==='female'?'女':'男')+' · '+(HAIR_NAMES[card.hair]||'')+' · '+(OUTFIT_NAMES[card.outfit]||'');el.append(mark,name,meta);el.onclick=()=>{this.actor.appearance=applyRoster(appearanceOf(this.actor),card);this.renderCast();};host.append(el);});};
+App.prototype.buildActlib=function(){const cats=$('actlib-cats'),grid=$('actlib-grid');if(!cats||!grid)return;this.actlibCat=this.actlibCat||'全部';const keys=['全部',...Object.keys(ACTLIB_CAT_ZH)];cats.replaceChildren();keys.forEach(id=>{const b=document.createElement('button');b.type='button';b.className='actlib-chip'+(this.actlibCat===id?' active':'');b.textContent=id==='全部'?'全部':ACTLIB_CAT_ZH[id];b.setAttribute('aria-pressed',String(this.actlibCat===id));b.onclick=()=>{this.actlibCat=id;this.buildActlib();};cats.append(b);});grid.replaceChildren();ACTLIB_ACTS.filter(a=>this.actlibCat==='全部'||a.cat===this.actlibCat).forEach(act=>{const b=document.createElement('button');b.type='button';b.className='action fid-'+act.fid;b.dataset.pose=act.pose;b.dataset.act=act.id;b.setAttribute('aria-pressed','false');b.title=act.zh+' · '+(act.fid==='exact'?'原样':act.fid==='near'?'接近':'替代');b.textContent=act.zh;b.onclick=()=>this.setPose(act.pose);grid.append(b);});this.syncPose();};
+
 App.prototype.setupV5=function(){const app=this;this.cameraRig.bind();
  const closePanels=()=>{for(const id of ['cast-panel','theatre-panel','settings','motion-panel','director-panel','places-panel','social-panel'])$(id).hidden=true;};
  $('theatre-toggle').onclick=()=>{const open=$('theatre-panel').hidden;closePanels();$('theatre-panel').hidden=!open;this.syncDialogueUI();};
@@ -1740,6 +1961,9 @@ App.prototype.setupV5=function(){const app=this;this.cameraRig.bind();
  $('cast-control').onclick=()=>{this.exhibition.takeover(this.actor);this.cameraRig.frameActor();$('cast-panel').hidden=true;this.syncPose();};
  $('cast-name').oninput=e=>{this.actor.appearance={...appearanceOf(this.actor),name:e.target.value.trim().slice(0,12)||'无名'};const b=$('cast-list').querySelector('.selected');if(b)b.lastChild.textContent=this.actor.appearance.name;};
  $('cast-hat').onchange=e=>{this.actor.appearance={...appearanceOf(this.actor),hat:e.target.value};};$('cast-outfit').onchange=e=>{this.actor.appearance={...appearanceOf(this.actor),outfit:e.target.value};};
+ if($('cast-body'))$('cast-body').onchange=e=>{this.actor.appearance={...appearanceOf(this.actor),body:e.target.value};this.renderCast();};
+ if($('cast-hair'))$('cast-hair').onchange=e=>{this.actor.appearance={...appearanceOf(this.actor),hair:e.target.value};this.renderCast();};
+ this.buildActlib();
  $('cast-say').onclick=()=>{this.exhibition.takeover(this.actor);this.setPaused(false);this.living.pose(this.actor,this.actor.seatId?'tea':'talk');this.dialogue.enabled=true;this.dialogue.say(this.actor,$('cast-line').value||'今天的光，和昨天不一样。',10);this.cameraRig.frameActor();$('cast-panel').hidden=true;};
  $('cast-names').onchange=e=>this.dialogue.names=e.target.checked;
  for(const [id,key]of [['dialogue-enabled','enabled'],['ambient-enabled','ambient']])$(id).onchange=e=>{this.dialogue[key]=e.target.checked;};$('voice-enabled').onchange=e=>this.dialogue.toggleVoice(e.target.checked);
@@ -1839,8 +2063,6 @@ App.prototype.setupLookUI=function(){
  this.syncLookUI();
 };
 
-try{window.noirApp=new App();window.__NOIR__={version:"5.3.0",normalizeLook,validateLook,LOOK_PRESETS,MATERIAL_DEFS,cleanRenderSettings,CLEAN_RENDER_DEFAULTS,snapshot:()=>window.noirApp.snapshot(),project:p=>window.noirApp.screen(p),ready:true,gaitSample,phaseForDistance,twoBone,poseControls,human,validateClip,labels,updateContactRig,armControls,GAITS,Exhibition,NavGrid,createScene,createWorld,SCENE_META,CameraRig,Dialogue,Theatre,DRAMA_SCRIPTS,validateDrama,CAST_COLOURS,appearanceOf,M,V};}catch(e){console.error(e);$('error').hidden=false;$('error').textContent='场景未能启动\n\n'+e.message;window.__NOIR__={ready:false,error:e.message};}
-
-
+try{window.noirApp=new App();window.__NOIR__={version:"5.4.0",normalizeLook,validateLook,LOOK_PRESETS,MATERIAL_DEFS,cleanRenderSettings,CLEAN_RENDER_DEFAULTS,snapshot:()=>window.noirApp.snapshot(),project:p=>window.noirApp.screen(p),ready:true,gaitSample,phaseForDistance,twoBone,poseControls,human,validateClip,labels,updateContactRig,armControls,GAITS,Exhibition,NavGrid,createScene,createWorld,SCENE_META,CameraRig,Dialogue,Theatre,DRAMA_SCRIPTS,validateDrama,CAST_COLOURS,CAST_ROSTER,ACTLIB_ACTS,BODIES,HAIRS,HAIR_COLOURS,OUTFITS,appearanceOf,rig,bodyOf,applyRoster,M,V};}catch(e){console.error(e);$('error').hidden=false;$('error').textContent='场景未能启动\n\n'+e.message;window.__NOIR__={ready:false,error:e.message};}
 })();
 </script></body></html>
