@@ -9,7 +9,7 @@
  </div>
 </header>
 <section class="headline ui"><div class="eyebrow" id="scene-en">THE THRESHOLD</div><h1 id="headline">在无声处，\n走向一束光。</h1><p id="scene-note">一道门，一片黑。光在等待你的影子。</p></section>
-<div class="workspace ui"><button id="exhibition-toggle" class="tool-pill" aria-pressed="true" title="自动展演；操作人物后可在这里恢复">展演中</button><button id="settings-toggle" class="tool-pill" aria-expanded="false">光影调校</button><button id="focus" class="tool-pill" aria-pressed="false">人物特写</button><button id="director-toggle" class="tool-pill" aria-expanded="false">镜头台</button><button class="tool-pill theatre-toggle" id="theatre-toggle">短剧 ▷</button><button class="tool-pill" id="cast-toggle">角色</button></div>
+<div class="workspace ui"><button id="exhibition-toggle" class="tool-pill" aria-pressed="true" title="自动展演；操作人物后可在这里恢复">展演中</button><button id="settings-toggle" class="tool-pill" aria-expanded="false">光影</button><button id="focus" class="tool-pill desk-only" aria-pressed="false">特写</button><button id="director-toggle" class="tool-pill desk-only" aria-expanded="false">镜头台</button><button class="tool-pill theatre-toggle" id="theatre-toggle">短剧 ▷</button><button class="tool-pill" id="cast-toggle">角色</button><div class="world-strip" id="world-strip" hidden><button class="tool-pill" id="world-guide" title="场景导览">导览</button><button class="tool-pill" id="nearby" title="附近互动">互动</button><button class="tool-pill desk-only" id="follow-world" title="跟随当前人物">跟随</button><button class="tool-pill" id="stand-up" hidden>起身</button></div></div>
 <aside class="settings ui" id="settings" hidden><div class="panel-title">CLEAN · 纯净光影<button id="settings-close" aria-label="关闭光影面板">×</button></div>
 <label class="setting"><span class="label">光源偏移 <output id="light-value">0</output></span><input id="light" type="range" min="-14" max="14" value="0" step=".1" aria-label="光源偏移"></label>
 <label class="setting"><span class="label">明暗对比 <output id="contrast-value">1.00</output></span><input id="contrast" type="range" min=".7" max="1.6" value="1" step=".01" aria-label="明暗对比"></label>
@@ -61,24 +61,25 @@
 
 
 <button class="restore iconbutton" id="restore" aria-label="退出沉浸模式" title="退出沉浸模式"><svg viewBox="0 0 24 24"><path d="M3 8h5V3M16 3v5h5M21 16h-5v5M8 21v-5H3"/></svg></button>
-<div class="help" id="help" hidden><section class="help-card"><div class="eyebrow">A SMALL GUIDE</div><h2>把自己放进光里。</h2><p>十个实时场景，包括多房间办公楼、水墨山水和古建院落。人物分男女两副成人体型；衣服、发型、帽子、建筑和影子都由 WebGL 2 三维网格实时绘制；对白锚定头顶。透视 / 正交都是同一个三维世界。</p><div class="help-line"><strong>移动</strong><span>点击地面前往；按住人物拖动。手机也可用左下摇杆。</span></div><div class="help-line"><strong>动作</strong><span>常用动作在底部；“更多动作”打开动作库 73 项对照，男女同一套动作。左下小按钮跳跃。</span></div><div class="help-line"><strong>飞行</strong><span>点击“飞行”后持续悬浮；左下摇杆旁的小 ↑ / ↓ 调高度。换动作也保持飞行，只有“着陆”返回地面。</span></div><div class="help-line"><strong>展演</strong><span>默认按场景自动行走、观察和停留。触控接管当前人物，其他人物继续。点“恢复展演”交还控制。</span></div><div class="help-line"><strong>构图</strong><span>新场景点击人物可以互动，或选择“接管此人物”。新场景最多十个人，原艺术场景最多五人。</span></div><div class="help-line"><strong>光影</strong><span>调节光源、颗粒、雾、缩放与点色开关。镜头台可以记录、回放、导出动画数据。</span></div><div class="help-line"><strong>桌面</strong><span>拖动空白旋转视角；滚轮或双指缩放，双指平移。WASD / 方向键移动；地面空格跳跃。飞行时 E / 空格上升，Q / Shift 下降；Esc 关闭面板。</span></div><button class="dismiss" id="help-close">进入这片寂静</button></section></div>
-<div class="world-strip ui" id="world-strip" hidden><button class="tool-pill" id="world-guide">场景导览</button><button class="tool-pill" id="nearby">附近互动</button><button class="tool-pill" id="follow-world">跟随视角</button><button class="tool-pill" id="stand-up" hidden>起身</button></div>
+<div class="help" id="help" hidden><section class="help-card"><div class="eyebrow">A SMALL GUIDE</div><h2>把自己放进光里。</h2><p>十个实时场景，包括多房间办公楼、水墨山水和古建院落。人物分男女两副成人体型；衣服、发型、帽子、建筑和影子都由 WebGL 2 三维网格实时绘制；对白锚定人物身旁。透视 / 正交都是同一个三维世界。</p><div class="help-line"><strong>移动</strong><span>点击地面前往；按住人物拖动。手机也可用左下摇杆。</span></div><div class="help-line"><strong>动作</strong><span>常用动作在底部；“更多动作”打开动作库 73 项对照，男女同一套动作。左下小按钮跳跃。</span></div><div class="help-line"><strong>飞行</strong><span>点击“飞行”后持续悬浮；左下摇杆旁的小 ↑ / ↓ 调高度。换动作也保持飞行，只有“着陆”返回地面。</span></div><div class="help-line"><strong>展演</strong><span>默认按场景自动行走、观察和停留。触控接管当前人物，其他人物继续。点“恢复展演”交还控制。</span></div><div class="help-line"><strong>构图</strong><span>新场景点击人物可以互动，或选择“接管此人物”。点右下「镜头」才打开缩放与透视/正交，平时收起。</span></div><div class="help-line"><strong>光影</strong><span>调节光源、颗粒、雾、缩放与点色开关。镜头台可以记录、回放、导出动画数据。</span></div><div class="help-line"><strong>桌面</strong><span>拖动空白旋转视角；滚轮或双指缩放，双指平移。WASD / 方向键移动；地面空格跳跃。飞行时 E / 空格上升，Q / Shift 下降；Esc 关闭面板。</span></div><button class="dismiss" id="help-close">进入这片寂静</button></section></div>
 <aside class="places-panel ui" id="places-panel" hidden><div class="panel-title"><span id="places-title">可到达地点</span><button id="places-close" aria-label="关闭导览">×</button></div><p class="panel-intro">选一个地点，人物会沿可行走路线前往。也可直接点击画面中的椅子。</p><div id="place-list"></div><label class="label-toggle"><input type="checkbox" id="world-labels">显示地点标签</label></aside>
 <aside class="social-panel ui" id="social-panel" hidden><div class="panel-title"><span id="social-title">人物</span><button id="social-close" aria-label="关闭互动">×</button></div><p id="social-description" class="panel-intro"></p><div class="social-actions"><button class="wide-button" data-social="wave">打招呼</button><button class="wide-button" data-social="talk">交谈</button><button class="wide-button" data-social="follow">同行</button></div><button class="wide-button" id="take-control">接管此人物</button></aside>
 <div id="world-hud" aria-label="人物头顶对白"></div>
 <div class="scene-transition" id="transition"></div>
 <div class="error-screen" id="error" hidden></div>
-<nav class="viewport-tools ui" aria-label="三维镜头控制">
- <div class="view-row"><button id="view-out" title="缩小" aria-label="缩小">−</button><output id="view-scale">100%</output><button id="view-in" title="放大" aria-label="放大">＋</button><button id="view-home" title="恢复全景" aria-label="恢复全景">⌂</button></div>
- <div class="view-row"><button id="view-projection" title="切换透视或正交投影">透视 3D</button><button id="view-lock" title="锁定转动：在人物上拖动也转镜头" aria-pressed="false">转动</button></div>
- <span class="view-hint">拖空白转动 · 双指缩放</span>
+<nav class="viewport-tools ui" id="viewport-tools" aria-label="三维镜头控制" aria-expanded="false">
+ <button id="view-toggle" type="button" aria-expanded="false" aria-controls="view-tray" title="镜头：缩放、透视/正交、转动锁定">镜头</button>
+ <div class="view-tray" id="view-tray" hidden>
+  <div class="view-row"><button id="view-out" title="缩小" aria-label="缩小">−</button><output id="view-scale">100%</output><button id="view-in" title="放大" aria-label="放大">＋</button><button id="view-home" title="恢复全景" aria-label="恢复全景">⌂</button></div>
+  <div class="view-row"><button id="view-projection" title="切换透视或正交投影">透视 3D</button><button id="view-lock" title="锁定转动：在人物上拖动也转镜头" aria-pressed="false">转动</button></div>
+ </div>
 </nav>
 <section class="theatre-panel ui" id="theatre-panel" hidden aria-label="短剧与对白">
  <div class="panel-title">微型剧场 / LITTLE THEATRE<button id="theatre-close" aria-label="关闭短剧面板">×</button></div>
- <p class="panel-intro">真人比例，无脸演员。走近、转身、入座，再把对白留在头顶。播放时仍可自由转动镜头。</p>
+ <p class="panel-intro">真人比例，无脸演员。走近、转身、入座，再把对白留在人物身旁。播放时仍可自由转动镜头。</p>
  <div id="story-list"></div>
  <div class="dialogue-toggles"><label><input type="checkbox" id="dialogue-enabled" checked>头顶对白</label><label><input type="checkbox" id="voice-enabled">中文朗读</label><label><input type="checkbox" id="ambient-enabled" checked>日常独白</label></div>
- <label class="setting"><span class="label">对白字号 <output id="dialogue-font-value">14 px</output></span><input type="range" id="dialogue-font" min="12" max="22" value="14" step="1" aria-label="对白字号"></label>
+ <label class="setting"><span class="label">对白字号 <output id="dialogue-font-value">11 px</output></span><input type="range" id="dialogue-font" min="9" max="18" value="11" step="1" aria-label="对白字号"></label>
  <p class="panel-small">朗读使用设备可用的中文声音；不要求麦克风。不提供真人配音，也不保证每台设备有中文语音包。</p>
  <details id="script-details"><summary>编辑 / 导入短剧 JSON</summary><textarea id="script-editor" rows="9" spellcheck="false" aria-label="短剧 JSON 编辑器"></textarea><div class="record-row"><button class="wide-button" id="script-run">验证并播放</button><button class="wide-button" id="script-save">导出</button><button class="wide-button" id="script-import">导入</button></div><input type="file" id="script-file" accept=".json,application/json" hidden><p class="script-error" id="script-error" role="status"></p></details>
  <details><summary>对白记录</summary><div id="dialogue-log"></div></details>

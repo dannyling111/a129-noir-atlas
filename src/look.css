@@ -27,8 +27,8 @@
 @media(max-width:600px){
  .topbar{top:14px;left:17px;right:14px;gap:8px}.topbar .brand{padding:6px 7px;gap:8px}.topbar .brand-name{font-size:9px;letter-spacing:2px}.brandmark{display:none}
  .brand-sub.look-menu{gap:4px;margin-top:5px}.look-menu button{font-size:9px;min-height:26px;padding:0 7px}.look-menu #look-toggle{min-height:30px}.look-version{font-size:8px;letter-spacing:0}
- .workspace{top:89px}.world-strip{top:123px}.living-world .headline{top:161px;max-width:197px}.headline{top:126px}.headline h1{font-size:21px}
+ .workspace{top:68px;flex-wrap:wrap}.world-strip{display:contents}.living-world .headline,.has-speech .headline{display:none!important}.headline{top:108px;max-width:170px}.headline h1{font-size:15px}
  .look-panel{top:90px;right:12px;width:calc(100vw - 24px);max-height:calc(100dvh - 108px);padding:18px;border-radius:10px}.look-presets button{min-height:52px}
- .theatre-panel,.cast-panel{top:124px;max-height:calc(100dvh - 145px)}#theatre-bar{top:126px}.places-panel,.social-panel{top:157px}
+ .theatre-panel,.cast-panel{top:108px;max-height:calc(100dvh - 145px)}#theatre-bar{top:108px}.places-panel,.social-panel{top:108px}
 }
 @media(max-height:600px) and (orientation:landscape){.topbar{top:9px}.look-panel{top:96px;max-height:calc(100dvh - 108px)}.workspace{top:65px}.world-strip{top:102px}.brand-sub.look-menu{margin-top:3px}.look-menu button{min-height:23px}.look-menu #look-toggle{min-height:27px}}

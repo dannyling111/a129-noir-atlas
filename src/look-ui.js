@@ -22,10 +22,10 @@ App.prototype.syncLookUI=function(){
 };
 App.prototype.setupLookUI=function(){
  const sub=document.querySelector('.brand-sub');sub.classList.add('look-menu');
- sub.innerHTML='<span class="look-version">5.3</span><div class="look-segments" role="group" aria-label="画面模式"><button id="look-mode-mono" type="button" aria-pressed="false">黑白</button><button id="look-mode-color" type="button" aria-pressed="true">彩色</button></div><button id="look-toggle" type="button" aria-expanded="false" aria-controls="look-panel">配色 <span aria-hidden="true">⚙</span></button>';
+ sub.innerHTML='<span class="look-version">5.4</span><div class="look-segments" role="group" aria-label="画面模式"><button id="look-mode-mono" type="button" aria-pressed="false">黑白</button><button id="look-mode-color" type="button" aria-pressed="true">彩色</button></div><button id="look-toggle" type="button" aria-expanded="false" aria-controls="look-panel">配色 <span aria-hidden="true">⚙</span></button>';
  const colourNames={wall:'墙面',stone:'石材 / 铺地',wood:'原木',roof:'屋瓦 / 巨物',foliage:'植物',water:'水面',trim:'门窗 / 梁柱'};
  document.body.insertAdjacentHTML('beforeend',`<aside id="look-panel" class="look-panel ui" hidden aria-label="材质与配色设置">
- <div class="look-panel-heading"><div><small>CHROMA / 5.3</small><h2>材质与配色</h2></div><button id="look-close" type="button" aria-label="关闭配色面板">×</button></div>
+ <div class="look-panel-heading"><div><small>CHROMA / 5.4</small><h2>材质与配色</h2></div><button id="look-close" type="button" aria-label="关闭配色面板">×</button></div>
  <p id="look-mode-note"></p>
  <fieldset id="look-controls"><legend>彩色材质设置</legend>
  <div class="look-presets">${Object.entries(LOOK_PRESETS).map(([key,p])=>`<button data-look-preset="${key}" type="button" aria-pressed="false"><span class="look-dots">${['wall','wood','roof','foliage','water'].map(k=>`<i style="background:${p.colours[k]}"></i>`).join('')}</span><strong>${p.name}</strong><small>${p.note}</small></button>`).join('')}</div>
