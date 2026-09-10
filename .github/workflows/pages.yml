@@ -5,13 +5,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
-  pages: write
-  id-token: write
-concurrency:
-  group: pages
-  cancel-in-progress: false
 jobs:
-  # 保留原来的 gh-pages 镜像:如果 Pages 的源设的是「从分支部署」,靠的就是它。
   mirror:
     runs-on: ubuntu-latest
     steps:
@@ -24,20 +18,10 @@ jobs:
           force_orphan: true
           exclude_assets: '.github,.github/**,src,src/**,tests,tests/**,blueprint,blueprint/**,workpacks,workpacks/**'
 
-  # 🔴 2026-09-10 补:线上实测冻在 09-09 18:20 不动 —— 响应头 age 很小、last-modified 是昨天,
-  # 说明【源站本身】就是旧的,不是边缘缓存。而 gh-pages 分支当时已经是新的。
-  # 唯一解释是 Pages 的源设成了「GitHub Actions」,那条路上没人往里推东西,所以推分支是空转。
-  # 这里补上官方的 Actions 部署路径;两条路并存,哪种源设置都能把站点更新到。
-  deploy:
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.pages.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-      - id: pages
-        uses: actions/deploy-pages@v4
+# 🔴 2026-09-10 查清并记下来,免得下一个人再踩:
+# 线上 https://dannyling111.github.io/a129-noir-atlas/ 【不是本仓库的项目页】,
+# 而是用户站仓库 dannyling111/dannyling111.github.io 里的 a129-noir-atlas/ 文件夹在服务。
+# 本仓库的 Pages 其实没启用 —— 官方 actions/configure-pages 实测报
+# "Get Pages site failed: Not Found",所以上面这个 gh-pages 镜像【推成功了站点也不会变】,
+# 它只是个存档。要更新线上,必须把构建产物同步进用户站仓库的那个文件夹再推。
+# (我先推错了地方,查了响应头 last-modified 一直停在昨天才发现。)
