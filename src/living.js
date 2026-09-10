@@ -6,8 +6,29 @@ class LivingWorld {
  pose(a,pose){this.app.exhibition.pose(a,pose);a.speed=0;a.gaitWeight=0;a.moving=false;}
  route(a,x,z){const app=this.app;if(a.flying){const p=app.constrainAir(x,z,a.flightY);a.route=[];a.target={x:p[0],z:p[1]};return true;}const q=app.scene.nav.route(a.x,a.z,x,z);if(!q)return false;a.route=q.slice(1);a.target=q.length?{x:q[0][0],z:q[0][1]}:null;a.auto=false;return true;}
  visit(a,spotId,manual=false){const app=this.app,s=app.scene.spots.find(p=>p.id===spotId);if(!s)return false;if(a.flying){if(manual)app.toast('请先着陆，再使用椅子、桌子或参观点。');return false;}if(this.reserved.has(s.id)&&this.reserved.get(s.id)!==a.id){if(manual)app.toast('这里有人，换一张座位吧。');return false;}this.cancel(a);if(manual){a.brain.manual=true;app.director.stopPlayback();}a.life??={cycle:0,seed:0,next:0};this.reserved.set(s.id,a.id);a.life.task={kind:'spot',spot:s.id,stage:'walking',manual,since:app.time};this.pose(a,'idle');const p=s.approach||[s.x,s.z];if(!this.route(a,...p)){this.reserved.delete(s.id);a.life.task=null;if(manual)app.toast('这个位置暂时没有连通的行走路线。');return false;}a.brain.label='前往'+s.name;if(manual){app.setPaused(false);app.toast('前往'+s.name+' · 自动绕开障碍');}return true;}
- finishTask(a){const task=a.life.task;if(task?.spot)this.reserved.delete(task.spot);a.seatId=null;this.pose(a,'idle');a.life.task=null;a.life.next=this.app.time+1.6+(a.id%3);a.life.cycle++;a.route=[];a.target=null;}
- nextTask(a){const sc=this.app.scene,i=a.life.seed,cycle=a.life.cycle;const preferred=sc.id===7?['studio-desk','seat-2','library-seat','south-desk','tea-one','gallery-art']:sc.id===8?['pine-pavilion','stone-seat','river-east','falls','south-pine']:['gate','town-tea-a','pond-edge','town-tea-b','pond-bridge','market-6.5','hall-0'];let s=sc.spots.find(p=>p.id===preferred[(i+cycle)%preferred.length]);if(!s||this.reserved.has(s.id)){const choices=sc.spots.filter(s=>!this.reserved.has(s.id));s=choices[(i*3+cycle*5)%choices.length];}if(s){if(!this.visit(a,s.id,false)){a.life.next=this.app.time+3;a.life.cycle++;}}}
+ finishTask(a){const task=a.life.task;
+  /* NPC 也真的结算 —— 不结算的话他们永远不饿不累,上面那套效用算出来的东西没有任何后果。 */
+  if(a.simDoing&&this.app.sim){const r=this.app.sim.perform(a.id,a.simDoing);a.simDoing=null;
+   if(r.ok&&r.extra)this.event('人物 '+a.id+' · '+r.extra);}
+if(task?.spot)this.reserved.delete(task.spot);a.seatId=null;this.pose(a,'idle');a.life.task=null;a.life.next=this.app.time+1.6+(a.id%3);a.life.cycle++;a.route=[];a.target=null;}
+ nextTask(a){const sc=this.app.scene,i=a.life.seed,cycle=a.life.cycle;
+ /* 🔴 城市模式:下一步做什么由【当下的需求 × 他的人格与价值 × 场合】算出来,再按概率抽 ——
+    不是原来那句 preferred[(i+cycle)%preferred.length] 的固定轮流。
+    差别看得见:同样是下午三点,精力见底的人会去坐下,缺钱又有工作的人会去伏案,
+    而尽责性低、开放性高的人更可能跑去看画。固定轮流做不到这一点(同一个人换个处境还是走同一条路线)。 */
+ if(this.app.sim&&document.body.classList.contains('city-mode')){
+  const st=this.app.sim.attach(a.id);
+  const pick=chooseAction(st,{peers:this.app.actors.length-1,rng:this.app.sim.rng,hour:this.app.sim.hour});
+  const kinds=SIM_SPOT_KIND[pick.act.spot]||['view'];
+  const free=sc.spots.filter(s=>kinds.includes(s.kind)&&!this.reserved.has(s.id));
+  const target=free.length?free[(a.id*3+cycle)%free.length]:null;
+  if(target){
+   a.simDoing=pick.act.id;
+   if(this.visit(a,target.id,false)){a.brain.label=pick.act.icon+' '+pick.act.name;return;}
+  }
+  a.life.next=this.app.time+3;a.life.cycle++;return;
+ }
+const preferred=sc.id===7?['studio-desk','seat-2','library-seat','south-desk','tea-one','gallery-art']:sc.id===8?['pine-pavilion','stone-seat','river-east','falls','south-pine']:['gate','town-tea-a','pond-edge','town-tea-b','pond-bridge','market-6.5','hall-0'];let s=sc.spots.find(p=>p.id===preferred[(i+cycle)%preferred.length]);if(!s||this.reserved.has(s.id)){const choices=sc.spots.filter(s=>!this.reserved.has(s.id));s=choices[(i*3+cycle*5)%choices.length];}if(s){if(!this.visit(a,s.id,false)){a.life.next=this.app.time+3;a.life.cycle++;}}}
  update(a,dt){const app=this.app,sc=app.scene;if(!sc.world)return;const b=a.brain;if(!a.life)a.life={task:null,next:app.time+1,cycle:0,seed:a.id};
  if(!a.target&&a.route?.length){const p=a.route.shift();a.target={x:p[0],z:p[1]};}
  const pair=this.pairs.find(p=>p.a===a.id||p.b===a.id);if(pair)return;

@@ -1,0 +1,73 @@
+/* 触摸底线 —— 全站所有可点控件不小于 44px
+ *
+ * 为什么单开一个文件:这不是城市模式的样式,是【整站的一条硬底线】。
+ * 机器闸(mobile_first_check)在 390/360/414 三种机型上实测到 34 个控件低于 44px,
+ * 其中 iconbutton 只有 27px、配色小方块只有 26px。
+ * 44 是苹果与谷歌同一条底线,不是审美问题 —— 小于它,手指命中的常常是隔壁那个按钮。
+ * 这里只抬高度与内边距,不动排版结构、不动颜色,所以画面观感基本不变。
+ */
+.iconbutton{min-height:44px;min-width:44px;width:44px;height:44px}
+.iconbutton svg{width:19px;height:19px}
+.tool-pill{min-height:44px;height:44px}
+.action{min-height:44px;height:44px}
+.motion-grid .action{min-height:44px;height:44px}
+.scene-button{min-height:44px}
+.place-item{min-height:44px;height:auto;padding:6px 8px}
+.social-actions button{min-height:44px}
+.wide-button{min-height:44px}
+.camera-grid button{min-height:44px}
+.record-row button{min-height:44px}
+.help-card .dismiss{min-height:44px}
+.flight-controls button{min-height:44px;height:44px;width:44px}
+.flight-controls button span{height:36px;width:36px}
+.flight-controls #land{width:44px}.flight-controls #land span{width:34px;height:34px}
+.jump-control #jump{height:44px;width:44px}
+.control-cluster .jump-control{height:44px;width:44px}
+.control-cluster .flight-controls{grid-template-columns:44px 34px;grid-template-rows:44px 44px;width:78px;height:90px}
+.control-cluster{height:96px}
+#look-panel button,.look-chip,[id^="look-mode-"],[id^="look-"]{min-height:44px;min-width:44px}
+.setting input[type=range]{height:24px}
+
+@media(max-width:600px){
+ .iconbutton{width:44px;height:44px}
+ .top-actions{gap:4px}
+ .workspace{gap:4px}
+ .tool-pill{padding:0 9px;font-size:9.5px}
+ .actions{overflow-x:auto}
+ .action{padding:0 10px}
+ .scene-dock{overflow-x:auto}
+ .scene-button{min-width:84px}
+ .lower-tools .iconbutton{width:44px;height:44px}
+ .lower-tools .iconbutton svg{width:17px}
+ :root{--control-bottom:196px}
+}
+
+/* 第二轮:这几条是被更具体的选择器压住了(单类 .action 打不过 .actions .action),
+   所以这里用同样或更高的特异度写一遍。逐条对应机器闸报出来的那 15 个。 */
+.actions .action,.actions .action.more-action{min-height:44px;height:44px}
+.look-menu button{min-height:44px}
+.look-menu #look-toggle{min-height:44px;height:44px}
+.look-segments{padding:3px}
+#view-toggle{min-height:44px;min-width:44px;height:44px}
+.workspace .tool-pill,#settings-toggle,#cast-toggle,#world-guide,#nearby,#exhibition-toggle,#theatre-toggle{min-width:44px;min-height:44px}
+/* reset 与镜头键在小屏上贴到了一起 —— 抬高之后更明显,给它们之间留出真实间距 */
+.lower-tools{gap:8px}
+.viewport-tools,.view-tools{margin-left:8px}
+@media(max-width:600px){
+ .lower-tools{gap:8px}
+ .look-menu button{padding:0 8px;font-size:9.5px}
+ .actions .action{padding:0 9px;font-size:10px}
+}
+
+/* 第三轮:按钮抬到 44px 之后,原来贴着排的几条带子就撞上了。
+   下面这些偏移量不是估的,是在 390×844 里量出来的实际坐标算出来的:
+     顶栏图标 y33..77 · 配色条 y36..88 · 工作区 y68..112  → 工作区必须下移到 96
+     镜头键 y604..648 · 底部工具 y633..677                 → 镜头键必须上移离开这一带 */
+.actions .action{min-width:44px}
+@media(max-width:600px){
+ .workspace{top:96px}
+ .world-strip{top:96px}
+ .headline{top:152px}
+ .viewport-tools{bottom:300px}
+ .settings,.motion-panel,.director-panel,.places-panel,.social-panel{top:150px}
+}
