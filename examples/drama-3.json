@@ -1,0 +1,125 @@
+{
+  "schema": "noir.drama/1",
+  "title": "没有写在地图上",
+  "scene": 9,
+  "description": "院落 / 门与方向 / 不急着抵达",
+  "cast": [
+    {
+      "role": "lan",
+      "index": 0,
+      "start": [
+        -1,
+        14.4
+      ],
+      "angle": 3.141592653589793
+    },
+    {
+      "role": "xi",
+      "index": 1,
+      "start": [
+        1,
+        14.4
+      ],
+      "angle": 3.141592653589793
+    }
+  ],
+  "beats": [
+    {
+      "type": "camera",
+      "roles": [
+        "lan",
+        "xi"
+      ],
+      "span": 12,
+      "yaw": 0.2,
+      "pitch": 0.55
+    },
+    {
+      "type": "say",
+      "role": "lan",
+      "to": "xi",
+      "pose": "talk",
+      "text": "地图说，穿过这道门就到了。",
+      "seconds": 5
+    },
+    {
+      "type": "say",
+      "role": "xi",
+      "to": "lan",
+      "pose": "point",
+      "text": "到了哪里？",
+      "seconds": 3.3
+    },
+    {
+      "type": "move",
+      "targets": [
+        {
+          "role": "lan",
+          "x": -1,
+          "z": 10.8
+        },
+        {
+          "role": "xi",
+          "x": 1,
+          "z": 10.8
+        }
+      ]
+    },
+    {
+      "type": "camera",
+      "roles": [
+        "lan",
+        "xi"
+      ],
+      "span": 10,
+      "yaw": 0.4,
+      "pitch": 0.42
+    },
+    {
+      "type": "say",
+      "role": "lan",
+      "to": "xi",
+      "pose": "look",
+      "text": "另一座院子。还有另一道门。",
+      "seconds": 5
+    },
+    {
+      "type": "say",
+      "role": "xi",
+      "to": "lan",
+      "pose": "talk",
+      "text": "那今天就不找终点了。",
+      "seconds": 4.6
+    },
+    {
+      "type": "say",
+      "role": "lan",
+      "to": "xi",
+      "pose": "talk",
+      "text": "找什么？",
+      "seconds": 3
+    },
+    {
+      "type": "say",
+      "role": "xi",
+      "to": "lan",
+      "pose": "wave",
+      "text": "一个能坐下来，慢慢喝茶的地方。",
+      "seconds": 5.7
+    },
+    {
+      "type": "camera",
+      "roles": [
+        "lan",
+        "xi"
+      ],
+      "span": 18,
+      "yaw": -0.35,
+      "pitch": 0.6
+    },
+    {
+      "type": "wait",
+      "seconds": 3
+    }
+  ]
+}

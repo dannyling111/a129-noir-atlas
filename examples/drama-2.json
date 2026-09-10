@@ -1,0 +1,144 @@
+{
+  "schema": "noir.drama/1",
+  "title": "桥这边，桥那边",
+  "scene": 8,
+  "description": "松风 / 一座桥 / 两个走慢的人",
+  "cast": [
+    {
+      "role": "lan",
+      "index": 0,
+      "start": [
+        4,
+        4.3
+      ],
+      "angle": -1.5
+    },
+    {
+      "role": "xi",
+      "index": 1,
+      "start": [
+        4,
+        6.7
+      ],
+      "angle": -1.5
+    }
+  ],
+  "beats": [
+    {
+      "type": "camera",
+      "roles": [
+        "lan",
+        "xi"
+      ],
+      "span": 14,
+      "yaw": 0.35,
+      "pitch": 0.47
+    },
+    {
+      "type": "move",
+      "targets": [
+        {
+          "role": "lan",
+          "x": 2.1,
+          "z": 2.8
+        },
+        {
+          "role": "xi",
+          "x": 2.1,
+          "z": 4.2
+        }
+      ]
+    },
+    {
+      "type": "camera",
+      "roles": [
+        "lan",
+        "xi"
+      ],
+      "span": 9.4,
+      "yaw": 0.5,
+      "pitch": 0.34
+    },
+    {
+      "type": "say",
+      "role": "lan",
+      "to": "xi",
+      "pose": "look",
+      "text": "走了这么远，还要过桥吗？",
+      "seconds": 4.8
+    },
+    {
+      "type": "say",
+      "role": "xi",
+      "to": "lan",
+      "pose": "talk",
+      "text": "先听一会儿水声。",
+      "seconds": 4
+    },
+    {
+      "type": "say",
+      "role": "lan",
+      "to": "xi",
+      "pose": "talk",
+      "text": "水一直在走，我们却站着。",
+      "seconds": 4.7
+    },
+    {
+      "type": "say",
+      "role": "xi",
+      "to": "lan",
+      "pose": "point",
+      "text": "站着，也能到达一些地方。",
+      "seconds": 4.8
+    },
+    {
+      "type": "wait",
+      "seconds": 1.4
+    },
+    {
+      "type": "move",
+      "targets": [
+        {
+          "role": "lan",
+          "x": -5.7,
+          "z": 2.8
+        },
+        {
+          "role": "xi",
+          "x": -6,
+          "z": 4.4
+        }
+      ]
+    },
+    {
+      "type": "camera",
+      "roles": [
+        "lan",
+        "xi"
+      ],
+      "span": 11,
+      "yaw": 0.4,
+      "pitch": 0.46
+    },
+    {
+      "type": "say",
+      "role": "lan",
+      "to": "xi",
+      "pose": "talk",
+      "text": "现在呢？",
+      "seconds": 3
+    },
+    {
+      "type": "say",
+      "role": "xi",
+      "to": "lan",
+      "pose": "wave",
+      "text": "换一边，继续听。",
+      "seconds": 4.2
+    },
+    {
+      "type": "wait",
+      "seconds": 2
+    }
+  ]
+}
